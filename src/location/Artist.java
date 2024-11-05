@@ -1,6 +1,6 @@
 package location;
 
-// A COMPLETER
+// TO BE COMPLETED
 
 public class Artist {
 

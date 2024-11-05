@@ -1,18 +1,18 @@
 package location;
 
 /**
- * Exception levée quand il y a un problème avec le compte d'un utilisateur ou
- * sa connexion.
+ * Exception thrown when there is a problem with a user's account or
+ * their login.
  *
  * @author Eric Cariou
  */
 public class NotLoggedInException extends Exception {
 
   /**
-   * Identifiant de sérialisation.
+   * Serialization identifier.
    */
   private static final long serialVersionUID = -2876441299971092712L;
   
-  // A COMPLETER SI BESOIN
+  // TO BE COMPLETED IF NEEDED
   
 }

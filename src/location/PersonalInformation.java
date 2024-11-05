@@ -3,148 +3,146 @@ package location;
 import java.util.Objects;
 
 /**
- * Description des informations personnelles d'une personne : identité, âge et
- * address.
+ * Description of a person's personal information: identity, age, and address.
  *
  * @author Eric Cariou
  */
 public final class PersonalInformation implements java.io.Serializable {
   
   /**
-   * Identifiant de sérialisation.
+   * Serialization identifier.
    */
   private static final long serialVersionUID = 4026408353251835506L;
   
   /**
-   * Le lastName de la personne (ne peut pas être modifié).
+   * The last name of the person (cannot be modified).
    */
   private final String lastName;
   
   /**
-   * Le prénom de la personne (ne peut pas être modifié).
+   * The first name of the person (cannot be modified).
    */
   private final String firstName;
   
   /**
-   * L'âge de la personne (la valeur 0 correspond à un âge non défini).
+   * The age of the person (the value 0 corresponds to an undefined age).
    */
   private int age;
   
   /**
-   * L'address de la personne (une chaine vide "" correspond à une address non
-   * définie).
+   * The address of the person (an empty string "" corresponds to an undefined address).
    */
   private String address;
   
   /**
-   * Renvoie le lastName de la personne.
+   * Returns the last name of the person.
    *
-   * @return le lastName de la personne
+   * @return the last name of the person
    */
   public String getLastName() {
-    return lastName;
+  return lastName;
   }
   
   /**
-   * Renvoie le prénom de la personne.
+   * Returns the first name of the person.
    *
-   * @return le prénom de la personne
+   * @return the first name of the person
    */
   public String getFirstName() {
-    return firstName;
+  return firstName;
   }
   
   /**
-   * Renvoie l'âge de la personne.
+   * Returns the age of the person.
    *
-   * @return l'âge de la personne
+   * @return the age of the person
    */
   public int getAge() {
-    return age;
+  return age;
   }
   
   /**
-   * Modifie l'âge de la personne.
+   * Sets the age of the person.
    *
-   * @param age le nouvel âge (doit être supérieur à 0)
+   * @param age the new age (must be greater than 0)
    */
   public void setAge(int age) {
-    if (age > 0) {
-      this.age = age;
-    }
+  if (age > 0) {
+    this.age = age;
+  }
   }
   
   /**
-   * Renvoie l'address de la personne.
+   * Returns the address of the person.
    *
-   * @return l'address de la personne
+   * @return the address of the person
    */
   public String getAddress() {
-    return address;
+  return address;
   }
   
   /**
-   * Modifie l'address de la personne.
+   * Sets the address of the person.
    *
-   * @param address la nouvelle address (doit être différente de null)
+   * @param address the new address (must be different from null)
    */
   public void setAddress(String address) {
-    if (address != null) {
-      this.address = address;
-    }
+  if (address != null) {
+    this.address = address;
+  }
   }
   
   /**
-   * Crée une personne avec ses informations obligatoires.
+   * Creates a person with their mandatory information.
    *
-   * @param lastName le lastName de la personne
-   * @param firstName le prénom de la personne
+   * @param lastName the last name of the person
+   * @param firstName the first name of the person
    */
   public PersonalInformation(String lastName, String firstName) {
-    this(lastName, firstName, "", 0);
+  this(lastName, firstName, "", 0);
   }
   
   /**
-   * Crée une personne avec toutes ses informations.
+   * Creates a person with all their information.
    *
-   * @param lastName le lastName de la personne
-   * @param firstName le prénom de la personne
-   * @param address l'address de la personne
-   * @param age l'âge de la personne
+   * @param lastName the last name of the person
+   * @param firstName the first name of the person
+   * @param address the address of the person
+   * @param age the age of the person
    */
   public PersonalInformation(String lastName, String firstName, String address,
-      int age) {
-    super();
-    this.lastName = lastName;
-    this.firstName = firstName;
-    this.address = address;
-    this.age = age;
+    int age) {
+  super();
+  this.lastName = lastName;
+  this.firstName = firstName;
+  this.address = address;
+  this.age = age;
   }
   
   @Override
   public int hashCode() {
-    return Objects.hash(address, age, lastName, firstName);
+  return Objects.hash(address, age, lastName, firstName);
   }
   
   @Override
   public boolean equals(final Object obj) {
-    if (this == obj) {
-      return true;
-    }
-    if (obj == null) {
-      return false;
-    }
-    if (getClass() != obj.getClass()) {
-      return false;
-    }
-    PersonalInformation other = (PersonalInformation) obj;
-    return Objects.equals(address, other.address) && age == other.age
-        && Objects.equals(lastName, other.lastName)
-        && Objects.equals(firstName, other.firstName);
+  if (this == obj) {
+    return true;
+  }
+  if (obj == null) {
+    return false;
+  }
+  if (getClass() != obj.getClass()) {
+    return false;
+  }
+  PersonalInformation other = (PersonalInformation) obj;
+  return Objects.equals(address, other.address) && age == other.age
+    && Objects.equals(lastName, other.lastName)
+    && Objects.equals(firstName, other.firstName);
   }
   
   @Override
   public String toString() {
-    return firstName + " " + lastName + " d'age " + age + " ans, habite " + address;
+  return firstName + " " + lastName + " aged " + age + " years, lives at " + address;
   }
 }

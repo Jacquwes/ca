@@ -9,105 +9,100 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 /**
- * Tests JUnit de la classe {@link location.PersonalInformation
+ * JUnit tests for the class {@link location.PersonalInformation
  * PersonalInformation}.
  *
  * @author Eric Cariou
  * @see location.PersonalInformation
  */
-class TestInformationPersonnelle {
+class TestPersonalInformation {
   
   /**
-   * Une information basique : prénom et lastName.
+   * Basic information: first name and last name.
    */
-  private PersonalInformation infoBasique;
+  private PersonalInformation basicInfo;
   /**
-   * Une information complète : prénom, lastName, address et âge.
+   * Complete information: first name, last name, address, and age.
    */
-  private PersonalInformation infoComplete;
+  private PersonalInformation completeInfo;
   
   /**
-   * Instancie une information basique et une complète pour les tests.
+   * Instantiates basic and complete information for the tests.
    *
-   * @throws Exception ne peut pas être levée ici
+   * @throws Exception cannot be thrown here
    */
   @BeforeEach
   void setUp() throws Exception {
-    infoBasique = new PersonalInformation("Skywalker", "Luke");
-    infoComplete =
-        new PersonalInformation("Skywalker", "Luke", "Planète Tatooine", 20);
+  basicInfo = new PersonalInformation("Skywalker", "Luke");
+  completeInfo =
+    new PersonalInformation("Skywalker", "Luke", "Planet Tatooine", 20);
   }
   
   /**
-   * Ne fait rien après les tests : à modifier au besoin.
+   * Does nothing after the tests: modify if needed.
    *
-   * @throws Exception ne peut pas être levée ici
+   * @throws Exception cannot be thrown here
    */
   @AfterEach
   void tearDown() throws Exception {}
   
   /**
-   * Vérifie que l'on peut positionner un êge de 25 ans.
+   * Verifies that an age of 25 years can be set.
    */
   @Test
-  void testAge25Basique() {
-    infoBasique.setAge(25);
-    assertEquals(infoBasique.getAge(), 25);
+  void testAge25Basic() {
+  basicInfo.setAge(25);
+  assertEquals(basicInfo.getAge(), 25);
   }
   
   /**
-   * Vérifie qu'on ne peut pas positionner un âge négatif sur une information
-   * basique.
+   * Verifies that a negative age cannot be set on basic information.
    */
   @Test
-  void testAgeNegatifBasique() {
-    infoBasique.setAge(-20);
-    assertTrue(infoBasique.getAge() != -20);
+  void testNegativeAgeBasic() {
+  basicInfo.setAge(-20);
+  assertTrue(basicInfo.getAge() != -20);
   }
   
   /**
-   * Vérifie qu'on ne peut pas positionner un age négatif sur une information
-   * complàte : l'âge reste le même qu'avant.
+   * Verifies that a negative age cannot be set on complete information: the age remains the same as before.
    */
   @Test
-  void testAgeNegatifComplet() {
-    int age = infoComplete.getAge();
-    infoComplete.setAge(-20);
-    assertEquals(infoComplete.getAge(), age);
-  }
-  
-  
-  /**
-   * Vérifie qu'une address n'est pas null quand on crée une information
-   * personnelle.
-   */
-  @Test
-  void testAdresseNonNull() {
-    assertTrue(infoBasique.getAddress() != null);
-    assertTrue(infoComplete.getAddress() != null);
+  void testNegativeAgeComplete() {
+  int age = completeInfo.getAge();
+  completeInfo.setAge(-20);
+  assertEquals(completeInfo.getAge(), age);
   }
   
   /**
-   * Vérifie qu'on ne peut pas positionner une address null sur une information
-   * existante.
+   * Verifies that an address is not null when personal information is created.
    */
   @Test
-  void testSetterAdresseNull() {
-    infoComplete.setAddress(null);
-    assertTrue(infoComplete.getAddress() != null);
+  void testAddressNotNull() {
+  assertTrue(basicInfo.getAddress() != null);
+  assertTrue(completeInfo.getAddress() != null);
   }
   
   /**
-   * Vérifie que les paramètres des constructeurs sont correctement gérés.
+   * Verifies that a null address cannot be set on existing information.
    */
   @Test
-  void testConstructeur() {
-    PersonalInformation inf =
-        new PersonalInformation("Vador", "Dark", null, -30);
-    assertEquals(inf.getLastName(), "Vador");
-    assertEquals(inf.getFirstName(), "Dark");
-    assertTrue(inf.getAddress() != null);
-    assertTrue(inf.getAge() >= 0);
+  void testSetterAddressNull() {
+  completeInfo.setAddress(null);
+  assertTrue(completeInfo.getAddress() != null);
+  }
+  
+  /**
+   * Verifies that the constructor parameters are correctly handled.
+   */
+  @Test
+  void testConstructor() {
+  PersonalInformation info =
+    new PersonalInformation("Vader", "Darth", null, -30);
+  assertEquals(info.getLastName(), "Vader");
+  assertEquals(info.getFirstName(), "Darth");
+  assertTrue(info.getAddress() != null);
+  assertTrue(info.getAge() >= 0);
   }
   
 }

@@ -1,7 +1,7 @@
 import java.io.IOException;
 
 /**
- * Classe d'essai de fonctionnement de l'application.
+ * Test class for application functionality.
  *
  * @author Eric Cariou
  *
@@ -9,17 +9,17 @@ import java.io.IOException;
 public class MainLocation {
 
   /**
-   * Si le main() s'exécute, c'est que le projet est fonctionnel.
+   * If main() executes, it means the project is functional.
    *
-   * @param args inutiles ici.
+   * @param args not used here.
    */
   public static void main(String[] args) {
-    System.out.println("\nAppuyez sur Entrée pour terminer le programme ...");
+    System.out.println("\nPress Enter to terminate the program ...");
     try {
       System.in.read();
     } catch (IOException e) {
-      System.err.println("Vous avez réussi à casser le clavier : " + e);
+      System.err.println("You managed to break the keyboard: " + e);
     }
-    System.out.println("... terminé");
+    System.out.println("... terminated");
   }
 }

@@ -1,4 +1,4 @@
 /**
- * Ensemble des classes de gestion de la location de films.
+ * Set of classes for managing movie rentals.
  */
 package location;

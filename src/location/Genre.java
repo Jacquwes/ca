@@ -1,33 +1,33 @@
 package location;
 
 /**
- * Ensemble des genres de film.
+ * Set of movie genres.
  *
  * @author Eric Cariou
  */
 public enum Genre {
   /**
-   * Movie d'action.
+   * Action movie.
    */
   Action,
   
   /**
-   * Movie d'aventure.
+   * Adventure movie.
    */
-  Aventure,
+  Adventure,
   
   /**
-   * Comédie.
+   * Comedy.
    */
   Comedy,
   
   /**
-   * Comédie dramatique.
+   * Comedy drama.
    */
   ComedyDrama,
   
   /**
-   * Movie romantique.
+   * Romantic movie.
    */
   Romance,
   
@@ -37,19 +37,19 @@ public enum Genre {
   Drama,
   
   /**
-   * Movie fantastique.
+   * Fantasy movie.
    */
-  Fantastic,
+  Fantasy,
   
   /**
-   * Movie de guerre.
+   * War movie.
    */
   War,
   
   /**
-   * Movie policier.
+   * Crime movie.
    */
-  Police,
+  Crime,
   
   /**
    * Thriller.
@@ -57,7 +57,7 @@ public enum Genre {
   Thriller,
   
   /**
-   * Movie d'horreur, d'épouvante.
+   * Horror movie.
    */
   Horror,
   
@@ -67,7 +67,7 @@ public enum Genre {
   Western,
   
   /**
-   * Movie de science-fiction.
+   * Science fiction movie.
    */
   ScienceFiction,
   
@@ -77,17 +77,17 @@ public enum Genre {
   Biopic,
   
   /**
-   * Movie d'animation, dessin animé.
+   * Animated movie.
    */
   Animation,
   
   /**
-   * Movie musical.
+   * Musical movie.
    */
   Musical,
   
   /**
-   * Movie historique.
+   * Historical movie.
    */
-  History
+  Historical
 }

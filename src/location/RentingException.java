@@ -1,18 +1,17 @@
 package location;
 
 /**
- * Exception levée quand il y a un problème lors de la location d'un film par un
- * utilisateur.
+ * Exception thrown when there is a problem during the rental of a movie by a user.
  *
  * @author Eric Cariou
  */
 public class RentingException extends Exception {
 
   /**
-   * Identifiant de sérialisation.
+   * Serialization identifier.
    */
   private static final long serialVersionUID = -3365565475174636290L;
   
-  // A COMPLETER SI BESOIN
+  // TO BE COMPLETED IF NEEDED
   
 }

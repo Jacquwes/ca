@@ -1,4 +1,4 @@
 /**
-* Définition des tests des classes des packages {@link location location} et {@link io io}.
+* Definition of tests for the classes in the {@link location location} and {@link io io} packages.
 */
 package tests;
