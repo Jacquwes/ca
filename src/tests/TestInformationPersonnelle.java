@@ -3,28 +3,28 @@ package tests;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-import location.InformationPersonnelle;
+import location.PersonalInformation;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 /**
- * Tests JUnit de la classe {@link location.InformationPersonnelle
- * InformationPersonnelle}.
+ * Tests JUnit de la classe {@link location.PersonalInformation
+ * PersonalInformation}.
  *
  * @author Eric Cariou
- * @see location.InformationPersonnelle
+ * @see location.PersonalInformation
  */
 class TestInformationPersonnelle {
   
   /**
-   * Une information basique : prénom et nom.
+   * Une information basique : prénom et lastName.
    */
-  private InformationPersonnelle infoBasique;
+  private PersonalInformation infoBasique;
   /**
-   * Une information complète : prénom, nom, adresse et âge.
+   * Une information complète : prénom, lastName, address et âge.
    */
-  private InformationPersonnelle infoComplete;
+  private PersonalInformation infoComplete;
   
   /**
    * Instancie une information basique et une complète pour les tests.
@@ -33,9 +33,9 @@ class TestInformationPersonnelle {
    */
   @BeforeEach
   void setUp() throws Exception {
-    infoBasique = new InformationPersonnelle("Skywalker", "Luke");
+    infoBasique = new PersonalInformation("Skywalker", "Luke");
     infoComplete =
-        new InformationPersonnelle("Skywalker", "Luke", "Planète Tatooine", 20);
+        new PersonalInformation("Skywalker", "Luke", "Planète Tatooine", 20);
   }
   
   /**
@@ -78,23 +78,23 @@ class TestInformationPersonnelle {
   
   
   /**
-   * Vérifie qu'une adresse n'est pas null quand on crée une information
+   * Vérifie qu'une address n'est pas null quand on crée une information
    * personnelle.
    */
   @Test
   void testAdresseNonNull() {
-    assertTrue(infoBasique.getAdresse() != null);
-    assertTrue(infoComplete.getAdresse() != null);
+    assertTrue(infoBasique.getAddress() != null);
+    assertTrue(infoComplete.getAddress() != null);
   }
   
   /**
-   * Vérifie qu'on ne peut pas positionner une adresse null sur une information
+   * Vérifie qu'on ne peut pas positionner une address null sur une information
    * existante.
    */
   @Test
   void testSetterAdresseNull() {
-    infoComplete.setAdresse(null);
-    assertTrue(infoComplete.getAdresse() != null);
+    infoComplete.setAddress(null);
+    assertTrue(infoComplete.getAddress() != null);
   }
   
   /**
@@ -102,11 +102,11 @@ class TestInformationPersonnelle {
    */
   @Test
   void testConstructeur() {
-    InformationPersonnelle inf =
-        new InformationPersonnelle("Vador", "Dark", null, -30);
-    assertEquals(inf.getNom(), "Vador");
-    assertEquals(inf.getPrenom(), "Dark");
-    assertTrue(inf.getAdresse() != null);
+    PersonalInformation inf =
+        new PersonalInformation("Vador", "Dark", null, -30);
+    assertEquals(inf.getLastName(), "Vador");
+    assertEquals(inf.getFirstName(), "Dark");
+    assertTrue(inf.getAddress() != null);
     assertTrue(inf.getAge() >= 0);
   }
   

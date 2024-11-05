@@ -23,7 +23,7 @@ public interface InterUtilisateur {
    *         pseudo ou le mot de passe était vide, 3 si les informations
    *         personnelles ne sont pas bien précisées
    */
-  int inscription(String pseudo, String mdp, InformationPersonnelle info);
+  int inscription(String pseudo, String mdp, PersonalInformation info);
   
   /**
    * Connexion de l'utilisateur. Une fois connecté, l'utilisateur pourra accéder
@@ -40,42 +40,42 @@ public interface InterUtilisateur {
   /**
    * Déconnecte l'utilisateur actuellement connecté.
    *
-   * @throws NonConnecteException si aucun utilisateur n'est connecté.
+   * @throws NotLoggedIn si aucun utilisateur n'est connecté.
    */
-  void deconnexion() throws NonConnecteException;
+  void deconnexion() throws NotLoggedIn;
   
   /**
    * L'utilisateur connecté loue un film. Il peut le louer s'il a moins de 3
    * films en cours de location et s'il a l'âge suffisant pour voir le film.
    *
    * @param film le film à louer
-   * @throws NonConnecteException si aucun utilisateur n'est connecté
-   * @throws LocationException en cas de refus de location, l'exception
+   * @throws NotLoggedIn si aucun utilisateur n'est connecté
+   * @throws RentingException en cas de refus de location, l'exception
    *         contiendra un message précisant le problème (déjà 3 films loués,
    *         âge insuffisant ou autre)
    */
-  void louerFilm(Film film) throws NonConnecteException, LocationException;
+  void louerFilm(Movie film) throws NotLoggedIn, RentingException;
   
   /**
    * Termine la location d'un film.
    *
    * @param film le film dont la location est terminée
-   * @throws NonConnecteException si aucun utilisateur n'est connecté
-   * @throws LocationException en cas de problème, notamment si l'utilisateur
+   * @throws NotLoggedIn si aucun utilisateur n'est connecté
+   * @throws RentingException en cas de problème, notamment si l'utilisateur
    *         n'avait pas ce film en location, l'exception contiendra un message
    *         précisant le problème
    */
-  void finLocationFilm(Film film)
-      throws NonConnecteException, LocationException;
+  void finLocationFilm(Movie film)
+      throws NotLoggedIn, RentingException;
   
   /**
    * Information sur le fait qu'un film est ouvert à la location.
    *
    * @param film le film dont on veut vérifier la possibilité de location
    * @return <code>true</code> si le film est ouvert à la location, <code>false</code> sinon
-   * @throws NonConnecteException si aucun utilisateur n'est connecté
+   * @throws NotLoggedIn si aucun utilisateur n'est connecté
    */
-  boolean estLouable(Film film) throws NonConnecteException;
+  boolean estLouable(Movie film) throws NotLoggedIn;
   
   /**
    * Renvoie l'ensemble des films actuellement en location par l'utilisateur
@@ -83,9 +83,9 @@ public interface InterUtilisateur {
    *
    * @return les films en location par l'utilisateur connecté ou
    *         <code>null</code> si aucun film actuellement en location
-   * @throws NonConnecteException si aucun utilisateur n'est connecté
+   * @throws NotLoggedIn si aucun utilisateur n'est connecté
    */
-  Set<Film> filmsEnLocation() throws NonConnecteException;
+  Set<Movie> filmsEnLocation() throws NotLoggedIn;
   
   /**
    * Ajoute à un film une évaluation de la part de l'utilisateur connecté.
@@ -96,12 +96,12 @@ public interface InterUtilisateur {
    *
    * @param film le film à évaluer
    * @param eval l'évaluation du film
-   * @throws NonConnecteException si aucun utilisateur n'était connecté
-   * @throws LocationException en cas d'erreur pour ajouter l'évaluation,
+   * @throws NotLoggedIn si aucun utilisateur n'était connecté
+   * @throws RentingException en cas d'erreur pour ajouter l'évaluation,
    *         l'exception contiendra un message précisant le problème
    */
-  void ajouterEvaluation(Film film, Evaluation eval)
-      throws NonConnecteException, LocationException;
+  void ajouterEvaluation(Movie film, Evaluation eval)
+      throws NotLoggedIn, RentingException;
   
   /**
    * Modifie l'évaluation que l'utilisateur connecté avait déjà déposée sur un
@@ -109,19 +109,19 @@ public interface InterUtilisateur {
    *
    * @param film le film dont l'utilisateur modifie l'évaluation
    * @param eval la nouvelle évaluation qui remplace la précédente
-   * @throws NonConnecteException si aucun utilisateur n'était connecté
-   * @throws LocationException en cas d'erreur pour modifier l'évaluation,
+   * @throws NotLoggedIn si aucun utilisateur n'était connecté
+   * @throws RentingException en cas d'erreur pour modifier l'évaluation,
    *         l'exception contiendra un message précisant le problème
    */
-  void modifierEvaluation(Film film, Evaluation eval)
-      throws NonConnecteException, LocationException;
+  void modifierEvaluation(Movie film, Evaluation eval)
+      throws NotLoggedIn, RentingException;
   
   /**
    * Renvoie l'ensemble des films.
    *
    * @return l'ensemble des films ou <code>null</code> si aucun film n'existe
    */
-  Set<Film> ensembleFilms();
+  Set<Movie> ensembleFilms();
   
   /**
    * Renvoie l'ensemble des acteurs.
@@ -129,7 +129,7 @@ public interface InterUtilisateur {
    * @return l'ensemble des acteurs ou <code>null</code> si aucun acteur
    *         n'existe
    */
-  Set<Artiste> ensembleActeurs();
+  Set<Artist> ensembleActeurs();
   
   /**
    * Renvoie l'ensemble des réalisateurs.
@@ -137,25 +137,25 @@ public interface InterUtilisateur {
    * @return l'ensemble des réalisateurs ou <code>null</code> si aucun
    *         réalisateur n'existe
    */
-  Set<Artiste> ensembleRealisateurs();
+  Set<Artist> ensembleRealisateurs();
   
   /**
-   * Cherche un acteur à partir de son nom et son prénom.
+   * Cherche un acteur à partir de son lastName et son prénom.
    *
-   * @param nom le nom de l'acteur
-   * @param prenom le prénom de l'acteur
+   * @param lastName le lastName de l'acteur
+   * @param firstName le prénom de l'acteur
    * @return l'acteur s'il a été trouvé ou <code>null</code> sinon
    */
-  Artiste getActeur(String nom, String prenom);
+  Artist getActeur(String lastName, String firstName);
   
   /**
-   * Cherche un réalisateur à partir de son nom et son prénom.
+   * Cherche un réalisateur à partir de son lastName et son prénom.
    *
-   * @param nom le nom du réalisateur
-   * @param prenom le prénom du réalisateur
+   * @param lastName le lastName du réalisateur
+   * @param firstName le prénom du réalisateur
    * @return le réalisateur s'il a été trouvé ou <code>null</code> sinon
    */
-  Artiste getRealisateur(String nom, String prenom);
+  Artist getRealisateur(String lastName, String firstName);
   
   /**
    * Cherche un film à partir de son titre.
@@ -163,7 +163,7 @@ public interface InterUtilisateur {
    * @param titre le titre du film
    * @return le film s'il a été trouvé ou <code>null</code> sinon
    */
-  Film getFilm(String titre);
+  Movie getFilm(String titre);
   
   /**
    * Renvoie l'ensemble des films d'un certain réalisateur.
@@ -172,17 +172,17 @@ public interface InterUtilisateur {
    * @return l'ensemble des films du réalisateur ou <code>null</code> si aucun
    *         film n'a été trouvé ou que le paramètre était invalide
    */
-  Set<Film> ensembleFilmsRealisateur(Artiste realisateur);
+  Set<Movie> ensembleFilmsRealisateur(Artist realisateur);
   
   /**
    * Renvoie l'ensemble des films d'un certain réalisateur.
    *
-   * @param nom le nom du réalisateur
-   * @param prenom le prénom du réalisateur
+   * @param lastName le lastName du réalisateur
+   * @param firstName le prénom du réalisateur
    * @return l'ensemble des films du réalisateur ou <code>null</code> si aucun
    *         film n'a été trouvé ou que les paramètres étaient invalides
    */
-  Set<Film> ensembleFilmsRealisateur(String nom, String prenom);
+  Set<Movie> ensembleFilmsRealisateur(String lastName, String firstName);
   
   /**
    * Renvoie l'ensemble des films d'un certain acteur.
@@ -191,17 +191,17 @@ public interface InterUtilisateur {
    * @return l'ensemble des films de l'acteur ou <code>null</code> si aucun film
    *         n'a été trouvé ou que le paramètre était invalide
    */
-  Set<Film> ensembleFilmsActeur(Artiste acteur);
+  Set<Movie> ensembleFilmsActeur(Artist acteur);
   
   /**
    * Renvoie l'ensemble des films d'un certain acteur.
    *
-   * @param nom le nom de l'acteur
-   * @param prenom le prénom de l'acteur
+   * @param lastName le lastName de l'acteur
+   * @param firstName le prénom de l'acteur
    * @return l'ensemble des films de l'acteur ou <code>null</code> si aucun film
    *         n'a été trouvé ou que les paramètres étaient invalides
    */
-  Set<Film> ensembleFilmsActeur(String nom, String prenom);
+  Set<Movie> ensembleFilmsActeur(String lastName, String firstName);
   
   /**
    * Renvoie l'ensemble des films d'un certain genre.
@@ -210,7 +210,7 @@ public interface InterUtilisateur {
    * @return l'ensemble des films du genre ou <code>null</code> si aucun film
    *         n'a été trouvé
    */
-  Set<Film> ensembleFilmsGenre(Genre genre);
+  Set<Movie> ensembleFilmsGenre(Genre genre);
   
   /**
    * Renvoie l'ensemble des films d'un certain genre.
@@ -221,7 +221,7 @@ public interface InterUtilisateur {
    *         n'a été trouvé ou que le genre était invalide
    * @see location.Genre
    */
-  Set<Film> ensembleFilmsGenre(String genre);
+  Set<Movie> ensembleFilmsGenre(String genre);
   
   /**
    * Renvoie l'ensemble des évaluations d'un film.
@@ -231,7 +231,7 @@ public interface InterUtilisateur {
    *         évaluation n'existe pour que le film ou que le film était invalide
    *         (valeur <code>null</code> par exemple)
    */
-  Set<Evaluation> ensembleEvaluationsFilm(Film film);
+  Set<Evaluation> ensembleEvaluationsFilm(Movie film);
   
   /**
    * Renvoie l'ensemble des évaluations d'un film.
@@ -252,7 +252,7 @@ public interface InterUtilisateur {
    *         ou -2 en cas de film invalide (n'existant pas ou valeur
    *         <code>null</code>)
    */
-  double evaluationMoyenne(Film film);
+  double evaluationMoyenne(Movie film);
   
   /**
    * Renvoie l'évaluation moyenne d'un film (la moyenne des notes de toutes les

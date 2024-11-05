@@ -13,16 +13,16 @@ public interface InterAdministration {
   
   /**
    * Création d'un nouvel artiste. Il ne doit pas déjà exister un artiste avec
-   * le même nom et le même prénom.
+   * le même lastName et le même prénom.
    *
-   * @param nom le nom de l'artiste (chaine non vide)
-   * @param prenom le prénom de l'artiste (chaine vide "" si l'artiste n'a qu'un
-   *        nom et pas de prénom)
+   * @param lastName le lastName de l'artiste (chaine non vide)
+   * @param firstName le prénom de l'artiste (chaine vide "" si l'artiste n'a qu'un
+   *        lastName et pas de prénom)
    * @param nationalite la nationalité de l'artiste
    * @return l'artiste créé ou <code>null</code> en cas d'erreur (les paramètres
    *         sont invalides ou il existe déjà un artiste avec les mêmes valeurs)
    */
-  Artiste creerArtiste(String nom, String prenom, String nationalite);
+  Artist creerArtiste(String lastName, String firstName, String nationalite);
   
   /**
    * Supprime un artiste de l'ensemble des artistes. Ne peut pas être réalisé si
@@ -32,7 +32,7 @@ public interface InterAdministration {
    * @return <code>true</code> si la suppression a été réalisée,
    *         <code>false</code> sinon
    */
-  boolean supprimerArtiste(Artiste artiste);
+  boolean supprimerArtiste(Artist artiste);
   
   /**
    * Création d'un nouveau film. Il ne doit pas déjà exister un film avec le
@@ -46,7 +46,7 @@ public interface InterAdministration {
    * @return le film créé ou <code>null</code> en cas de problème (il existe
    *         déjà un film au même titre ou des paramètres n'étaient pas valides)
    */
-  Film creerFilm(String titre, Artiste realisateur, int annee, int ageLimite);
+  Movie creerFilm(String titre, Artist realisateur, int annee, int ageLimite);
   
   /**
    * Ajoute des acteurs à un film.
@@ -57,7 +57,7 @@ public interface InterAdministration {
    * @return <code>true</code> si au moins un acteur de la liste a été ajouté
    *         aux acteurs du film, <code>false</code> sinon
    */
-  boolean ajouterActeurs(Film film, Artiste... acteurs);
+  boolean ajouterActeurs(Movie film, Artist... acteurs);
   
   /**
    * Ajoute des genres à un film.
@@ -68,7 +68,7 @@ public interface InterAdministration {
    * @return <code>true</code> si au moins un genre de la liste a été ajouté aux
    *         genres du film, <code>false</code> sinon
    */
-  boolean ajouterGenres(Film film, Genre... genres);
+  boolean ajouterGenres(Movie film, Genre... genres);
   
   /**
    * Ajoute une affiche à un film. Si le film avait déjà une affiche, elle est
@@ -81,7 +81,7 @@ public interface InterAdministration {
    *         taille étaient valides)
    * @throws IOException en cas d'erreur de lecture du fichier
    */
-  boolean ajouterAffiche(Film film, String file) throws IOException;
+  boolean ajouterAffiche(Movie film, String file) throws IOException;
   
   /**
    * Supprime un film de l'ensemble des films.
@@ -91,28 +91,28 @@ public interface InterAdministration {
    *         en cas de problème (le film n'existait pas ou le paramètre était
    *         égal à <code>null</code>)
    */
-  boolean supprimerFilm(Film film);
+  boolean supprimerFilm(Movie film);
   
   /**
    * Renvoie l'ensemble des films.
    *
    * @return l'ensemble des films
    */
-  Set<Film> ensembleFilms();
+  Set<Movie> ensembleFilms();
   
   /**
    * Renvoie l'ensemble des acteurs.
    *
    * @return l'ensemble des acteurs
    */
-  Set<Artiste> ensembleActeurs();
+  Set<Artist> ensembleActeurs();
   
   /**
    * Renvoie l'ensemble des réalisateurs.
    *
    * @return l'ensemble des réalisateurs
    */
-  Set<Artiste> ensembleRealisateurs();
+  Set<Artist> ensembleRealisateurs();
   
   /**
    * Renvoie l'ensemble des films d'un réalisateur.
@@ -121,7 +121,7 @@ public interface InterAdministration {
    * @return l'ensemble des films du réalisateur ou <code>null</code> s'il n'en
    *         existe pas
    */
-  Set<Film> ensembleFilmsRealisateur(Artiste realisateur);
+  Set<Movie> ensembleFilmsRealisateur(Artist realisateur);
   
   /**
    * Renvoie l'ensemble des films d'un acteur.
@@ -130,16 +130,16 @@ public interface InterAdministration {
    * @return l'ensemble des films de l'acteur ou <code>null</code> s'il n'en
    *         existe pas
    */
-  Set<Film> ensembleFilmsActeur(Artiste acteur);
+  Set<Movie> ensembleFilmsActeur(Artist acteur);
   
   /**
-   * Cherche un artiste à partir de son nom et son prénom.
+   * Cherche un artiste à partir de son lastName et son prénom.
    *
-   * @param nom le nom de l'artiste
-   * @param prenom le prénom de l'artiste
+   * @param lastName le lastName de l'artiste
+   * @param firstName le prénom de l'artiste
    * @return l'artiste s'il a été trouvé ou <code>null</code> sinon
    */
-  Artiste getArtiste(String nom, String prenom);
+  Artist getArtiste(String lastName, String firstName);
   
   /**
    * Cherche un film à partir de son titre.
@@ -147,7 +147,7 @@ public interface InterAdministration {
    * @param titre le titre du film
    * @return le film s'il a été trouvé ou <code>null</code> sinon
    */
-  Film getFilm(String titre);
+  Movie getFilm(String titre);
   
   
   /**
@@ -159,7 +159,7 @@ public interface InterAdministration {
    *         <code>false</code> en cas de problème (le film n'a pas été trouvé
    *         ou valeur <code>null</code>)
    */
-  boolean ouvrirLocation(Film film);
+  boolean ouvrirLocation(Movie film);
   
   /**
    * Ferme la location d'un film. Ne fait rien si le film n'était pas ouvert à
@@ -170,5 +170,5 @@ public interface InterAdministration {
    *         <code>false</code> en cas de problème (le film n'a pas été trouvé
    *         ou valeur <code>null</code>)
    */
-  boolean fermerLocation(Film film);
+  boolean fermerLocation(Movie film);
 }

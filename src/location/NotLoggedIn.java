@@ -6,7 +6,7 @@ package location;
  *
  * @author Eric Cariou
  */
-public class NonConnecteException extends Exception {
+public class NotLoggedIn extends Exception {
 
   /**
    * Identifiant de sérialisation.

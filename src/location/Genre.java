@@ -7,49 +7,49 @@ package location;
  */
 public enum Genre {
   /**
-   * Film d'action.
+   * Movie d'action.
    */
   Action,
   
   /**
-   * Film d'aventure.
+   * Movie d'aventure.
    */
   Aventure,
   
   /**
    * Comédie.
    */
-  Comedie,
+  Comedy,
   
   /**
    * Comédie dramatique.
    */
-  ComedieDramatique,
+  ComedyDrama,
   
   /**
-   * Film romantique.
+   * Movie romantique.
    */
   Romance,
   
   /**
-   * Drame.
+   * Drama.
    */
-  Drame,
+  Drama,
   
   /**
-   * Film fantastique.
+   * Movie fantastique.
    */
-  Fantastique,
+  Fantastic,
   
   /**
-   * Film de guerre.
+   * Movie de guerre.
    */
-  Guerre,
+  War,
   
   /**
-   * Film policier.
+   * Movie policier.
    */
-  Policier,
+  Police,
   
   /**
    * Thriller.
@@ -57,9 +57,9 @@ public enum Genre {
   Thriller,
   
   /**
-   * Film d'horreur, d'épouvante.
+   * Movie d'horreur, d'épouvante.
    */
-  Horreur,
+  Horror,
   
   /**
    * Western.
@@ -67,7 +67,7 @@ public enum Genre {
   Western,
   
   /**
-   * Film de science-fiction.
+   * Movie de science-fiction.
    */
   ScienceFiction,
   
@@ -77,17 +77,17 @@ public enum Genre {
   Biopic,
   
   /**
-   * Film d'animation, dessin animé.
+   * Movie d'animation, dessin animé.
    */
   Animation,
   
   /**
-   * Film musical.
+   * Movie musical.
    */
   Musical,
   
   /**
-   * Film historique.
+   * Movie historique.
    */
-  Historique
+  History
 }

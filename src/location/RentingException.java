@@ -6,7 +6,7 @@ package location;
  *
  * @author Eric Cariou
  */
-public class LocationException extends Exception {
+public class RentingException extends Exception {
 
   /**
    * Identifiant de sérialisation.

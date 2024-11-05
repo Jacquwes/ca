@@ -2,6 +2,6 @@ package location;
 
 // A COMPLETER
 
-public class Artiste {
+public class Movie {
 
 }
