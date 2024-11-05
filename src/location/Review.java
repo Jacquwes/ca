@@ -2,6 +2,6 @@ package location;
 
 // TO BE COMPLETED
 
-public class Evaluation {
+public class Review {
 
 }
