@@ -40,42 +40,42 @@ public interface InterUtilisateur {
   /**
    * Déconnecte l'utilisateur actuellement connecté.
    *
-   * @throws NotLoggedIn si aucun utilisateur n'est connecté.
+   * @throws NotLoggedInException si aucun utilisateur n'est connecté.
    */
-  void deconnexion() throws NotLoggedIn;
+  void deconnexion() throws NotLoggedInException;
   
   /**
    * L'utilisateur connecté loue un film. Il peut le louer s'il a moins de 3
    * films en cours de location et s'il a l'âge suffisant pour voir le film.
    *
    * @param film le film à louer
-   * @throws NotLoggedIn si aucun utilisateur n'est connecté
+   * @throws NotLoggedInException si aucun utilisateur n'est connecté
    * @throws RentingException en cas de refus de location, l'exception
    *         contiendra un message précisant le problème (déjà 3 films loués,
    *         âge insuffisant ou autre)
    */
-  void louerFilm(Movie film) throws NotLoggedIn, RentingException;
+  void louerFilm(Movie film) throws NotLoggedInException, RentingException;
   
   /**
    * Termine la location d'un film.
    *
    * @param film le film dont la location est terminée
-   * @throws NotLoggedIn si aucun utilisateur n'est connecté
+   * @throws NotLoggedInException si aucun utilisateur n'est connecté
    * @throws RentingException en cas de problème, notamment si l'utilisateur
    *         n'avait pas ce film en location, l'exception contiendra un message
    *         précisant le problème
    */
   void finLocationFilm(Movie film)
-      throws NotLoggedIn, RentingException;
+      throws NotLoggedInException, RentingException;
   
   /**
    * Information sur le fait qu'un film est ouvert à la location.
    *
    * @param film le film dont on veut vérifier la possibilité de location
    * @return <code>true</code> si le film est ouvert à la location, <code>false</code> sinon
-   * @throws NotLoggedIn si aucun utilisateur n'est connecté
+   * @throws NotLoggedInException si aucun utilisateur n'est connecté
    */
-  boolean estLouable(Movie film) throws NotLoggedIn;
+  boolean estLouable(Movie film) throws NotLoggedInException;
   
   /**
    * Renvoie l'ensemble des films actuellement en location par l'utilisateur
@@ -83,9 +83,9 @@ public interface InterUtilisateur {
    *
    * @return les films en location par l'utilisateur connecté ou
    *         <code>null</code> si aucun film actuellement en location
-   * @throws NotLoggedIn si aucun utilisateur n'est connecté
+   * @throws NotLoggedInException si aucun utilisateur n'est connecté
    */
-  Set<Movie> filmsEnLocation() throws NotLoggedIn;
+  Set<Movie> filmsEnLocation() throws NotLoggedInException;
   
   /**
    * Ajoute à un film une évaluation de la part de l'utilisateur connecté.
@@ -96,12 +96,12 @@ public interface InterUtilisateur {
    *
    * @param film le film à évaluer
    * @param eval l'évaluation du film
-   * @throws NotLoggedIn si aucun utilisateur n'était connecté
+   * @throws NotLoggedInException si aucun utilisateur n'était connecté
    * @throws RentingException en cas d'erreur pour ajouter l'évaluation,
    *         l'exception contiendra un message précisant le problème
    */
   void ajouterEvaluation(Movie film, Evaluation eval)
-      throws NotLoggedIn, RentingException;
+      throws NotLoggedInException, RentingException;
   
   /**
    * Modifie l'évaluation que l'utilisateur connecté avait déjà déposée sur un
@@ -109,12 +109,12 @@ public interface InterUtilisateur {
    *
    * @param film le film dont l'utilisateur modifie l'évaluation
    * @param eval la nouvelle évaluation qui remplace la précédente
-   * @throws NotLoggedIn si aucun utilisateur n'était connecté
+   * @throws NotLoggedInException si aucun utilisateur n'était connecté
    * @throws RentingException en cas d'erreur pour modifier l'évaluation,
    *         l'exception contiendra un message précisant le problème
    */
   void modifierEvaluation(Movie film, Evaluation eval)
-      throws NotLoggedIn, RentingException;
+      throws NotLoggedInException, RentingException;
   
   /**
    * Renvoie l'ensemble des films.
