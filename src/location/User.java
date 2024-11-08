@@ -3,16 +3,11 @@ package location;
 import java.util.Set;
 
 /**
- * The User class represents a user with personal information.
- * It implements the InterUtilisateur interface.
- * 
- * <p>
- * This class provides methods to access the user's personal information.
- * </p>
+ * The User class represents a user.
  * 
  * @author
  */
-public class User implements UserInterface {
+public class User {
 
   /**
    * The login of the user.
