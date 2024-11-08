@@ -15,6 +15,12 @@ public class User {
   private String login;
 
   /**
+   * The password of the user.
+   * This field is used to store the user's password.
+   */
+  private String password;
+
+  /**
    * The personal information of the user.
    */
   private PersonalInformation personalInformation;
@@ -66,6 +72,24 @@ public class User {
    */
   public void setLogin(String login) {
     this.login = login;
+  }
+
+  /**
+   * Sets the password for the user.
+   *
+   * @param password the new password to be set
+   */
+  public void setPassword(String password) {
+    this.password = password;
+  }
+
+  /**
+   * Retrieves the password of the user.
+   *
+   * @return the password of the user.
+   */
+  public String getPassword() {
+    return password;
   }
 
   /**
