@@ -1,8 +1,29 @@
 package location;
 
+import java.util.HashSet;
+import java.util.Set;
+import java.util.function.Predicate;
+
 // TO BE COMPLETED
 
 public class Artist {
+  private static Set<Artist> artists = new HashSet<>();
+  private Set<Movie> movies = new HashSet<>();
+
+  public static Set<Artist> getArtists() {
+    return Artist.artists;
+  }
+
+  public static Set<Artist> getArtists(Predicate<Artist> p) {
+    Set<Artist> result = new HashSet<>();
+
+    for (Artist artist : artists)
+      if (p.test(artist))
+        result.add(artist);
+
+    return result;
+  }
+
   /**
    * The last name of the artist.
    */
@@ -40,5 +61,9 @@ public class Artist {
    */
   public String getFirstName() {
     return firstName;
+  }
+
+  public Set<Movie> getMovies() {
+    return movies;
   }
 }
