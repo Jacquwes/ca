@@ -7,14 +7,14 @@ public class Director extends Artist {
    * @param lastName the last name of the director
    * @param firstName the first name of the director
    */
-  Director(String lastName, String firstName) {
+  public Director(String lastName, String firstName) {
     super(lastName, firstName);
   }
 
   /**
    * Constructs a new Director.
    */
-  Director() {
+  public Director() {
     super();
   }
 }

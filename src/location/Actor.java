@@ -7,14 +7,14 @@ public class Actor extends Artist {
    * @param lastName the last name of the actor
    * @param firstName the first name of the actor
    */
-  Actor(String lastName, String firstName) {
+  public Actor(String lastName, String firstName) {
     super(lastName, firstName);
   }
 
   /**
    * Constructs a new Actor.
    */
-  Actor() {
+  public Actor() {
     super();
   }
 }
