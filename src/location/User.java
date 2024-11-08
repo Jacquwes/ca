@@ -32,11 +32,15 @@ public class User {
   private static Set<User> users = new HashSet<>();
 
   /**
-   * Constructor for the User class.
+   * Constructs a new User with the specified login and personal information.
+   *
+   * @param login the login identifier for the user
+   * @param personalInformation the personal information of the user
    */
-  public User() {
-    this.login = "";
-    this.personalInformation = new PersonalInformation("", "");
+  private User(String login, String password, PersonalInformation personalInformation) {
+    this.login = login;
+    this.password = password;
+    this.personalInformation = personalInformation;
   }
 
   /**
