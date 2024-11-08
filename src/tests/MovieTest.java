@@ -10,6 +10,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import location.Movie;
 import location.Director;
+import location.Genre;
 import location.Actor;
 
 public class MovieTest {
@@ -115,6 +116,15 @@ public class MovieTest {
     assertEquals(null, movie.getPoster());
     assertEquals(movie, movie.setPoster("poster.jpg"));
     assertEquals("poster.jpg", movie.getPoster());
+  }
+  
+  @Test void testGenres()
+  {
+    assertTrue(movie.getGenres().isEmpty());
+    Set<Genre> genres = new HashSet<>();
+    genres.add(Genre.Action);
+    assertEquals(movie, movie.setGenres(genres));
+    assertEquals(genres, movie.getGenres());
   }
 
   @Test

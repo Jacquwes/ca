@@ -54,6 +54,8 @@ public class Movie {
    */
   public String poster;
 
+  public Set<Genre> genres = new HashSet<Genre>();
+
   /**
    * Constructs a new Movie.
    */
@@ -210,6 +212,7 @@ public class Movie {
 
   /**
    * Retrieves the poster of the movie.
+   * 
    * @return the poster of the movie.
    */
   public String getPoster() {
@@ -218,11 +221,32 @@ public class Movie {
 
   /**
    * Sets the poster of the movie.
+   * 
    * @param poster the poster of the movie.
    * @return the movie.
    */
   public Movie setPoster(String poster) {
     this.poster = poster;
+    return this;
+  }
+
+  /**
+   * Retrieves the genres of the movie.
+   * 
+   * @return the genres of the movie.
+   */
+  public Set<Genre> getGenres() {
+    return genres;
+  }
+
+  /**
+   * Sets the genres of the movie.
+   * 
+   * @param genres the genres of the movie.
+   * @return the movie.
+   */
+  public Movie setGenres(Set<Genre> genres) {
+    this.genres = genres;
     return this;
   }
 
