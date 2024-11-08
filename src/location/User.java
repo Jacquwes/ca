@@ -1,6 +1,7 @@
 package location;
 
 import java.util.Set;
+import java.util.HashSet;
 
 /**
  * The User class represents a user.
@@ -28,7 +29,7 @@ public class User {
   /**
    * The set of registered users.
    */
-  private static Set<User> users;
+  private static Set<User> users = new HashSet<>();
 
   /**
    * Constructor for the User class.
