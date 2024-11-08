@@ -43,6 +43,7 @@ public class Artist {
   Artist(String lastName, String firstName) {
     this.lastName = lastName;
     this.firstName = firstName;
+    artists.add(this);
   }
 
   /**
@@ -73,7 +74,7 @@ public class Artist {
     return firstName;
   }
 
-/**
+  /**
    * Sets the first name of the artist.
    * @param firstName the first name of the artist.
    * @return the artist.
@@ -90,7 +91,7 @@ public class Artist {
   public Set<Movie> getMovies() {
     return movies;
   }
-
+  
   /**
    * Adds a movie to the artist.
    * @param movie the movie to add.
