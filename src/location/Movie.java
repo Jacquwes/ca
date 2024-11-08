@@ -50,6 +50,11 @@ public class Movie {
   private boolean available;
 
   /**
+   * The poster of the movie.
+   */
+  public String poster;
+
+  /**
    * Constructs a new Movie.
    */
   public Movie() {
@@ -200,6 +205,24 @@ public class Movie {
    */
   public Movie setMinimumAge(int minimumAge) {
     this.minimumAge = minimumAge;
+    return this;
+  }
+
+  /**
+   * Retrieves the poster of the movie.
+   * @return the poster of the movie.
+   */
+  public String getPoster() {
+    return poster;
+  }
+
+  /**
+   * Sets the poster of the movie.
+   * @param poster the poster of the movie.
+   * @return the movie.
+   */
+  public Movie setPoster(String poster) {
+    this.poster = poster;
     return this;
   }
 

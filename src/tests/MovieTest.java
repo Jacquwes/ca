@@ -111,6 +111,13 @@ public class MovieTest {
   }
 
   @Test
+  public void testPoster() {
+    assertEquals(null, movie.getPoster());
+    assertEquals(movie, movie.setPoster("poster.jpg"));
+    assertEquals("poster.jpg", movie.getPoster());
+  }
+
+  @Test
   public void testGetMoviesMultiple() {
     new Movie("Movie 2", 2023, null, null);
     new Movie("Movie 3", 2023, null, null);
