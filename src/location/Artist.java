@@ -37,7 +37,7 @@ public class Artist {
   /**
    * Constructs a new Artist.
    */
-  Artist() {
+  public Artist() {
     artists.add(this);
   }
 
@@ -47,7 +47,7 @@ public class Artist {
    * @param lastName  the last name of the artist
    * @param firstName the first name of the artist
    */
-  Artist(String lastName, String firstName) {
+  public Artist(String lastName, String firstName) {
     this.lastName = lastName;
     this.firstName = firstName;
     artists.add(this);
