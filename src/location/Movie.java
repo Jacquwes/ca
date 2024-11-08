@@ -15,7 +15,7 @@ public class Movie {
   /**
    * The title of the movie.
    */
-  private String title;
+  private String title = "";
 
   /**
    * The year of the movie.
