@@ -56,7 +56,7 @@ public class User {
    * @return the personal information of the user.
    */
   public PersonalInformation getPersonalInformation() {
-    return personalInformation;
+    return this.personalInformation;
   }
 
   /**
@@ -74,7 +74,7 @@ public class User {
    * @return the login of the user.
    */
   public String getLogin() {
-    return login;
+    return this.login;
   }
 
   /**
@@ -101,7 +101,7 @@ public class User {
    * @return the password of the user.
    */
   public String getPassword() {
-    return password;
+    return this.password;
   }
 
   /*
