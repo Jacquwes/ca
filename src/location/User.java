@@ -27,6 +27,11 @@ public class User {
   private PersonalInformation personalInformation;
 
   /**
+   * The set of reservations made by the user.
+   */
+  private Set<Reservation> reservations;
+
+  /**
    * The set of registered users.
    */
   private static Set<User> users = new HashSet<>();
@@ -37,10 +42,12 @@ public class User {
    * @param login the login identifier for the user
    * @param personalInformation the personal information of the user
    */
-  private User(String login, String password, PersonalInformation personalInformation) {
+  public User(String login, String password, PersonalInformation personalInformation) {
     this.login = login;
     this.password = password;
     this.personalInformation = personalInformation;
+    this.reservations = new HashSet<>();
+    User.users.add(this);
   }
 
   /**
@@ -49,7 +56,7 @@ public class User {
    * @return the personal information of the user.
    */
   public PersonalInformation getPersonalInformation() {
-    return personalInformation;
+    return this.personalInformation;
   }
 
   /**
@@ -67,7 +74,7 @@ public class User {
    * @return the login of the user.
    */
   public String getLogin() {
-    return login;
+    return this.login;
   }
 
   /**
@@ -94,8 +101,21 @@ public class User {
    * @return the password of the user.
    */
   public String getPassword() {
-    return password;
+    return this.password;
   }
+
+  /*
+   * Retrieves the set of reservations made by the user.
+   * 
+   * @return the set of reservations made by the user.
+   */
+  public Set<Reservation> getReservations() {
+    return this.reservations;
+  }
+
+  /**
+   * Display the reservations made by the user. 
+   */
 
   /**
    * User registration. The chosen username must not already exist among the
