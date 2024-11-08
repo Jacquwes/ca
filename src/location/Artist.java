@@ -35,6 +35,13 @@ public class Artist {
   private String firstName;
 
   /**
+   * Constructs a new Artist.
+   */
+  Artist() {
+    artists.add(this);
+  }
+
+  /**
    * Constructs a new Artist with the specified last name and first name.
    *
    * @param lastName  the last name of the artist

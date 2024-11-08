@@ -10,4 +10,11 @@ public class Actor extends Artist {
   Actor(String lastName, String firstName) {
     super(lastName, firstName);
   }
+
+  /**
+   * Constructs a new Actor.
+   */
+  Actor() {
+    super();
+  }
 }

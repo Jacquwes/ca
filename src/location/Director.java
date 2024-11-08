@@ -10,4 +10,11 @@ public class Director extends Artist {
   Director(String lastName, String firstName) {
     super(lastName, firstName);
   }
+
+  /**
+   * Constructs a new Director.
+   */
+  Director() {
+    super();
+  }
 }

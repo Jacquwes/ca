@@ -43,6 +43,13 @@ public class Movie {
   private boolean available;
 
   /**
+   * Constructs a new Movie.
+   */
+  public Movie() {
+    movies.add(this);
+  }
+
+  /**
    * Constructs a new Movie with the specified title, year, director and actors.
    * 
    * @param title    the title of the movie
