@@ -13,6 +13,13 @@ public class Movie {
   private static Set<Movie> movies = new HashSet<Movie>();
 
   /**
+   * Resets the list of all the movies.
+   */
+  public static void reset() {
+    movies = new HashSet<Movie>();
+  }
+
+  /**
    * The title of the movie.
    */
   private String title = "";
