@@ -1,6 +1,7 @@
 package location;
 
 import java.util.Set;
+import java.util.HashSet;
 
 /**
  * The User class represents a user.
@@ -15,6 +16,12 @@ public class User {
   private String login;
 
   /**
+   * The password of the user.
+   * This field is used to store the user's password.
+   */
+  private String password;
+
+  /**
    * The personal information of the user.
    */
   private PersonalInformation personalInformation;
@@ -22,14 +29,18 @@ public class User {
   /**
    * The set of registered users.
    */
-  private static Set<User> users;
+  private static Set<User> users = new HashSet<>();
 
   /**
-   * Constructor for the User class.
+   * Constructs a new User with the specified login and personal information.
+   *
+   * @param login the login identifier for the user
+   * @param personalInformation the personal information of the user
    */
-  public User() {
-    this.login = "";
-    this.personalInformation = new PersonalInformation("", "");
+  private User(String login, String password, PersonalInformation personalInformation) {
+    this.login = login;
+    this.password = password;
+    this.personalInformation = personalInformation;
   }
 
   /**
@@ -69,6 +80,24 @@ public class User {
   }
 
   /**
+   * Sets the password for the user.
+   *
+   * @param password the new password to be set
+   */
+  public void setPassword(String password) {
+    this.password = password;
+  }
+
+  /**
+   * Retrieves the password of the user.
+   *
+   * @return the password of the user.
+   */
+  public String getPassword() {
+    return password;
+  }
+
+  /**
    * User registration. The chosen username must not already exist among the
    * registered users.
    *
@@ -80,26 +109,23 @@ public class User {
    *         the username or password was empty, 3 if the personal information was
    *         not properly specified
    */
-  public int register(String username, String password, PersonalInformation info) {
+  public static User register(String username, String password, PersonalInformation info) {
     if (info == null) {
-      return 3;
+      return null;
     }
 
     if (username == null || password == null || username.isEmpty() || password.isEmpty()) {
-      return 2;
+      return null;
     }
 
     for (User user : users) {
       if (user.login.equals(username)) {
-        return 1;
+        return null;
       }
     }
 
-    this.setLogin(username);
-    this.setPersonalInformation(info);
-
-    users.add(this);
-
-    return 0;
+    User user = new User(username, password, info);
+    users.add(user);
+    return user;
   }
 }
