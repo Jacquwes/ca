@@ -13,9 +13,16 @@ public class Movie {
   private static Set<Movie> movies = new HashSet<Movie>();
 
   /**
+   * Resets the list of all the movies.
+   */
+  public static void reset() {
+    movies = new HashSet<Movie>();
+  }
+
+  /**
    * The title of the movie.
    */
-  private String title;
+  private String title = "";
 
   /**
    * The year of the movie.
@@ -31,6 +38,28 @@ public class Movie {
    * The actors of the movie.
    */
   private Set<Actor> actors;
+
+  /**
+   * The minimum age required to watch the movie.
+   */
+  private int minimumAge;
+
+  /**
+   * Whether the movie is available for rent.
+   */
+  private boolean available;
+
+  /**
+   * The poster of the movie.
+   */
+  public String poster;
+
+  /**
+   * Constructs a new Movie.
+   */
+  public Movie() {
+    movies.add(this);
+  }
 
   /**
    * Constructs a new Movie with the specified title, year, director and actors.
@@ -58,12 +87,34 @@ public class Movie {
   }
 
   /**
+   * Sets the title of the movie.
+   * 
+   * @param title the title of the movie
+   * @return the movie
+   */
+  public Movie setTitle(String title) {
+    this.title = title;
+    return this;
+  }
+
+  /**
    * Retrieves the year of the movie.
    * 
    * @return the year of the movie.
    */
   public int getYear() {
     return year;
+  }
+
+  /**
+   * Set the release date of the movie
+   * 
+   * @param newYear The release date of the movie
+   * @return the movie
+   */
+  public Movie setYear(int newYear) {
+    this.year = newYear;
+    return this;
   }
 
   /**
@@ -76,12 +127,103 @@ public class Movie {
   }
 
   /**
+   * Set the director of the movie
+   * 
+   * @param dir The director of the movie.
+   * @return the movie
+   */
+  public Movie setDirector(Director dir) {
+    this.director = dir;
+    return this;
+  }
+
+  /**
+   * Whether the movie is available for rent.
+   * 
+   * @return whether the movie is available for rent.
+   */
+  public boolean isAvailable() {
+    return available;
+  }
+
+  /**
+   * Set the availability of the movie
+   * 
+   * @param availability The availability of the movie
+   * @return the movie
+   */
+  public Movie setAvailability(boolean availability) {
+    this.available = availability;
+    return this;
+  }
+
+  /**
    * Retrieves the actors of the movie.
    * 
    * @return the actors of the movie.
    */
   public Set<Actor> getActors() {
     return actors;
+  }
+
+  /**
+   * Sets the actors of the movie.
+   * 
+   * @param actors the actors of the movie
+   * @return the movie
+   */
+  public Movie setActors(Set<Actor> actors) {
+    this.actors = actors;
+    return this;
+  }
+
+  /**
+   * Adds an actor to the movie.
+   * 
+   * @param actor the actor to add
+   * @return the movie
+   */
+  public Movie addActor(Actor actor) {
+    this.actors.add(actor);
+    return this;
+  }
+
+  /**
+   * Retrieves the minimum age required to watch the movie.
+   * 
+   * @return the minimum age required to watch the movie.
+   */
+  public int getMinimumAge() {
+    return minimumAge;
+  }
+
+  /**
+   * Sets the minimum age required to watch the movie.
+   * 
+   * @param minimumAge the minimum age required to watch the movie
+   * @return the movie
+   */
+  public Movie setMinimumAge(int minimumAge) {
+    this.minimumAge = minimumAge;
+    return this;
+  }
+
+  /**
+   * Retrieves the poster of the movie.
+   * @return the poster of the movie.
+   */
+  public String getPoster() {
+    return poster;
+  }
+
+  /**
+   * Sets the poster of the movie.
+   * @param poster the poster of the movie.
+   * @return the movie.
+   */
+  public Movie setPoster(String poster) {
+    this.poster = poster;
+    return this;
   }
 
   /**

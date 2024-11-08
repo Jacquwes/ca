@@ -35,14 +35,22 @@ public class Artist {
   private String firstName;
 
   /**
+   * Constructs a new Artist.
+   */
+  public Artist() {
+    artists.add(this);
+  }
+
+  /**
    * Constructs a new Artist with the specified last name and first name.
    *
    * @param lastName  the last name of the artist
    * @param firstName the first name of the artist
    */
-  Artist(String lastName, String firstName) {
+  public Artist(String lastName, String firstName) {
     this.lastName = lastName;
     this.firstName = firstName;
+    artists.add(this);
   }
 
   /**
@@ -55,6 +63,16 @@ public class Artist {
   }
 
   /**
+   * Sets the last name of the artist.
+   * @param lastName the last name of the artist.
+   * @return the artist.
+   */
+  public Artist setLastName(String lastName) {
+    this.lastName = lastName;
+    return this;
+  }
+
+  /**
    * Retrieves the first name of the artist.
    *
    * @return the first name of the artist.
@@ -63,7 +81,31 @@ public class Artist {
     return firstName;
   }
 
+  /**
+   * Sets the first name of the artist.
+   * @param firstName the first name of the artist.
+   * @return the artist.
+   */
+  public Artist setFirstName(String firstName) {
+    this.firstName = firstName;
+    return this;
+  }
+
+  /**
+   * Retrieves the movies of the artist.
+   * @return the movies of the artist.
+   */
   public Set<Movie> getMovies() {
     return movies;
+  }
+  
+  /**
+   * Adds a movie to the artist.
+   * @param movie the movie to add.
+   * @return the artist.
+   */
+  public Artist addMovie(Movie movie) {
+    movies.add(movie);
+    return this;
   }
 }
