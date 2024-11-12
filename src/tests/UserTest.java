@@ -115,4 +115,42 @@ public class UserTest {
     user.setPersonalInformation(newInfo);
     assertEquals(newInfo, user.getPersonalInformation());
   }
+
+  @Test
+  public void testAddReservationSuccess() {
+    assertNotNull(user);
+    Reservation reservation = new Reservation(user, movie, new Date(), 3);
+    assertTrue(user.getReservations().contains(reservation));
+  }
+
+  @Test
+  public void testAddReservationNull() {
+    assertNotNull(user);
+    assertThrows(RentingException.class, () -> user.addReservation(null));
+  }
+
+  @Test
+  public void testAddReservationAlreadyExists() {
+    assertNotNull(user);
+    Reservation reservation = new Reservation(user, movie, new Date(), 3);
+    assertThrows(RentingException.class, () -> user.addReservation(reservation));
+  }
+
+  @Test
+  public void testAddReservationLimitExceeded() {
+    assertNotNull(user);
+    Movie movie1 = new Movie("Interstellar", 2024, null, null);
+    Movie movie2 = new Movie("Inception", 2020, null, null);
+    Movie movie3 = new Movie("Tenet", 2021, null, null);
+    Movie movie4 = new Movie("Dunkirk", 2017, null, null);
+    assertThrows(RentingException.class, () -> user.addReservation(new Reservation(user, movie4, new Date(), 3)));
+  }
+
+  @Test
+  public void testCancelReservationSuccess() {
+    assertNotNull(user);
+    Reservation reservation = new Reservation(user, movie, new Date(), 3);
+    user.cancelReservation(reservation);
+    assertFalse(user.getReservations().contains(reservation));
+  }
 }
