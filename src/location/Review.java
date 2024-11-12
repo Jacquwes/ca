@@ -54,6 +54,9 @@ public class Review {
     this.movie = movie;
   }
 
+  public Review() {
+  }
+
   public Review(User user, Movie movie, double rating, String comment)
       throws IllegalArgumentException {
     if (!getReviews(r -> {
