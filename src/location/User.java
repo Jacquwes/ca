@@ -36,10 +36,12 @@ public class User {
    */
   private static Set<User> users = new HashSet<>();
 
+  private static Set<Review> reviews = new HashSet<>();
+
   /**
    * Constructs a new User with the specified login and personal information.
    *
-   * @param login the login identifier for the user
+   * @param login               the login identifier for the user
    * @param personalInformation the personal information of the user
    */
   public User(String login, String password, PersonalInformation personalInformation) {
@@ -116,6 +118,24 @@ public class User {
   /**
    * Display the reservations made by the user. 
    */
+
+  /**
+   * Adds a review to the user.
+   * 
+   * @param review the review to be added
+   */
+  public void addReview(Review review) {
+    reviews.add(review);
+  }
+
+  /**
+   * Retrieves the reviews of the user.
+   * 
+   * @return the reviews of the user
+   */
+  public Set<Review> getReviews() {
+    return reviews;
+  }
 
   /**
    * User registration. The chosen username must not already exist among the
