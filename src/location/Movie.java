@@ -275,4 +275,35 @@ public class Movie {
 
     return result;
   }
+
+  /**
+   * Indicates whether some other object is "equal to" this one.
+   * 
+   * @param obj the reference object with which to compare.
+   * @return {@code true} if this object is the same as the obj argument;
+   *         {@code false} otherwise.
+   */
+  @Override
+  public boolean equals(Object obj) {
+    if (this == obj)
+      return true;
+    if (obj == null)
+      return false;
+    if (getClass() != obj.getClass())
+      return false;
+    Movie other = (Movie) obj;
+    if (title == null) {
+      if (other.title != null)
+        return false;
+    } else if (!title.equals(other.title))
+      return false;
+    if (year != other.year)
+      return false;
+    if (director == null) {
+      if (other.director != null)
+        return false;
+    } else if (!director.equals(other.director))
+      return false;
+    return true;
+  }
 }
