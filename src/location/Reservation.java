@@ -113,4 +113,43 @@ public class Reservation {
     public void setDuration(Integer duration) {
         this.duration = duration;
     }
+
+    /**
+     * Indicates whether some other object is "equal to" this one.
+     * 
+     * @param obj the reference object with which to compare.
+     * @return {@code true} if this object is the same as the obj argument;
+     *         {@code false} otherwise.
+     */
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj)
+            return true;
+        if (obj == null)
+            return false;
+        if (getClass() != obj.getClass())
+            return false;
+        Reservation other = (Reservation) obj;
+        if (user == null) {
+            if (other.user != null)
+                return false;
+        } else if (!user.equals(other.user))
+            return false;
+        if (movie == null) {
+            if (other.movie != null)
+                return false;
+        } else if (!movie.equals(other.movie))
+            return false;
+        if (date == null) {
+            if (other.date != null)
+                return false;
+        } else if (!date.equals(other.date))
+            return false;
+        if (duration == null) {
+            if (other.duration != null)
+                return false;
+        } else if (!duration.equals(other.duration))
+            return false;
+        return true;
+    }
 }

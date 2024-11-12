@@ -108,4 +108,38 @@ public class Artist {
     movies.add(movie);
     return this;
   }
+
+  /**
+   * Indicates whether some other object is "equal to" this one.
+   * 
+   * @param obj the reference object with which to compare.
+   * @return {@code true} if this object is the same as the obj argument;
+   *         {@code false} otherwise.
+   */
+  @Override
+  public boolean equals(Object obj) {
+    if (this == obj)
+      return true;
+    if (obj == null)
+      return false;
+    if (getClass() != obj.getClass())
+      return false;
+    Artist other = (Artist) obj;
+    if (movies == null) {
+      if (other.movies != null)
+        return false;
+    } else if (!movies.equals(other.movies))
+      return false;
+    if (lastName == null) {
+      if (other.lastName != null)
+        return false;
+    } else if (!lastName.equals(other.lastName))
+      return false;
+    if (firstName == null) {
+      if (other.firstName != null)
+        return false;
+    } else if (!firstName.equals(other.firstName))
+      return false;
+    return true;
+  }
 }
