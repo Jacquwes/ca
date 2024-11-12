@@ -54,7 +54,12 @@ public class Movie {
    */
   public String poster;
 
+  /**
+   * The genres of the movie.
+   */
   public Set<Genre> genres = new HashSet<Genre>();
+
+  private Set<Review> reviews = new HashSet<>();
 
   /**
    * Constructs a new Movie.
@@ -248,6 +253,24 @@ public class Movie {
   public Movie setGenres(Set<Genre> genres) {
     this.genres = genres;
     return this;
+  }
+
+  /**
+   * Adds a review to the movie.
+   * 
+   * @param review the review to add
+   */
+  public void addReview(Review review) {
+    reviews.add(review);
+  }
+
+  /**
+   * Retrieves the reviews of the movie.
+   * 
+   * @return the reviews of the movie.
+   */
+  public Set<Review> getReviews() {
+    return reviews;
   }
 
   /**

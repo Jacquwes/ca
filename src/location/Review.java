@@ -61,8 +61,8 @@ public class Review {
     }).isEmpty())
       throw new IllegalArgumentException("User already reviewed this movie");
 
-    // user.addReview(this);
-    // movie.addReview(this);
+    user.addReview(this);
+    movie.addReview(this);
 
     this.user = user;
     this.movie = movie;
