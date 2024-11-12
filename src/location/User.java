@@ -1,6 +1,7 @@
 package location;
 
 import java.util.Set;
+import java.util.Date;
 import java.util.HashSet;
 
 /**
@@ -167,6 +168,53 @@ public class User {
     User user = new User(username, password, info);
     users.add(user);
     return user;
+  }
+
+  /**
+   * Adds a reservation to the user's list of reservations.
+   *
+   * @param reservation the reservation to be added
+   * @throws RentingException if the reservation is null
+   * @throws RentingException if the reservation already exists in the list
+   * @throws RentingException if the user already has 3 reservations
+   */
+  public void addReservation(Reservation reservation) {
+    if (reservation == null) {
+      throw new RentingException("The reservation is null");
+    }
+    
+    if (reservations.contains(reservation)) {
+      throw new RentingException("The reservation already exists");
+    }
+
+    if (reservations.size() >= 3) {
+      throw new RentingException("The user has already 3 reservations");
+    }
+
+    reservations.add(reservation);
+  }
+
+  /**
+   * Cancels the given reservation by removing it from the user's list of reservations
+   * and dissociating the user from the reservation.
+   *
+   * @param reservation the reservation to be canceled
+   */
+  public void cancelReservation(Reservation reservation) {
+    reservations.remove(reservation);
+    reservation.setUser(null);
+  }
+
+  /**
+   * Resets the collection of users to an empty HashSet.
+   * This method clears all existing users and initializes a new empty set.
+   */
+  public static void resetUsers() {
+    users = new HashSet<>();
+  }
+
+  public void resetReservations() {
+    reservations = new HashSet<>();
   }
 
   /**

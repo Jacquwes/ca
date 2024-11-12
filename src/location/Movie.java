@@ -52,13 +52,16 @@ public class Movie {
   /**
    * The poster of the movie.
    */
-  public String poster;
-
+  private String poster;
+  
   /**
    * The genres of the movie.
    */
-  public Set<Genre> genres = new HashSet<Genre>();
-
+  private Set<Genre> genres = new HashSet<Genre>();
+  
+  /**
+    * The reviews of the movie.
+    */
   private Set<Review> reviews = new HashSet<>();
 
   /**

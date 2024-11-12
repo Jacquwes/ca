@@ -40,6 +40,7 @@ public class Reservation {
         this.movie = movie;
         this.date = date;
         this.duration = duration;
+        this.user.addReservation(this);
     }
 
     /**

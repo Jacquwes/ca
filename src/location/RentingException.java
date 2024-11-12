@@ -5,13 +5,20 @@ package location;
  *
  * @author Eric Cariou
  */
-public class RentingException extends Exception {
+public class RentingException extends RuntimeException {
 
   /**
    * Serialization identifier.
    */
   private static final long serialVersionUID = -3365565475174636290L;
   
-  // TO BE COMPLETED IF NEEDED
+  /**
+   * Constructs a new RentingException with the specified message.
+   *
+   * @param message the message of the exception
+   */
+  public RentingException(String message) {
+    super(message);
+  }
   
 }
