@@ -4,8 +4,6 @@ import java.util.HashSet;
 import java.util.Set;
 import java.util.function.Predicate;
 
-// TO BE COMPLETED
-
 public class Movie {
   /**
    * List of all the movies.
@@ -17,6 +15,32 @@ public class Movie {
    */
   public static void reset() {
     movies = new HashSet<Movie>();
+  }
+
+  /**
+   * Retrieves the list of all the movies.
+   * 
+   * @return the list of all the movies.
+   */
+  public static Set<Movie> getMovies() {
+    return movies;
+  }
+
+  /**
+   * Gets the list of all the movies matching
+   * the specified predicate.
+   * 
+   * @param predicate the predicate to match
+   * @return the list of all the movies.
+   */
+  public static Set<Movie> getMovies(Predicate<Movie> predicate) {
+    Set<Movie> result = new HashSet<Movie>();
+
+    for (Movie movie : movies)
+      if (predicate.test(movie))
+        result.add(movie);
+
+    return result;
   }
 
   /**
@@ -53,15 +77,15 @@ public class Movie {
    * The poster of the movie.
    */
   private String poster;
-  
+
   /**
    * The genres of the movie.
    */
   private Set<Genre> genres = new HashSet<Genre>();
-  
+
   /**
-    * The reviews of the movie.
-    */
+   * The reviews of the movie.
+   */
   private Set<Review> reviews = new HashSet<>();
 
   /**
@@ -274,32 +298,6 @@ public class Movie {
    */
   public Set<Review> getReviews() {
     return reviews;
-  }
-
-  /**
-   * Retrieves the list of all the movies.
-   * 
-   * @return the list of all the movies.
-   */
-  public static Set<Movie> getMovies() {
-    return movies;
-  }
-
-  /**
-   * Gets the list of all the movies matching
-   * the specified predicate.
-   * 
-   * @param predicate the predicate to match
-   * @return the list of all the movies.
-   */
-  public static Set<Movie> getMovies(Predicate<Movie> predicate) {
-    Set<Movie> result = new HashSet<Movie>();
-
-    for (Movie movie : movies)
-      if (predicate.test(movie))
-        result.add(movie);
-
-    return result;
   }
 
   /**

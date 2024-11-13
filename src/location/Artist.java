@@ -4,11 +4,8 @@ import java.util.HashSet;
 import java.util.Set;
 import java.util.function.Predicate;
 
-// TO BE COMPLETED
-
 public class Artist {
   private static Set<Artist> artists = new HashSet<>();
-  private Set<Movie> movies = new HashSet<>();
 
   public static Set<Artist> getArtists() {
     return Artist.artists;
@@ -23,6 +20,8 @@ public class Artist {
 
     return result;
   }
+
+  private Set<Movie> movies = new HashSet<>();
 
   /**
    * The last name of the artist.
@@ -64,6 +63,7 @@ public class Artist {
 
   /**
    * Sets the last name of the artist.
+   * 
    * @param lastName the last name of the artist.
    * @return the artist.
    */
@@ -83,6 +83,7 @@ public class Artist {
 
   /**
    * Sets the first name of the artist.
+   * 
    * @param firstName the first name of the artist.
    * @return the artist.
    */
@@ -93,14 +94,16 @@ public class Artist {
 
   /**
    * Retrieves the movies of the artist.
+   * 
    * @return the movies of the artist.
    */
   public Set<Movie> getMovies() {
     return movies;
   }
-  
+
   /**
    * Adds a movie to the artist.
+   * 
    * @param movie the movie to add.
    * @return the artist.
    */

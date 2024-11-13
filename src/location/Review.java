@@ -5,21 +5,33 @@ import java.util.Set;
 import java.util.function.Predicate;
 
 public class Review {
+  private static Set<Review> reviews = new HashSet<>();
+
   private double rating = 0;
+
   private String comment = null;
+
   private User user = null;
+
   private Movie movie = null;
 
-  static private Set<Review> reviews = new HashSet<>();
+  public Review() {
+  }
 
-  static public Set<Review> getReviews(Predicate<Review> p) {
-    Set<Review> result = new HashSet<>();
-    for (Review review : Review.reviews) {
-      if (p.test(review))
-        result.add(review);
-    }
+  public Review(User user, Movie movie, double rating, String comment)
+      throws IllegalArgumentException {
+    if (!getReviews(r -> 
+      r.user == user && r.movie == movie
+    ).isEmpty())
+      throw new IllegalArgumentException("User already reviewed this movie");
 
-    return result;
+    user.addReview(this);
+    movie.addReview(this);
+
+    this.user = user;
+    this.movie = movie;
+    this.rating = rating;
+    this.comment = comment;
   }
 
   public double getRating() {
@@ -54,23 +66,14 @@ public class Review {
     this.movie = movie;
   }
 
-  public Review() {
-  }
+  public static Set<Review> getReviews(Predicate<Review> p) {
+    Set<Review> result = new HashSet<>();
+    for (Review review : Review.reviews) {
+      if (p.test(review))
+        result.add(review);
+    }
 
-  public Review(User user, Movie movie, double rating, String comment)
-      throws IllegalArgumentException {
-    if (!getReviews(r -> {
-      return r.user == user && r.movie == movie;
-    }).isEmpty())
-      throw new IllegalArgumentException("User already reviewed this movie");
-
-    user.addReview(this);
-    movie.addReview(this);
-
-    this.user = user;
-    this.movie = movie;
-    this.rating = rating;
-    this.comment = comment;
+    return result;
   }
 
   @Override
