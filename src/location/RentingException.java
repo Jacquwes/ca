@@ -1,7 +1,8 @@
 package location;
 
 /**
- * Exception thrown when there is a problem during the rental of a movie by a user.
+ * Exception thrown when there is a problem during the rental of a movie by a
+ * user.
  *
  * @author Eric Cariou
  */
@@ -11,7 +12,7 @@ public class RentingException extends RuntimeException {
    * Serialization identifier.
    */
   private static final long serialVersionUID = -3365565475174636290L;
-  
+
   /**
    * Constructs a new RentingException with the specified message.
    *
@@ -20,5 +21,5 @@ public class RentingException extends RuntimeException {
   public RentingException(String message) {
     super(message);
   }
-  
+
 }

@@ -1,7 +1,6 @@
 package location;
 
 import java.util.Set;
-import java.util.Date;
 import java.util.HashSet;
 
 /**
@@ -107,7 +106,7 @@ public class User {
     return this.password;
   }
 
-  /*
+  /**
    * Retrieves the set of reservations made by the user.
    * 
    * @return the set of reservations made by the user.
@@ -115,10 +114,6 @@ public class User {
   public Set<Reservation> getReservations() {
     return this.reservations;
   }
-
-  /**
-   * Display the reservations made by the user. 
-   */
 
   /**
    * Adds a review to the user.
@@ -182,7 +177,7 @@ public class User {
     if (reservation == null) {
       throw new RentingException("The reservation is null");
     }
-    
+
     if (reservations.contains(reservation)) {
       throw new RentingException("The reservation already exists");
     }
@@ -195,7 +190,8 @@ public class User {
   }
 
   /**
-   * Cancels the given reservation by removing it from the user's list of reservations
+   * Cancels the given reservation by removing it from the user's list of
+   * reservations
    * and dissociating the user from the reservation.
    *
    * @param reservation the reservation to be canceled
@@ -213,6 +209,10 @@ public class User {
     users = new HashSet<>();
   }
 
+  /**
+   * Resets the user's reservations by initializing a new empty HashSet.
+   * This method clears all existing reservations.
+   */
   public void resetReservations() {
     reservations = new HashSet<>();
   }

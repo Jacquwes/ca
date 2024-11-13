@@ -28,7 +28,8 @@ public class Reservation {
     private Integer duration;
 
     /**
-     * Constructs a new Reservation with the specified user, movie, date, and duration.
+     * Constructs a new Reservation with the specified user, movie, date, and
+     * duration.
      *
      * @param user     the user who made the reservation
      * @param movie    the movie that is reserved
