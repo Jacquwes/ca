@@ -4,13 +4,28 @@ import java.util.HashSet;
 import java.util.Set;
 import java.util.function.Predicate;
 
+/**
+ * Represents an artist who has worked on a movie.
+ */
 public class Artist {
+  /**
+   * Represents all the artists.
+   */
   private static Set<Artist> artists = new HashSet<>();
-
+  
+  /** 
+   * @return the artists.
+   */
   public static Set<Artist> getArtists() {
     return Artist.artists;
   }
 
+  /**
+   * Retrieves the artists matching the specified predicate.
+   * 
+   * @param p the predicate to match
+   * @return the artists matching the specified predicate.
+   */
   public static Set<Artist> getArtists(Predicate<Artist> p) {
     Set<Artist> result = new HashSet<>();
 
@@ -23,6 +38,9 @@ public class Artist {
     return result;
   }
 
+  /**
+   * The movies of the artist.
+   */
   private Set<Movie> movies = new HashSet<>();
 
   /**

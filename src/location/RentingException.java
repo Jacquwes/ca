@@ -4,7 +4,8 @@ package location;
  * Exception thrown when there is a problem during the rental of a movie by a
  * user.
  *
- * @author Eric Cariou
+ * @author Florent Delalande
+ * @author Paul Hariel
  */
 public class RentingException extends RuntimeException {
 

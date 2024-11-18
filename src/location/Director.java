@@ -1,5 +1,8 @@
 package location;
 
+/**
+ * Represents an actor.
+ */
 public class Director extends Artist {
   /**
    * Constructs a new Director with the specified last name and first name.

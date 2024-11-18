@@ -6,7 +6,8 @@ import java.util.Set;
 /**
  * Services for managing movies from the administrator's point of view.
  *
- * @autor Eric Cariou
+ * @author Florent Delalande
+* @author Paul Hariel
  */
 public interface AdministrationInterface {
   

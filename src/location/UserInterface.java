@@ -5,7 +5,8 @@ import java.util.Set;
 /**
  * Movie rental services from the user's point of view.
  *
- * @autor Eric Cariou
+ * @author Florent Delalande
+* @author Paul Hariel
  */
 public interface UserInterface {
   

@@ -3,7 +3,8 @@ package location;
 /**
  * Set of movie genres.
  *
- * @author Eric Cariou
+ * @author Florent Delalande
+* @author Paul Hariel
  */
 public enum Genre {
   /**

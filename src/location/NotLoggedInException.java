@@ -4,7 +4,8 @@ package location;
  * Exception thrown when there is a problem with a user's account or
  * their login.
  *
- * @author Eric Cariou
+ * @author Florent Delalande
+* @author Paul Hariel
  */
 public class NotLoggedInException extends Exception {
 

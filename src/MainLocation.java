@@ -3,7 +3,8 @@ import java.io.IOException;
 /**
  * Test class for application functionality.
  *
- * @author Eric Cariou
+ * @author Florent Delalande
+* @author Paul Hariel
  *
  */
 public class MainLocation {

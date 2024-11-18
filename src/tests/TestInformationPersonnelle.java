@@ -12,7 +12,8 @@ import org.junit.jupiter.api.Test;
  * JUnit tests for the class {@link location.PersonalInformation
  * PersonalInformation}.
  *
- * @author Eric Cariou
+ * @author Florent Delalande
+* @author Paul Hariel
  * @see location.PersonalInformation
  */
 class TestPersonalInformation {

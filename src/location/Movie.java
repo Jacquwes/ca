@@ -4,6 +4,9 @@ import java.util.HashSet;
 import java.util.Set;
 import java.util.function.Predicate;
 
+/**
+ * Represents a movie.
+ */
 public class Movie {
   /**
    * List of all the movies.

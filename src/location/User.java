@@ -6,7 +6,8 @@ import java.util.HashSet;
 /**
  * The User class represents a user.
  * 
- * @author
+ * @author Florent Delalande
+ * @author Paul Hariel
  */
 public class User {
 
@@ -36,12 +37,16 @@ public class User {
    */
   private static Set<User> users = new HashSet<>();
 
+  /**
+   * The set of reviews made by the user.
+   */
   private static Set<Review> reviews = new HashSet<>();
 
   /**
    * Constructs a new User with the specified login and personal information.
    *
    * @param login               the login identifier for the user
+   * @param password            the password of the user
    * @param personalInformation the personal information of the user
    */
   public User(String login, String password, PersonalInformation personalInformation) {
