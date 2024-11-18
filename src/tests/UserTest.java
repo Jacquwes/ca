@@ -140,11 +140,11 @@ public class UserTest {
   public void testAddReservationLimitExceeded() {
     assertNotNull(user);
     Movie movie1 = new Movie("Interstellar", 2024, null, null);
-    Reservation reservation1 = new Reservation(user, movie1, new Date(), 3);
+    new Reservation(user, movie1, new Date(), 3);
     Movie movie2 = new Movie("Inception", 2020, null, null);
-    Reservation reservation2 = new Reservation(user, movie2, new Date(), 3);
+    new Reservation(user, movie2, new Date(), 3);
     Movie movie3 = new Movie("Tenet", 2021, null, null);
-    Reservation reservation3 = new Reservation(user, movie3, new Date(), 3);
+    new Reservation(user, movie3, new Date(), 3);
     Movie movie4 = new Movie("Dunkirk", 2017, null, null);
     assertThrows(RentingException.class, () -> new Reservation(user, movie4, new Date(), 3));
   }

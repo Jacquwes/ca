@@ -22,8 +22,9 @@ public class Review {
       throws IllegalArgumentException {
     if (!getReviews(r -> 
       r.user == user && r.movie == movie
-    ).isEmpty())
+    ).isEmpty()){
       throw new IllegalArgumentException("User already reviewed this movie");
+    }
 
     user.addReview(this);
     movie.addReview(this);
@@ -69,8 +70,9 @@ public class Review {
   public static Set<Review> getReviews(Predicate<Review> p) {
     Set<Review> result = new HashSet<>();
     for (Review review : Review.reviews) {
-      if (p.test(review))
+      if (p.test(review)){
         result.add(review);
+      }
     }
 
     return result;
@@ -78,23 +80,30 @@ public class Review {
 
   @Override
   public boolean equals(Object obj) {
-    if (this == obj)
+    if (this == obj){
       return true;
-    if (obj == null)
+    }
+    if (obj == null){
       return false;
-    if (getClass() != obj.getClass())
+    }
+    if (getClass() != obj.getClass()){
       return false;
+    }
     Review other = (Review) obj;
     if (user == null) {
-      if (other.user != null)
+      if (other.user != null){
         return false;
-    } else if (!user.equals(other.user))
+      }
+    } else if (!user.equals(other.user)){
       return false;
+    }
     if (movie == null) {
-      if (other.movie != null)
+      if (other.movie != null){
         return false;
-    } else if (!movie.equals(other.movie))
+      }
+    } else if (!movie.equals(other.movie)){
       return false;
+    }
     return true;
   }
 }

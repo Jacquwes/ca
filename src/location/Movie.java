@@ -36,9 +36,11 @@ public class Movie {
   public static Set<Movie> getMovies(Predicate<Movie> predicate) {
     Set<Movie> result = new HashSet<Movie>();
 
-    for (Movie movie : movies)
-      if (predicate.test(movie))
+    for (Movie movie : movies) {
+      if (predicate.test(movie)) {
         result.add(movie);
+      }
+    }
 
     return result;
   }
@@ -309,25 +311,33 @@ public class Movie {
    */
   @Override
   public boolean equals(Object obj) {
-    if (this == obj)
+    if (this == obj) {
       return true;
-    if (obj == null)
+    }
+    if (obj == null) {
       return false;
-    if (getClass() != obj.getClass())
+    }
+    if (getClass() != obj.getClass()) {
       return false;
+    }
     Movie other = (Movie) obj;
     if (title == null) {
-      if (other.title != null)
+      if (other.title != null) {
         return false;
-    } else if (!title.equals(other.title))
+      }
+    } else if (!title.equals(other.title)) {
       return false;
-    if (year != other.year)
+    }
+    if (year != other.year) {
       return false;
+    }
     if (director == null) {
-      if (other.director != null)
+      if (other.director != null) {
         return false;
-    } else if (!director.equals(other.director))
+      }
+    } else if (!director.equals(other.director)) {
       return false;
+    }
     return true;
   }
 }

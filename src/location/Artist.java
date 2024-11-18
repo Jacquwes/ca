@@ -14,9 +14,11 @@ public class Artist {
   public static Set<Artist> getArtists(Predicate<Artist> p) {
     Set<Artist> result = new HashSet<>();
 
-    for (Artist artist : artists)
-      if (p.test(artist))
+    for (Artist artist : artists) {
+      if (p.test(artist)) {
         result.add(artist);
+      }
+    }
 
     return result;
   }
@@ -121,28 +123,37 @@ public class Artist {
    */
   @Override
   public boolean equals(Object obj) {
-    if (this == obj)
+    if (this == obj){
       return true;
-    if (obj == null)
+    }
+    if (obj == null){
       return false;
-    if (getClass() != obj.getClass())
+    }
+    if (getClass() != obj.getClass()){
       return false;
+    }
     Artist other = (Artist) obj;
     if (movies == null) {
-      if (other.movies != null)
+      if (other.movies != null){
         return false;
-    } else if (!movies.equals(other.movies))
+      }
+    } else if (!movies.equals(other.movies)){
       return false;
+    }
     if (lastName == null) {
-      if (other.lastName != null)
+      if (other.lastName != null){
         return false;
-    } else if (!lastName.equals(other.lastName))
+      }
+    } else if (!lastName.equals(other.lastName)){
       return false;
+    }
     if (firstName == null) {
-      if (other.firstName != null)
+      if (other.firstName != null){
         return false;
-    } else if (!firstName.equals(other.firstName))
+      }
+    } else if (!firstName.equals(other.firstName)){
       return false;
+    }
     return true;
   }
 }
