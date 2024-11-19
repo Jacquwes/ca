@@ -22,7 +22,7 @@ public class Movie {
 
   /**
    * Retrieves the list of all the movies.
-   * 
+   *
    * @return the list of all the movies.
    */
   public static Set<Movie> getMovies() {
@@ -32,7 +32,7 @@ public class Movie {
   /**
    * Gets the list of all the movies matching
    * the specified predicate.
-   * 
+   *
    * @param predicate the predicate to match
    * @return the list of all the movies.
    */
@@ -102,7 +102,7 @@ public class Movie {
 
   /**
    * Constructs a new Movie with the specified title, year, director and actors.
-   * 
+   *
    * @param title    the title of the movie
    * @param year     the year of the movie
    * @param director the director of the movie
@@ -118,7 +118,7 @@ public class Movie {
 
   /**
    * Retrieves the title of the movie.
-   * 
+   *
    * @return the title of the movie.
    */
   public String getTitle() {
@@ -127,7 +127,7 @@ public class Movie {
 
   /**
    * Sets the title of the movie.
-   * 
+   *
    * @param title the title of the movie
    * @return the movie
    */
@@ -138,7 +138,7 @@ public class Movie {
 
   /**
    * Retrieves the year of the movie.
-   * 
+   *
    * @return the year of the movie.
    */
   public int getYear() {
@@ -146,8 +146,8 @@ public class Movie {
   }
 
   /**
-   * Set the release date of the movie
-   * 
+   * Set the release date of the movie.
+   *
    * @param newYear The release date of the movie
    * @return the movie
    */
@@ -158,7 +158,7 @@ public class Movie {
 
   /**
    * Retrieves the director of the movie.
-   * 
+   *
    * @return the director of the movie.
    */
   public Director getDirector() {
@@ -166,8 +166,8 @@ public class Movie {
   }
 
   /**
-   * Set the director of the movie
-   * 
+   * Set the director of the movie.
+   *
    * @param dir The director of the movie.
    * @return the movie
    */
@@ -178,7 +178,7 @@ public class Movie {
 
   /**
    * Whether the movie is available for rent.
-   * 
+   *
    * @return whether the movie is available for rent.
    */
   public boolean isAvailable() {
@@ -186,8 +186,8 @@ public class Movie {
   }
 
   /**
-   * Set the availability of the movie
-   * 
+   * Set the availability of the movie.
+   *
    * @param availability The availability of the movie
    * @return the movie
    */
@@ -198,7 +198,7 @@ public class Movie {
 
   /**
    * Retrieves the actors of the movie.
-   * 
+   *
    * @return the actors of the movie.
    */
   public Set<Actor> getActors() {
@@ -207,7 +207,7 @@ public class Movie {
 
   /**
    * Sets the actors of the movie.
-   * 
+   *
    * @param actors the actors of the movie
    * @return the movie
    */
@@ -218,7 +218,7 @@ public class Movie {
 
   /**
    * Adds an actor to the movie.
-   * 
+   *
    * @param actor the actor to add
    * @return the movie
    */
@@ -229,7 +229,7 @@ public class Movie {
 
   /**
    * Retrieves the minimum age required to watch the movie.
-   * 
+   *
    * @return the minimum age required to watch the movie.
    */
   public int getMinimumAge() {
@@ -238,7 +238,7 @@ public class Movie {
 
   /**
    * Sets the minimum age required to watch the movie.
-   * 
+   *
    * @param minimumAge the minimum age required to watch the movie
    * @return the movie
    */
@@ -249,7 +249,7 @@ public class Movie {
 
   /**
    * Retrieves the poster of the movie.
-   * 
+   *
    * @return the poster of the movie.
    */
   public String getPoster() {
@@ -258,7 +258,7 @@ public class Movie {
 
   /**
    * Sets the poster of the movie.
-   * 
+   *
    * @param poster the poster of the movie.
    * @return the movie.
    */
@@ -269,7 +269,7 @@ public class Movie {
 
   /**
    * Retrieves the genres of the movie.
-   * 
+   *
    * @return the genres of the movie.
    */
   public Set<Genre> getGenres() {
@@ -278,7 +278,7 @@ public class Movie {
 
   /**
    * Sets the genres of the movie.
-   * 
+   *
    * @param genres the genres of the movie.
    * @return the movie.
    */
@@ -289,7 +289,7 @@ public class Movie {
 
   /**
    * Adds a review to the movie.
-   * 
+   *
    * @param review the review to add
    */
   public void addReview(Review review) {
@@ -298,7 +298,7 @@ public class Movie {
 
   /**
    * Retrieves the reviews of the movie.
-   * 
+   *
    * @return the reviews of the movie.
    */
   public Set<Review> getReviews() {
@@ -307,7 +307,7 @@ public class Movie {
 
   /**
    * Indicates whether some other object is "equal to" this one.
-   * 
+   *
    * @param obj the reference object with which to compare.
    * @return {@code true} if this object is the same as the obj argument;
    *         {@code false} otherwise.

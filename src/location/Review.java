@@ -65,7 +65,7 @@ public class Review {
 
   /**
    * Retrieves the rating of the review.
-   * 
+   *
    * @return the rating of the review.
    */
   public double getRating() {
@@ -74,7 +74,7 @@ public class Review {
 
   /**
    * Sets the rating of the review.
-   * 
+   *
    * @param rating the rating of the review.
    */
   public void setRating(double rating) {
@@ -83,7 +83,7 @@ public class Review {
 
   /**
    * Retrieves the comment of the review.
-   * 
+   *
    * @return the comment of the review.
    */
   public String getComment() {
@@ -92,7 +92,7 @@ public class Review {
 
   /**
    * Sets the comment of the review.
-   * 
+   *
    * @param comment the comment of the review.
    */
   public void setComment(String comment) {
@@ -101,7 +101,7 @@ public class Review {
 
   /**
    * Retrieves the user who made the review.
-   * 
+   *
    * @return the user who made the review.
    */
   public User getUser() {
@@ -110,7 +110,7 @@ public class Review {
 
   /**
    * Sets the user who made the review.
-   * 
+   *
    * @param user the user who made the review.
    */
   public void setUser(User user) {
@@ -119,7 +119,7 @@ public class Review {
 
   /**
    * Retrieves the movie that is reviewed.
-   * 
+   *
    * @return the movie that is reviewed.
    */
   public Movie getMovie() {
@@ -128,7 +128,7 @@ public class Review {
 
   /**
    * Sets the movie that is reviewed.
-   * 
+   *
    * @param movie the movie that is reviewed.
    */
   public void setMovie(Movie movie) {
@@ -137,7 +137,7 @@ public class Review {
 
   /**
    * Retrieves all the reviews that satisfy the predicate.
-   * 
+   *
    * @param p the predicate to satisfy
    * @return all the reviews that satisfy the predicate
    */
@@ -154,7 +154,7 @@ public class Review {
 
   /**
    * Compares this review to the specified object.
-   * 
+   *
    * @param obj the object to compare
    * @return true if the object is equal to this review, false otherwise
    */

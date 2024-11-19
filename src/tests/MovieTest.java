@@ -5,50 +5,77 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.util.HashSet;
 import java.util.Set;
-
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
-import location.Movie;
+import location.Actor;
 import location.Director;
 import location.Genre;
-import location.Actor;
+import location.Movie;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
+/**
+ * Test class for the Movie class functionality.
+ */
 public class MovieTest {
+  /**
+   * Test instance of Movie class.
+   */
   private Movie movie;
 
+  /**
+   * Sets up the test environment before each test.
+   * Clears all existing movies and creates a test Movie instance.
+   */
   @BeforeEach
   public void setUp() {
     Movie.reset();
     movie = new Movie();
   }
 
+  /**
+   * Tests the default constructor of Movie class.
+   */
   @Test
   public void testConstructor() {
     assertEquals(1, Movie.getMovies().size());
   }
 
+  /**
+   * Tests the reset method of Movie class.
+   */
   @Test
   public void testReset() {
     Movie.reset();
     assertEquals(0, Movie.getMovies().size());
   }
 
+  /**
+   * Tests the getMovies method of Movie class.
+   */
   @Test
   public void testGetMovies() {
     assertEquals(1, Movie.getMovies().size());
   }
 
+  /**
+   * Tests the getMovies method of Movie class with a predicate.
+   */
   @Test
   public void testGetMoviesPredicate() {
     new Movie("The Shawshank Redemption", 1994, null, null);
     assertEquals(1, Movie.getMovies(m -> m.getTitle().equals("The Shawshank Redemption")).size());
   }
 
+  /**
+   * Tests the getMovies method of Movie class with an empty predicate.
+   */
   @Test
   public void testGetMoviesPredicateEmpty() {
     assertEquals(0, Movie.getMovies(m -> m.getTitle().equals("The Shawshank Redemption")).size());
   }
 
+  /**
+   * Tests the parameterized constructor of Movie class.
+   */
   @Test
   public void testParameterizedConstructor() {
     Set<Actor> actors = new HashSet<>();
@@ -58,6 +85,9 @@ public class MovieTest {
     assertEquals(2, Movie.getMovies().size());
   }
 
+  /**
+   * Tests the setter methods of Movie class.
+   */
   @Test
   public void testTitle() {
     assertEquals("", movie.getTitle());
@@ -65,6 +95,9 @@ public class MovieTest {
     assertEquals("New Title", movie.getTitle());
   }
 
+  /**
+   * Tests the setter methods of Movie class.
+   */
   @Test
   public void testYear() {
     assertEquals(0, movie.getYear());
@@ -72,6 +105,9 @@ public class MovieTest {
     assertEquals(2023, movie.getYear());
   }
 
+  /**
+   * Tests the setter methods of Movie class.
+   */
   @Test
   public void testDirector() {
     assertEquals(null, movie.getDirector());
@@ -80,6 +116,9 @@ public class MovieTest {
     assertEquals(director, movie.getDirector());
   }
 
+  /**
+   * Tests the setter methods of Movie class.
+   */
   @Test
   public void testAvailability() {
     assertEquals(false, movie.isAvailable());
@@ -87,6 +126,9 @@ public class MovieTest {
     assertEquals(true, movie.isAvailable());
   }
 
+  /**
+   * Tests the setter methods of Movie class.
+   */
   @Test
   public void testActors() {
     assertEquals(null, movie.getActors());
@@ -95,6 +137,9 @@ public class MovieTest {
     assertEquals(actors, movie.getActors());
   }
 
+  /**
+   * Tests the addActor method of Movie class.
+   */
   @Test
   public void testAddActor() {
     Set<Actor> actors = new HashSet<>();
@@ -104,6 +149,9 @@ public class MovieTest {
     assertTrue(movie.getActors().contains(actor));
   }
 
+  /**
+   * Tests the removeActor method of Movie class.
+   */
   @Test
   public void testMinimumAge() {
     assertEquals(0, movie.getMinimumAge());
@@ -111,15 +159,21 @@ public class MovieTest {
     assertEquals(18, movie.getMinimumAge());
   }
 
+  /**
+   * Tests the setter methods of Movie class.
+   */
   @Test
   public void testPoster() {
     assertEquals(null, movie.getPoster());
     assertEquals(movie, movie.setPoster("poster.jpg"));
     assertEquals("poster.jpg", movie.getPoster());
   }
-  
-  @Test void testGenres()
-  {
+
+  /**
+   * Tests the setter methods of Movie class.
+   */
+  @Test
+  void testGenres() {
     assertTrue(movie.getGenres().isEmpty());
     Set<Genre> genres = new HashSet<>();
     genres.add(Genre.Action);
@@ -127,6 +181,9 @@ public class MovieTest {
     assertEquals(genres, movie.getGenres());
   }
 
+  /**
+   * Tests the addGenre method of Movie class.
+   */
   @Test
   public void testGetMoviesMultiple() {
     new Movie("Movie 2", 2023, null, null);
@@ -134,6 +191,9 @@ public class MovieTest {
     assertEquals(3, Movie.getMovies().size());
   }
 
+  /**
+   * Tests the getMovies method of Movie class with a predicate.
+   */
   @Test
   public void testGetMoviesPredicateYear() {
     new Movie("Movie 2", 2023, null, null);

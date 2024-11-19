@@ -6,7 +6,7 @@ import java.util.Objects;
  * Description of a person's personal information: identity, age, and address.
  *
  * @author Florent Delalande
-@author Paul Hariel
+ * @author Paul Hariel
  */
 public final class PersonalInformation implements java.io.Serializable {
 
@@ -121,15 +121,9 @@ public final class PersonalInformation implements java.io.Serializable {
     this.age = age;
   }
 
-  
-  /** 
-   * @return int
+  /**
+   * Compare two personal information objects.
    */
-  @Override
-  public int hashCode() {
-    return Objects.hash(address, age, lastName, firstName);
-  }
-
   @Override
   public boolean equals(final Object obj) {
     if (this == obj) {
@@ -147,6 +141,9 @@ public final class PersonalInformation implements java.io.Serializable {
         && Objects.equals(firstName, other.firstName);
   }
 
+  /**
+   * Returns a string representation of the person's information.
+   */
   @Override
   public String toString() {
     return firstName + " " + lastName + " aged " + age + " years, lives at " + address;

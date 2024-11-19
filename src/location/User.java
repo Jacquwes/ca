@@ -1,13 +1,14 @@
 package location;
 
-import java.util.Set;
 import java.util.HashSet;
+import java.util.Set;
 
 /**
  * The User class represents a user.
- * 
+ *
  * @author Florent Delalande
  * @author Paul Hariel
+ *
  */
 public class User {
 
@@ -113,7 +114,7 @@ public class User {
 
   /**
    * Retrieves the set of reservations made by the user.
-   * 
+   *
    * @return the set of reservations made by the user.
    */
   public Set<Reservation> getReservations() {
@@ -122,7 +123,7 @@ public class User {
 
   /**
    * Adds a review to the user.
-   * 
+   *
    * @param review the review to be added
    */
   public void addReview(Review review) {
@@ -131,7 +132,7 @@ public class User {
 
   /**
    * Retrieves the reviews of the user.
-   * 
+   *
    * @return the reviews of the user
    */
   public Set<Review> getReviews() {
@@ -224,28 +225,28 @@ public class User {
 
   /**
    * Indicates whether some other object is "equal to" this one.
-   * 
+   *
    * @param obj the reference object with which to compare.
    * @return {@code true} if this object is the same as the obj argument;
    *         {@code false} otherwise.
    */
   @Override
   public boolean equals(Object obj) {
-    if (this == obj){
+    if (this == obj) {
       return true;
     }
-    if (obj == null){
+    if (obj == null) {
       return false;
     }
-    if (getClass() != obj.getClass()){
+    if (getClass() != obj.getClass()) {
       return false;
     }
     User other = (User) obj;
     if (login == null) {
-      if (other.login != null){
+      if (other.login != null) {
         return false;
       }
-    } else if (!login.equals(other.login)){
+    } else if (!login.equals(other.login)) {
       return false;
     }
     return true;

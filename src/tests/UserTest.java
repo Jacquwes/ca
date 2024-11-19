@@ -1,26 +1,61 @@
 package tests;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
+import java.util.Date;
 import location.PersonalInformation;
 import location.User;
-import location.Reservation;
 import location.RentingException;
+import location.Reservation;
 import location.Movie;
-import java.util.Date;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
+/**
+ * Test class for the User class functionality.
+ */
 public class UserTest {
-
+  /**
+   * Username of the test user.
+   */
   private static final String USERNAME_JOHNDOE = "johndoe";
+
+  /**
+   * Password of the test user.
+   */
   private static final String PASSWORD = "password123";
+
+  /**
+   * Last name of the test user.
+   */
   private static final String LASTNAME_JOHN = "John";
+
+  /**
+   * First name of the test user.
+   */
   private static final String FIRSTNAME_DOE = "Doe";
+
+  /**
+   * Test instance of User.
+   */
   private User user;
+
+  /**
+   * Test instance of PersonalInformation.
+   */
   private PersonalInformation info;
+
+  /**
+   * Test instance of Movie.
+   */
   private Movie movie;
 
+  /**
+   * Sets up the test environment before each test.
+   */
   @BeforeEach
   public void setUp() {
     info = new PersonalInformation(LASTNAME_JOHN, FIRSTNAME_DOE);
@@ -30,6 +65,9 @@ public class UserTest {
     movie = new Movie("Interstellar", 2024, null, null);
   }
 
+  /**
+   * Tests the register method of User class.
+   */
   @Test
   public void testRegisterSuccess() {
     assertNotNull(user);
@@ -37,6 +75,9 @@ public class UserTest {
     assertEquals(info, user.getPersonalInformation());
   }
 
+  /**
+   * Tests the register method of User class with a null username.
+   */
   @Test
   public void testRegisterUsernameAlreadyExists() {
     PersonalInformation info1 = new PersonalInformation(LASTNAME_JOHN, FIRSTNAME_DOE);
@@ -46,42 +87,63 @@ public class UserTest {
     assertNull(user);
   }
 
+  /**
+   * Tests the register method of User class with a null username.
+   */
   @Test
   public void testRegisterEmptyUsername() {
     user = User.register("", PASSWORD, info);
     assertNull(user);
   }
 
+  /**
+   * Tests the register method of User class with a null password.
+   */
   @Test
   public void testRegisterEmptyPassword() {
     user = User.register(USERNAME_JOHNDOE, "", info);
     assertNull(user);
   }
 
+  /**
+   * Tests the register method of User class with a null personal information.
+   */
   @Test
   public void testRegisterNullUsername() {
     user = User.register(null, PASSWORD, info);
     assertNull(user);
   }
 
+  /**
+   * Tests the register method of User class with a null password.
+   */
   @Test
   public void testRegisterNullPassword() {
     user = User.register(USERNAME_JOHNDOE, null, info);
     assertNull(user);
   }
 
+  /**
+   * Tests the register method of User class with a null personal information.
+   */
   @Test
   public void testRegisterNullPersonalInformation() {
     user = User.register(USERNAME_JOHNDOE, PASSWORD, null);
     assertNull(user);
   }
 
+  /**
+   * Tests the login method of User class.
+   */
   @Test
   public void testGetLogin() {
     assertNotNull(user);
     assertEquals(USERNAME_JOHNDOE, user.getLogin());
   }
 
+  /**
+   * Tests the login method of User class.
+   */
   @Test
   public void testSetLogin() {
     assertNotNull(user);
@@ -89,12 +151,18 @@ public class UserTest {
     assertEquals("newlogin", user.getLogin());
   }
 
+  /**
+   * Tests the password methods of User class.
+   */
   @Test
   public void testGetPassword() {
     assertNotNull(user);
     assertEquals(PASSWORD, user.getPassword());
   }
 
+  /**
+   * Tests the password methods of User class.
+   */
   @Test
   public void testSetPassword() {
     assertNotNull(user);
@@ -102,12 +170,18 @@ public class UserTest {
     assertEquals("newpassword", user.getPassword());
   }
 
+  /**
+   * Tests the personal information methods of User class.
+   */
   @Test
   public void testGetPersonalInformation() {
     assertNotNull(user);
     assertEquals(info, user.getPersonalInformation());
   }
 
+  /**
+   * Tests the personal information methods of User class.
+   */
   @Test
   public void testSetPersonalInformation() {
     assertNotNull(user);
@@ -116,6 +190,9 @@ public class UserTest {
     assertEquals(newInfo, user.getPersonalInformation());
   }
 
+  /**
+   * Tests the addReservation method of User class.
+   */
   @Test
   public void testAddReservationSuccess() {
     assertNotNull(user);
@@ -123,12 +200,18 @@ public class UserTest {
     assertTrue(user.getReservations().contains(reservation));
   }
 
+  /**
+   * Tests the addReservation method of User class with a null reservation.
+   */
   @Test
   public void testAddReservationNull() {
     assertNotNull(user);
     assertThrows(RentingException.class, () -> user.addReservation(null));
   }
 
+  /**
+   * Tests the addReservation method of User class with an already existing
+   */
   @Test
   public void testAddReservationAlreadyExists() {
     assertNotNull(user);
@@ -136,6 +219,10 @@ public class UserTest {
     assertThrows(RentingException.class, () -> user.addReservation(reservation));
   }
 
+  /**
+   * Tests the addReservation method of User class with a reservation limit
+   * exceeded.
+   */
   @Test
   public void testAddReservationLimitExceeded() {
     assertNotNull(user);
@@ -149,6 +236,9 @@ public class UserTest {
     assertThrows(RentingException.class, () -> new Reservation(user, movie4, new Date(), 3));
   }
 
+  /**
+   * Tests the cancelReservation method of User class with a null
+   */
   @Test
   public void testCancelReservationSuccess() {
     assertNotNull(user);
