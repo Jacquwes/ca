@@ -210,7 +210,7 @@ public class UserTest {
   }
 
   /**
-   * Tests the addReservation method of User class with an already existing
+   * Tests the addReservation method of User class with an already existing.
    */
   @Test
   public void testAddReservationAlreadyExists() {
@@ -220,7 +220,7 @@ public class UserTest {
   }
 
   /**
-   * Tests the addReservation method of User class with a reservation limit
+   * Tests the addReservation method of User class with a reservation limit.
    * exceeded.
    */
   @Test
