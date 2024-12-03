@@ -44,4 +44,8 @@ public class MovieManager {
 
     return result;
   }
+
+  public boolean deleteMovie(Movie movie) {
+    return movies.remove(movie);
+  }
 }
