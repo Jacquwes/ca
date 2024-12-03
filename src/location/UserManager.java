@@ -12,7 +12,19 @@ public class UserManager {
    */
   private Set<User> users;
 
+  /**
+   * The currently logged in user.
+   */
   private User currentUser;
+
+  /**
+   * Retrieves the currently logged in user.
+   *
+   * @return the currently logged in user
+   */
+  public User getCurrentUser() {
+    return currentUser;
+  }
 
   /**
    * Constructs a new UserManager.
