@@ -12,6 +12,8 @@ public class UserManager {
    */
   private Set<User> users;
 
+  private User currentUser;
+
   /**
    * Constructs a new UserManager.
    */
@@ -49,6 +51,23 @@ public class UserManager {
     User user = new User(username, password, info);
     users.add(user);
     return 0;
+  }
+
+  public boolean login(String username, String password) {
+    for (User user : users) {
+      if (user.getLogin().equals(username) && user.getPassword().equals(password)) {
+        currentUser = user;
+        return true;
+      }
+    }
+    return false;
+  }
+
+  public void logout() throws NotLoggedInException {
+    if (currentUser == null) {
+      throw new NotLoggedInException();
+    }
+    currentUser = null;
   }
 
   /**
