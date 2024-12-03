@@ -20,12 +20,12 @@ public class Movie {
   /**
    * The director of the movie.
    */
-  private Director director = new Director();
+  private Artist director = new Artist();
 
   /**
    * The actors of the movie.
    */
-  private Set<Actor> actors = new HashSet<Actor>();
+  private Set<Artist> actors = new HashSet<Artist>();
 
   /**
    * The minimum age required to watch the movie.
@@ -66,7 +66,7 @@ public class Movie {
    * @param director the director of the movie
    * @param actors   the actors of the movie
    */
-  public Movie(String title, int year, Director director, Set<Actor> actors) {
+  public Movie(String title, int year, Artist director, Set<Artist> actors) {
     this.title = title;
     this.year = year;
     this.director = director;
@@ -118,7 +118,7 @@ public class Movie {
    *
    * @return the director of the movie.
    */
-  public Director getDirector() {
+  public Artist getDirector() {
     return director;
   }
 
@@ -128,7 +128,7 @@ public class Movie {
    * @param dir The director of the movie.
    * @return the movie
    */
-  public Movie setDirector(Director dir) {
+  public Movie setDirector(Artist dir) {
     this.director = dir;
     return this;
   }
@@ -158,7 +158,7 @@ public class Movie {
    *
    * @return the actors of the movie.
    */
-  public Set<Actor> getActors() {
+  public Set<Artist> getActors() {
     return actors;
   }
 
@@ -168,7 +168,7 @@ public class Movie {
    * @param actors the actors of the movie
    * @return the movie
    */
-  public Movie setActors(Set<Actor> actors) {
+  public Movie setActors(Set<Artist> actors) {
     this.actors = actors;
     return this;
   }
@@ -179,7 +179,7 @@ public class Movie {
    * @param actor the actor to add
    * @return the movie
    */
-  public Movie addActor(Actor actor) {
+  public Movie addActor(Artist actor) {
     this.actors.add(actor);
     return this;
   }
@@ -242,6 +242,15 @@ public class Movie {
   public Movie setGenres(Set<Genre> genres) {
     this.genres = genres;
     return this;
+  }
+
+  /**
+   * Adds a genre to the movie.
+   *
+   * @param genre
+   */
+  public void addGenre(Genre genre) {
+    genres.add(genre);
   }
 
   /**
