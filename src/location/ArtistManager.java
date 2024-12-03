@@ -11,12 +11,12 @@ public class ArtistManager {
   /**
    * Represents all the artists.
    */
-  private Set<Artist> actors = new HashSet<>();
+  private static Set<Artist> actors = new HashSet<>();
   
   /**
    * Represents all the directors.
    */
-  private Set<Artist> directors = new HashSet<>();
+  private static Set<Artist> directors = new HashSet<>();
 
   /**
    * Constructs a new ArtistManager.
@@ -29,8 +29,8 @@ public class ArtistManager {
    */
   public Set<Artist> getArtists() {
     Set<Artist> result = new HashSet<Artist>();
-    result.addAll(this.actors);
-    result.addAll(this.directors);
+    result.addAll(ArtistManager.actors);
+    result.addAll(ArtistManager.directors);
     return result;
   }
 
@@ -53,22 +53,22 @@ public class ArtistManager {
   }
 
   public Set<Artist> getActors() {
-    return this.actors;
+    return ArtistManager.actors;
   }
 
   public Set<Artist> getDirectors() {
-    return this.directors;
+    return ArtistManager.directors;
   }
 
   public boolean deleteArtist(Artist artist) {
-    return this.actors.remove(artist) || this.directors.remove(artist);
+    return ArtistManager.actors.remove(artist) || ArtistManager.directors.remove(artist);
   }
 
   public void addActor(Artist artist) {
-    this.actors.add(artist);
+    ArtistManager.actors.add(artist);
   }
 
   public void addDirector(Artist artist) {
-    this.directors.add(artist);
+    ArtistManager.directors.add(artist);
   }
 }

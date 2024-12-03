@@ -10,7 +10,7 @@ public class UserManager {
   /**
    * The set of registered users.
    */
-  private Set<User> users;
+  private static Set<User> users;
 
   /**
    * The currently logged in user.
@@ -30,7 +30,7 @@ public class UserManager {
    * Constructs a new UserManager.
    */
   public UserManager() {
-    this.users = new HashSet<>();
+    users = new HashSet<>();
   }
 
   /**

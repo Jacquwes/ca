@@ -11,13 +11,13 @@ public class ReviewManager {
   /**
    * Represents all the reviews.
   */
-  private Set<Review> reviews;
+  private static Set<Review> reviews;
 
   /**
    * Constructs a new ReviewManager.
    */
   public ReviewManager() {
-    this.reviews = new HashSet<>();
+    reviews = new HashSet<>();
   }
 
   /**
@@ -28,7 +28,7 @@ public class ReviewManager {
    */
   public Set<Review> getReviews(Predicate<Review> p) {
     Set<Review> result = new HashSet<>();
-    for (Review review : this.reviews) {
+    for (Review review : reviews) {
       if (p.test(review)) {
         result.add(review);
       }
@@ -54,6 +54,6 @@ public class ReviewManager {
   }
 
   public void add(Review review) {
-    this.reviews.add(review);
+    reviews.add(review);
   }
 }
