@@ -23,21 +23,28 @@ public class Artist {
   private String firstName;
 
   /**
-   * Constructs a new Artist.
+   * The nationality of the artist.
+   */
+  private String nationality;
+
+  /**
+   * Constructs a new artist.
    */
   public Artist() {
-    
   }
 
   /**
-   * Constructs a new Artist with the specified last name and first name.
+   * Constructs a new artist with the specified last name
+   * and first name.
    *
-   * @param lastName  the last name of the artist
-   * @param firstName the first name of the artist
+   * @param lastName the last name of the artist.
+   * @param firstName the first name of the artist.
+   * @param nationality the nationality of the artist.
    */
-  public Artist(String lastName, String firstName) {
+  public Artist(String lastName, String firstName, String nationality) {
     this.lastName = lastName;
     this.firstName = firstName;
+    this.nationality = nationality;
   }
 
   /**
@@ -78,6 +85,15 @@ public class Artist {
   public Artist setFirstName(String firstName) {
     this.firstName = firstName;
     return this;
+  }
+
+  /**
+   * Retrieves the nationality of the artist.
+   *
+   * @return the nationality of the artist.
+   */
+  public String getNationality() {
+    return this.nationality;
   }
 
   /**
