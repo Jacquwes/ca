@@ -2,52 +2,11 @@ package location;
 
 import java.util.HashSet;
 import java.util.Set;
-import java.util.function.Predicate;
 
 /**
  * Represents a movie.
  */
 public class Movie {
-  /**
-   * List of all the movies.
-   */
-  private static Set<Movie> movies = new HashSet<Movie>();
-
-  /**
-   * Resets the list of all the movies.
-   */
-  public static void reset() {
-    movies = new HashSet<Movie>();
-  }
-
-  /**
-   * Retrieves the list of all the movies.
-   *
-   * @return the list of all the movies.
-   */
-  public static Set<Movie> getMovies() {
-    return movies;
-  }
-
-  /**
-   * Gets the list of all the movies matching
-   * the specified predicate.
-   *
-   * @param predicate the predicate to match
-   * @return the list of all the movies.
-   */
-  public static Set<Movie> getMovies(Predicate<Movie> predicate) {
-    Set<Movie> result = new HashSet<Movie>();
-
-    for (Movie movie : movies) {
-      if (predicate.test(movie)) {
-        result.add(movie);
-      }
-    }
-
-    return result;
-  }
-
   /**
    * The title of the movie.
    */
@@ -56,32 +15,32 @@ public class Movie {
   /**
    * The year of the movie.
    */
-  private int year;
+  private int year = 0;
 
   /**
    * The director of the movie.
    */
-  private Director director;
+  private Director director = new Director();
 
   /**
    * The actors of the movie.
    */
-  private Set<Actor> actors;
+  private Set<Actor> actors = new HashSet<Actor>();
 
   /**
    * The minimum age required to watch the movie.
    */
-  private int minimumAge;
+  private int minimumAge = 0;
 
   /**
    * Whether the movie is available for rent.
    */
-  private boolean available;
+  private boolean available = true;
 
   /**
    * The poster of the movie.
    */
-  private String poster;
+  private String poster = "";
 
   /**
    * The genres of the movie.
@@ -97,7 +56,6 @@ public class Movie {
    * Constructs a new Movie.
    */
   public Movie() {
-    movies.add(this);
   }
 
   /**
@@ -113,7 +71,6 @@ public class Movie {
     this.year = year;
     this.director = director;
     this.actors = actors;
-    movies.add(this);
   }
 
   /**
