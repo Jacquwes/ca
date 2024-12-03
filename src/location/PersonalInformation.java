@@ -117,8 +117,8 @@ public final class PersonalInformation implements java.io.Serializable {
     super();
     this.lastName = lastName;
     this.firstName = firstName;
-    this.address = address;
-    this.age = age;
+    this.setAge(age);
+    this.setAddress(address);
   }
 
   /**

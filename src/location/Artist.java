@@ -2,42 +2,11 @@ package location;
 
 import java.util.HashSet;
 import java.util.Set;
-import java.util.function.Predicate;
 
 /**
  * Represents an artist who has worked on a movie.
  */
-public class Artist {
-  /**
-   * Represents all the artists.
-   */
-  private static Set<Artist> artists = new HashSet<>();
-  
-  /**
-   * @return the artists.
-   */
-  public static Set<Artist> getArtists() {
-    return Artist.artists;
-  }
-
-  /**
-   * Retrieves the artists matching the specified predicate.
-   *
-   * @param p the predicate to match
-   * @return the artists matching the specified predicate.
-   */
-  public static Set<Artist> getArtists(Predicate<Artist> p) {
-    Set<Artist> result = new HashSet<>();
-
-    for (Artist artist : artists) {
-      if (p.test(artist)) {
-        result.add(artist);
-      }
-    }
-
-    return result;
-  }
-
+public class Artist {  
   /**
    * The movies of the artist.
    */
@@ -54,22 +23,28 @@ public class Artist {
   private String firstName;
 
   /**
-   * Constructs a new Artist.
+   * The nationality of the artist.
+   */
+  private String nationality;
+
+  /**
+   * Constructs a new artist.
    */
   public Artist() {
-    artists.add(this);
   }
 
   /**
-   * Constructs a new Artist with the specified last name and first name.
+   * Constructs a new artist with the specified last name
+   * and first name.
    *
-   * @param lastName  the last name of the artist
-   * @param firstName the first name of the artist
+   * @param lastName the last name of the artist.
+   * @param firstName the first name of the artist.
+   * @param nationality the nationality of the artist.
    */
-  public Artist(String lastName, String firstName) {
+  public Artist(String lastName, String firstName, String nationality) {
     this.lastName = lastName;
     this.firstName = firstName;
-    artists.add(this);
+    this.nationality = nationality;
   }
 
   /**
@@ -83,7 +58,7 @@ public class Artist {
 
   /**
    * Sets the last name of the artist.
-   *
+   * 
    * @param lastName the last name of the artist.
    * @return the artist.
    */
@@ -103,7 +78,7 @@ public class Artist {
 
   /**
    * Sets the first name of the artist.
-   *
+   * 
    * @param firstName the first name of the artist.
    * @return the artist.
    */
@@ -113,8 +88,17 @@ public class Artist {
   }
 
   /**
-   * Retrieves the movies of the artist.
+   * Retrieves the nationality of the artist.
    *
+   * @return the nationality of the artist.
+   */
+  public String getNationality() {
+    return this.nationality;
+  }
+
+  /**
+   * Retrieves the movies of the artist.
+   * 
    * @return the movies of the artist.
    */
   public Set<Movie> getMovies() {
@@ -123,7 +107,7 @@ public class Artist {
 
   /**
    * Adds a movie to the artist.
-   *
+   * 
    * @param movie the movie to add.
    * @return the artist.
    */
@@ -134,7 +118,7 @@ public class Artist {
 
   /**
    * Indicates whether some other object is "equal to" this one.
-   *
+   * 
    * @param obj the reference object with which to compare.
    * @return {@code true} if this object is the same as the obj argument;
    *         {@code false} otherwise.

@@ -2,52 +2,11 @@ package location;
 
 import java.util.HashSet;
 import java.util.Set;
-import java.util.function.Predicate;
 
 /**
  * Represents a movie.
  */
 public class Movie {
-  /**
-   * List of all the movies.
-   */
-  private static Set<Movie> movies = new HashSet<Movie>();
-
-  /**
-   * Resets the list of all the movies.
-   */
-  public static void reset() {
-    movies = new HashSet<Movie>();
-  }
-
-  /**
-   * Retrieves the list of all the movies.
-   *
-   * @return the list of all the movies.
-   */
-  public static Set<Movie> getMovies() {
-    return movies;
-  }
-
-  /**
-   * Gets the list of all the movies matching
-   * the specified predicate.
-   *
-   * @param predicate the predicate to match
-   * @return the list of all the movies.
-   */
-  public static Set<Movie> getMovies(Predicate<Movie> predicate) {
-    Set<Movie> result = new HashSet<Movie>();
-
-    for (Movie movie : movies) {
-      if (predicate.test(movie)) {
-        result.add(movie);
-      }
-    }
-
-    return result;
-  }
-
   /**
    * The title of the movie.
    */
@@ -56,32 +15,32 @@ public class Movie {
   /**
    * The year of the movie.
    */
-  private int year;
+  private int year = 0;
 
   /**
    * The director of the movie.
    */
-  private Director director;
+  private Artist director = new Artist();
 
   /**
    * The actors of the movie.
    */
-  private Set<Actor> actors;
+  private Set<Artist> actors = new HashSet<Artist>();
 
   /**
    * The minimum age required to watch the movie.
    */
-  private int minimumAge;
+  private int minimumAge = 0;
 
   /**
    * Whether the movie is available for rent.
    */
-  private boolean available;
+  private boolean available = true;
 
   /**
    * The poster of the movie.
    */
-  private String poster;
+  private String poster = "";
 
   /**
    * The genres of the movie.
@@ -97,7 +56,6 @@ public class Movie {
    * Constructs a new Movie.
    */
   public Movie() {
-    movies.add(this);
   }
 
   /**
@@ -108,12 +66,11 @@ public class Movie {
    * @param director the director of the movie
    * @param actors   the actors of the movie
    */
-  public Movie(String title, int year, Director director, Set<Actor> actors) {
+  public Movie(String title, int year, Artist director, Set<Artist> actors) {
     this.title = title;
     this.year = year;
     this.director = director;
     this.actors = actors;
-    movies.add(this);
   }
 
   /**
@@ -161,7 +118,7 @@ public class Movie {
    *
    * @return the director of the movie.
    */
-  public Director getDirector() {
+  public Artist getDirector() {
     return director;
   }
 
@@ -171,7 +128,7 @@ public class Movie {
    * @param dir The director of the movie.
    * @return the movie
    */
-  public Movie setDirector(Director dir) {
+  public Movie setDirector(Artist dir) {
     this.director = dir;
     return this;
   }
@@ -201,7 +158,7 @@ public class Movie {
    *
    * @return the actors of the movie.
    */
-  public Set<Actor> getActors() {
+  public Set<Artist> getActors() {
     return actors;
   }
 
@@ -211,7 +168,7 @@ public class Movie {
    * @param actors the actors of the movie
    * @return the movie
    */
-  public Movie setActors(Set<Actor> actors) {
+  public Movie setActors(Set<Artist> actors) {
     this.actors = actors;
     return this;
   }
@@ -222,7 +179,7 @@ public class Movie {
    * @param actor the actor to add
    * @return the movie
    */
-  public Movie addActor(Actor actor) {
+  public Movie addActor(Artist actor) {
     this.actors.add(actor);
     return this;
   }
@@ -285,6 +242,15 @@ public class Movie {
   public Movie setGenres(Set<Genre> genres) {
     this.genres = genres;
     return this;
+  }
+
+  /**
+   * Adds a genre to the movie.
+   *
+   * @param genre
+   */
+  public void addGenre(Genre genre) {
+    genres.add(genre);
   }
 
   /**

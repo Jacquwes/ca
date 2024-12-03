@@ -1,19 +1,9 @@
 package location;
 
-import java.util.HashSet;
-import java.util.Set;
-import java.util.function.Predicate;
-
 /**
  * Represents a review made by a user for a movie.
  */
 public class Review {
-
-  /**
-   * Represents all the reviews.
-   */
-  private static Set<Review> reviews = new HashSet<>();
-
   /**
    * The rating of the review.
    */
@@ -39,28 +29,19 @@ public class Review {
    */
   public Review() {
   }
-
+  
   /**
-   * Constructs a new Review with the specified user, movie, rating, and comment.
-   *
-   * @param user    the user who made the review
-   * @param movie   the movie that is reviewed
-   * @param rating  the rating of the review
+   * Constructs a new Review with the specified rating, comment, user, and movie.
+   * @param user the user who made the review
+   * @param movie the movie that is reviewed
+   * @param rating the rating of the review
    * @param comment the comment of the review
    */
-  public Review(User user, Movie movie, double rating, String comment)
-      throws IllegalArgumentException {
-    if (!getReviews(r -> r.user == user && r.movie == movie).isEmpty()) {
-      throw new IllegalArgumentException("User already reviewed this movie");
-    }
-
-    user.addReview(this);
-    movie.addReview(this);
-
-    this.user = user;
-    this.movie = movie;
+  public Review(User user, Movie movie, double rating, String comment) {
     this.rating = rating;
     this.comment = comment;
+    this.user = user;
+    this.movie = movie;
   }
 
   /**
@@ -133,23 +114,6 @@ public class Review {
    */
   public void setMovie(Movie movie) {
     this.movie = movie;
-  }
-
-  /**
-   * Retrieves all the reviews that satisfy the predicate.
-   *
-   * @param p the predicate to satisfy
-   * @return all the reviews that satisfy the predicate
-   */
-  public static Set<Review> getReviews(Predicate<Review> p) {
-    Set<Review> result = new HashSet<>();
-    for (Review review : Review.reviews) {
-      if (p.test(review)) {
-        result.add(review);
-      }
-    }
-
-    return result;
   }
 
   /**

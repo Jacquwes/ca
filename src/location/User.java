@@ -34,14 +34,9 @@ public class User {
   private Set<Reservation> reservations;
 
   /**
-   * The set of registered users.
-   */
-  private static Set<User> users = new HashSet<>();
-
-  /**
    * The set of reviews made by the user.
    */
-  private static Set<Review> reviews = new HashSet<>();
+  private Set<Review> reviews = new HashSet<>();
 
   /**
    * Constructs a new User with the specified login and personal information.
@@ -55,7 +50,6 @@ public class User {
     this.password = password;
     this.personalInformation = personalInformation;
     this.reservations = new HashSet<>();
-    User.users.add(this);
   }
 
   /**
@@ -140,38 +134,6 @@ public class User {
   }
 
   /**
-   * User registration. The chosen username must not already exist among the
-   * registered users.
-   *
-   * @param username the (unique) username of the user
-   * @param password the user's password (must not be empty or <code>null</code>)
-   * @param info     personal information about the user
-   * @return a code specifying the result of the registration: 0 if the
-   *         registration was successful, 1 if the username was already used, 2 if
-   *         the username or password was empty, 3 if the personal information was
-   *         not properly specified
-   */
-  public static User register(String username, String password, PersonalInformation info) {
-    if (info == null) {
-      return null;
-    }
-
-    if (username == null || password == null || username.isEmpty() || password.isEmpty()) {
-      return null;
-    }
-
-    for (User user : users) {
-      if (user.login.equals(username)) {
-        return null;
-      }
-    }
-
-    User user = new User(username, password, info);
-    users.add(user);
-    return user;
-  }
-
-  /**
    * Adds a reservation to the user's list of reservations.
    *
    * @param reservation the reservation to be added
@@ -205,14 +167,6 @@ public class User {
   public void cancelReservation(Reservation reservation) {
     reservations.remove(reservation);
     reservation.setUser(null);
-  }
-
-  /**
-   * Resets the collection of users to an empty HashSet.
-   * This method clears all existing users and initializes a new empty set.
-   */
-  public static void resetUsers() {
-    users = new HashSet<>();
   }
 
   /**
