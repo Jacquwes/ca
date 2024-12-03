@@ -52,4 +52,8 @@ public class ReviewManager {
     user.addReview(review);
     movie.addReview(review);
   }
+
+  public void add(Review review) {
+    this.reviews.add(review);
+  }
 }
