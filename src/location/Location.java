@@ -108,26 +108,26 @@ public class Location implements UserInterface {
   @Override
   public Set<Artist> allActors() {
     // if artist extends actor or director
-    return artistManager.getArtists(a -> a instanceof Actor);
+    return artistManager.getActors();
   }
 
   @Override
   public Set<Artist> allDirectors() {
-    return artistManager.getArtists();
+    return artistManager.getDirectors();
   }
 
   @Override
   public Artist getActor(String lastName, String firstName) {
-    return artistManager.getArtists(a -> a.getLastName().equals(lastName)
-        && a.getFirstName().equals(firstName))
-        .stream().findFirst().orElse(null);
+    return artistManager.getActors().stream()
+        .filter(a -> a.getLastName().equals(lastName) && a.getFirstName().equals(firstName))
+        .findFirst().orElse(null);
   }
 
   @Override
   public Artist getDirector(String lastName, String firstName) {
-    return artistManager.getArtists(a -> a.getLastName().equals(lastName)
-        && a.getFirstName().equals(firstName))
-        .stream().findFirst().orElse(null);
+    return artistManager.getDirectors().stream()
+        .filter(d -> d.getLastName().equals(lastName) && d.getFirstName().equals(firstName))
+        .findFirst().orElse(null);
   }
 
   @Override
