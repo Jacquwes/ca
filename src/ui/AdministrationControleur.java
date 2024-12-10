@@ -312,7 +312,10 @@ public class AdministrationControleur {
   
   @FXML
   void actionBoutonSupprimerFilm(ActionEvent event) {
-    
+    String selectedMovie = this.listeFilms.getSelectionModel().getSelectedItem();
+    String title = selectedMovie.split(" \\(")[0];
+    Movie movie = this.locationAdmin.getMovie(title);
+    this.locationAdmin.deleteMovie(movie);
   }
   
   @FXML
