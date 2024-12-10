@@ -653,9 +653,36 @@ public class UtilisateurControleur {
     }
   }
 
+  /**
+   * Action du bouton "Film->Louer le film sélectionné".
+   *
+   * @param event
+   */
   @FXML
   void actionBoutonLouerFilmSelectionne(ActionEvent event) {
+    // Get selected movie
+    Movie movie = this.getSelectedMovie();
+    if (movie == null) {
+      return;
+    }
 
+    // Rent movie
+    try {
+      this.location.rentMovie(movie);
+    } catch (Exception e) {
+      // Affiche un message d'erreur
+      new Alert(Alert.AlertType.ERROR, "Erreur lors de la location du film.").showAndWait();
+      return;
+    }
+
+    // Update list of rented movies
+    this.listeFilmsEnLocation.getItems().clear();
+    try {
+      this.location.rentedMovies().forEach(m -> this.listeFilmsEnLocation.getItems().add(m.getTitle()));
+    } catch (Exception e) {
+      // Affiche un message d'erreur
+      new Alert(Alert.AlertType.ERROR, "Erreur lors de la récupération des films loués.").showAndWait();
+    }
   }
 
   @FXML
