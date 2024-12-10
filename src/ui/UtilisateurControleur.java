@@ -721,9 +721,26 @@ public class UtilisateurControleur {
     movie.getReviews().forEach(r -> this.listeEvaluations.getItems().add(r.toString()));
   }
 
+  /**
+   * Action de la sélection d'un artiste.
+   *
+   * @param event
+   */
   @FXML
   void actionSelectionArtiste(MouseEvent event) {
+    // Supprime les éléments de la liste des films
+    this.listeFilms.getItems().clear();
+    // Récupère l'artiste sélectionné
+    Artist artist = this.getSelectedActor();
+    if (artist == null) {
+      return;
+    }
 
+    // Ajoute les films de l'artiste sélectionné à la liste des films
+    artist.getMovies().forEach(movie -> this.listeFilms.getItems().add(movie.getTitle()));
+
+    // Affiche la liste des films
+    this.labelListeFilms.setText("Films de l'artiste " + artist.toString());
   }
 
   @FXML
