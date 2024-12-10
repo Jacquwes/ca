@@ -340,7 +340,14 @@ public class AdministrationControleur {
   
   @FXML
   void actionListeSelectionArtiste(MouseEvent event) {
+    String selectedArtist = this.listeArtistes.getSelectionModel().getSelectedItem();
+    String name = selectedArtist.split(" ")[0];
+    String firstName = selectedArtist.split(" ")[1];
+    Artist artist = this.locationAdmin.getArtist(name, firstName);
     
+    this.entreeNomArtiste.setText(artist.getLastName());
+    this.entreePrenomArtiste.setText(artist.getFirstName());
+    this.entreeNationaliteArtiste.setText(artist.getNationality());
   }
   
   @FXML
