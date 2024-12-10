@@ -113,7 +113,19 @@ public class UtilisateurControleur {
   
   @FXML
   void actionBoutonAfficherActeursFilmSelectionne(ActionEvent event) {
-    
+// Supprime les éléments de la liste des artistes
+    this.listeArtistes.getItems().clear();
+    // Récupère le film sélectionné
+    Movie movie = this.getSelectedMovie();
+    if (movie == null) {
+      return;
+    }
+
+    // Ajoute les acteurs du film sélectionné à la liste des artistes
+    movie.getActors().forEach(actor -> this.listeArtistes.getItems().add(actor.toString()));
+
+    // Affiche la liste des artistes
+    this.labelListeArtistes.setText("Acteurs du film " + movie.getTitle());    
   }
   
   @FXML
