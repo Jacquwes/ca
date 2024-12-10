@@ -5,6 +5,9 @@ import location.Genre;
 import location.Location;
 import location.Movie;
 import location.Review;
+
+import java.util.Set;
+
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.CheckBox;
@@ -344,9 +347,24 @@ public class UtilisateurControleur {
         });
   }
 
+  /**
+   * Action du bouton "Artiste->Afficher dans la liste->Tous les artistes".
+   *
+   * @param event
+   */
   @FXML
   void actionBoutonAfficherTousArtistes(ActionEvent event) {
+    // Supprime les éléments de la liste des artistes
+    this.listeArtistes.getItems().clear();
+    // Récupère tous les artistes
+    Set<Artist> artists = location.allActors();
+    artists.addAll(location.allDirectors());
 
+    // Ajoute les artistes à la liste des artistes
+    artists.forEach(artist -> this.listeArtistes.getItems().add(artist.toString()));
+
+    // Affiche la liste des artistes
+    this.labelListeArtistes.setText("Tous les artistes");
   }
 
   @FXML
