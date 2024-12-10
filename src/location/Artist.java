@@ -117,6 +117,16 @@ public class Artist {
   }
 
   /**
+   * Returns a string representation of the artist.
+   *
+   * @return a string representation of the artist.
+   */
+  @Override
+  public String toString() {
+    return lastName + " " + firstName;
+  }
+
+  /**
    * Indicates whether some other object is "equal to" this one.
    * 
    * @param obj the reference object with which to compare.
