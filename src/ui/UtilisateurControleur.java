@@ -1,5 +1,6 @@
 package ui;
 
+import location.Artist;
 import location.Location;
 import location.Movie;
 import javafx.event.ActionEvent;
@@ -20,85 +21,85 @@ import javafx.scene.layout.StackPane;
  *
  */
 public class UtilisateurControleur {
-  
+
   @FXML
   private CheckBox checkFilmLouable;
-  
+
   @FXML
   private TextField entreeAdresseUtilisateur;
-  
+
   @FXML
   private TextField entreeAgeLimiteFilm;
-  
+
   @FXML
   private TextField entreeAgeUtilisateur;
-  
+
   @FXML
   private TextField entreeAnneeFilm;
-  
+
   @FXML
   private TextField entreeAuteurEvaluation;
-  
+
   @FXML
   private TextField entreeEvaluationMoyenne;
-  
+
   @FXML
   private TextField entreeGenresFilm;
-  
+
   @FXML
   private TextField entreeMotDePasseUtilisateur;
-  
+
   @FXML
   private TextField entreeNationaliteArtiste;
-  
+
   @FXML
   private TextField entreeNomArtiste;
-  
+
   @FXML
   private TextField entreeNomPrenomRealisateurFilm;
-  
+
   @FXML
   private TextField entreeNomUtilisateur;
-  
+
   @FXML
   private TextField entreePrenomArtiste;
-  
+
   @FXML
   private TextField entreePrenomUtilisateur;
-  
+
   @FXML
   private TextField entreePseudoUtilisateur;
-  
+
   @FXML
   private TextField entreeTitreFilm;
-  
+
   @FXML
   private Label labelListeFilms;
-  
+
   @FXML
   private Label labelListeArtistes;
-  
+
   @FXML
   private ListView<String> listeArtistes;
-  
+
   @FXML
   private ListView<String> listeEvaluations;
-  
+
   @FXML
   private ListView<String> listeFilms;
-  
+
   @FXML
   private ListView<String> listeFilmsEnLocation;
-  
+
   @FXML
   private ListView<String> listeGenresFilm;
-  
+
   @FXML
   private ChoiceBox<Integer> listeNoteEvaluation;
-  
+
   @FXML
   private TextArea texteCommentaire;
-  
+
   @FXML
   private StackPane paneAffiche;
 
@@ -137,7 +138,7 @@ public class UtilisateurControleur {
     String[] parts = selected.split(" ");
     return location.getDirector(parts[0], parts[1]);
   }
-  
+
   /**
    * Action du bouton "Film->Afficher les acteurs du film".
    *
@@ -159,7 +160,7 @@ public class UtilisateurControleur {
     // Affiche la liste des artistes
     this.labelListeArtistes.setText("Acteurs du film " + movie.getTitle());
   }
-  
+
   /**
    * Action du bouton "Artiste->Afficher dans la liste->Les acteurs".
    *
@@ -175,7 +176,7 @@ public class UtilisateurControleur {
     // Affiche la liste des artistes
     this.labelListeArtistes.setText("Tous les acteurs");
   }
-  
+
   /**
    * Action du bouton "Artiste->Afficher dans la liste->Les réalisateurs".
    *
@@ -191,112 +192,130 @@ public class UtilisateurControleur {
     // Affiche la liste des artistes
     this.labelListeArtistes.setText("Tous les réalisateurs");
   }
-  
+
   @FXML
   void actionBoutonAfficherFilmLoue(ActionEvent event) {
-    
+
   }
-  
+
+  /**
+   * Action du bouton "Artiste->Afficher les films de l'artiste sélectionné en
+   * tant que->Réalisateur".
+   *
+   * @param event
+   */
   @FXML
   void actionBoutonAfficherFilmRealisateurSelectionne(ActionEvent event) {
+    // Supprime les éléments de la liste des films
+    this.listeFilms.getItems().clear();
+    // Récupère le réalisateur sélectionné
+    Artist director = this.getSelectedDirector();
+    if (director == null) {
+      return;
+    }
+
+    // Ajoute les films du réalisateur sélectionné à la liste des films
+    director.getMovies().forEach(movie -> this.listeFilms.getItems().add(movie.getTitle()));
     
+    // Affiche la liste des films
+    this.labelListeFilms.setText("Films du réalisateur " + director.toString());
   }
-  
+
   @FXML
   void actionBoutonAfficherFilmsActeurSelectionne(ActionEvent event) {
-    
+
   }
-  
+
   @FXML
   void actionBoutonAfficherFilmsGenre(ActionEvent event) {
-    
+
   }
-  
+
   @FXML
   void actionBoutonAfficherFilmsRealisateurSelectionne(ActionEvent event) {
-    
+
   }
-  
+
   @FXML
   void actionBoutonAfficherMonEvaluation(ActionEvent event) {
-    
+
   }
-  
+
   @FXML
   void actionBoutonAfficherTousArtistes(ActionEvent event) {
-    
+
   }
-  
+
   @FXML
   void actionBoutonAfficherTousFilms(ActionEvent event) {
-    
+
   }
-  
+
   @FXML
   void actionBoutonChercherActeur(ActionEvent event) {
-    
+
   }
-  
+
   @FXML
   void actionBoutonChercherFilm(ActionEvent event) {
-    
+
   }
-  
+
   @FXML
   void actionBoutonChercherRealisateur(ActionEvent event) {
-    
+
   }
-  
+
   @FXML
   void actionBoutonConnexion(ActionEvent event) {
-    
+
   }
-  
+
   @FXML
   void actionBoutonCreerMonEvaluation(ActionEvent event) {
-    
+
   }
-  
+
   @FXML
   void actionBoutonDeconnexion(ActionEvent event) {
-    
+
   }
-  
+
   @FXML
   void actionBoutonFinLocation(ActionEvent event) {
-    
+
   }
-  
+
   @FXML
   void actionBoutonInscription(ActionEvent event) {
-    
+
   }
-  
+
   @FXML
   void actionBoutonLouerFilmSelectionne(ActionEvent event) {
-    
+
   }
-  
+
   @FXML
   void actionBoutonModifierMonEvaluation(ActionEvent event) {
-    
+
   }
-  
+
   @FXML
   void actionSelectionArtiste(MouseEvent event) {
-    
+
   }
-  
+
   @FXML
   void actionSelectionEvaluation(MouseEvent event) {
-    
+
   }
-  
+
   @FXML
   void actionSelectionFilm(MouseEvent event) {
-    
+
   }
-  
+
   @FXML
   void initialize() {
     // Mettre ici le code d'initialisation du contenu de la fenêtre
