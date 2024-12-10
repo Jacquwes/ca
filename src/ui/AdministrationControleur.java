@@ -196,7 +196,17 @@ public class AdministrationControleur {
   
   @FXML
   void actionBoutonAjouterGenreFilm(ActionEvent event) {
-    
+    String selectedGenre = this.listeTousGenres.getSelectionModel().getSelectedItem();
+    Genre genre = Genre.valueOf(selectedGenre);
+    System.out.println("Genre: " + genre);
+
+    String selectedMovie = this.listeFilms.getSelectionModel().getSelectedItem();
+    String title = selectedMovie.split(" \\(")[0];
+    Movie movie = this.locationAdmin.getMovie(title);
+    System.out.println("Movie: " + movie);
+
+    movie.addGenre(genre);
+    this.listeGenresFilm.getItems().add(genre.toString());
   }
   
   @FXML
