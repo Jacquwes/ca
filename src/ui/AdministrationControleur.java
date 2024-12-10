@@ -301,7 +301,13 @@ public class AdministrationControleur {
   
   @FXML
   void actionBoutonSupprimerArtiste(ActionEvent event) {
+    String selectedArtist = this.listeArtistes.getSelectionModel().getSelectedItem();
+    String name = selectedArtist.split(" ")[0];
+    String firstName = selectedArtist.split(" ")[1];
+    Artist artist = this.locationAdmin.getArtist(name, firstName);
+    this.locationAdmin.deleteArtist(artist);
     
+    actionBoutonAfficherTousArtistes(event);
   }
   
   @FXML
