@@ -438,9 +438,29 @@ public class UtilisateurControleur {
     this.checkFilmLouable.setSelected(movie.isAvailable());
   }
 
+  /**
+   * Action du bouton "Artiste->Chercher->Un réalisateur".
+   *
+   * @param event
+   */
   @FXML
   void actionBoutonChercherRealisateur(ActionEvent event) {
+    // Supprime les éléments de la liste des artistes
+    this.listeArtistes.getItems().clear();
+    // Récupère l'acteur
+    Artist director = location.getDirector(this.entreeNomArtiste.getText(), this.entreePrenomArtiste.getText());
+    if (director == null) {
+      return;
+    }
 
+    // Ajoute l'acteur à la liste des artistes
+    this.listeArtistes.getItems().add(director.toString());
+
+    // Affiche la liste des artistes
+    this.labelListeArtistes.setText("Réalisateur " + director.toString());
+
+    // Met à jour les champs de l'artiste
+    this.entreeNationaliteArtiste.setText(director.getNationality());
   }
 
   @FXML
