@@ -281,7 +281,11 @@ public class AdministrationControleur {
   
   @FXML
   void actionBoutonNouveauFilm(ActionEvent event) {
-    
+    this.entreeTitreFilm.setText("");
+    this.entreeAnneeFilm.setText("");
+    this.listeChoixAgeLimite.setValue("0");
+    this.entreeNomPrenomRealisateur.setText("");
+    this.listeGenresFilm.getItems().clear();
   }
   
   @FXML
