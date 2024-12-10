@@ -29,7 +29,9 @@ public class LocationAdmin implements AdministrationInterface {
 
   @Override
   public boolean addActors(Movie movie, Artist... actors) {
+    
     for (Artist actor : actors) {
+      this.artistManager.addActor(actor);
       movie.addActor(actor);
     }
     return true;
