@@ -98,7 +98,21 @@ public class AdministrationControleur {
   
   @FXML
   void actionBoutonAfficherFilmsActeurSelectionne(ActionEvent event) {
-    
+    String selectedActor = this.listeArtistes.getSelectionModel().getSelectedItem();
+    String name = selectedActor.split(" ")[0];
+    String firstName = selectedActor.split(" ")[1];
+    Artist actor = this.locationAdmin.getArtist(name, firstName);
+    System.out.println("Actor: " + actor);
+
+    Set<Movie> movies = this.locationAdmin.getMoviesByActor(actor);
+    System.out.println("Movies: " + movies);
+
+    this.listeFilms.getItems().clear();
+    for (Movie movie : movies) {
+      this.listeFilms.getItems().add(movie.toString());
+    }
+
+    this.labelListeFilms.setText("Liste des films de l'acteur " + actor);
   }
   
   @FXML
