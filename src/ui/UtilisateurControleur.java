@@ -4,6 +4,7 @@ import location.Artist;
 import location.Genre;
 import location.Location;
 import location.Movie;
+import location.NotLoggedInException;
 import location.Review;
 
 import java.util.Set;
@@ -540,7 +541,7 @@ public class UtilisateurControleur {
     // Update average rating
     this.entreeEvaluationMoyenne
         .setText(String.valueOf(movie.getReviews().stream().mapToDouble(Review::getRating).average().orElse(0)));
-    
+
     // Update list of reviews
     this.listeEvaluations.getItems().clear();
     movie.getReviews().forEach(r -> this.listeEvaluations.getItems().add(r.toString()));
@@ -577,7 +578,29 @@ public class UtilisateurControleur {
    */
   @FXML
   void actionBoutonFinLocation(ActionEvent event) {
+    // Get selected movie
+    Movie movie = this.getSelectedRentedMovie();
+    if (movie == null) {
+      return;
+    }
 
+    // Close rental
+    try {
+      this.location.endMovieRental(movie);
+    } catch (Exception e) {
+      // Affiche un message d'erreur
+      new Alert(Alert.AlertType.ERROR, "Erreur lors de la fermeture de la location.").showAndWait();
+      return;
+    }
+
+    // Update list of rented movies
+    this.listeFilmsEnLocation.getItems().clear();
+    try {
+      this.location.rentedMovies().forEach(m -> this.listeFilmsEnLocation.getItems().add(m.getTitle()));
+    } catch (Exception e) {
+      // Affiche un message d'erreur
+      new Alert(Alert.AlertType.ERROR, "Erreur lors de la récupération des films loués.").showAndWait();
+    }
   }
 
   @FXML
