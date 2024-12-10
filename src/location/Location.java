@@ -51,6 +51,15 @@ public class Location implements UserInterface {
     return userManager.login(username, password);
   }
 
+  /**
+   * Retrieves the current user.
+   *
+   * @return the current user.
+   */
+  public User getCurrentUser() {
+    return userManager.getCurrentUser();
+  }
+
   @Override
   public void logout() throws NotLoggedInException {
     userManager.logout();
