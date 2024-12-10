@@ -5,6 +5,7 @@ import location.Genre;
 import location.Location;
 import location.Movie;
 import location.NotLoggedInException;
+import location.PersonalInformation;
 import location.Review;
 
 import java.util.Set;
@@ -603,9 +604,35 @@ public class UtilisateurControleur {
     }
   }
 
+  /**
+   * Action du bouton "Utilisateur->Inscription".
+   *
+   * @param event
+   */
   @FXML
   void actionBoutonInscription(ActionEvent event) {
+    String username = this.entreePseudoUtilisateur.getText();
+    String password = this.entreeMotDePasseUtilisateur.getText();
+    String lastName = this.entreeNomUtilisateur.getText();
+    String firstName = this.entreePrenomUtilisateur.getText();
+    String address = this.entreeAdresseUtilisateur.getText();
+    int age = Integer.parseInt(this.entreeAgeUtilisateur.getText());
 
+    int result = this.location.register(username, password, new PersonalInformation(lastName, firstName, address, age));
+
+    if (result == 0) {
+      // Affiche un message de succès
+      new Alert(Alert.AlertType.INFORMATION, "Utilisateur créé avec succès. Vous pouvez maintenant vous connecter.")
+          .showAndWait();
+    } else if (result == 1) {
+      // Affiche un message d'erreur
+      new Alert(Alert.AlertType.ERROR, "Nom d'utilisateur déjà utilisé.").showAndWait();
+    } else if (result == 2) {
+      // Affiche un message d'erreur
+      new Alert(Alert.AlertType.ERROR, "Veuillez remplir tous les champs.").showAndWait();
+    } else if (result == 3) {
+      new Alert(Alert.AlertType.ERROR, "Veuillez remplir les champs correctement.").showAndWait();
+    }
   }
 
   @FXML
