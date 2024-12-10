@@ -23,7 +23,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.StackPane;
 
 /**
- * Controleur JavaFX de la fenêtre utilisateur.
+ * JavaFX Controller for the user window.
  *
  * @author Eric Cariou
  *
@@ -114,12 +114,12 @@ public class UtilisateurControleur {
   private Location location = new Location();
 
   /**
-   * Retourne le film sélectionné dans la liste des films.
+   * Returns the movie selected in the movie list.
    *
-   * @return le film sélectionné dans la liste des films.
+   * @return the movie selected in the movie list.
    */
   private Movie getSelectedMovie() {
-    // Retourne le film sélectionné dans la liste des films
+    // Returns the selected movie from the movie list
     String selected = listeFilms.getSelectionModel().getSelectedItem();
     if (selected == null) {
       return null;
@@ -128,12 +128,12 @@ public class UtilisateurControleur {
   }
 
   /**
-   * Retourne le film sélectionné dans la liste des films loués.
+   * Returns the movie selected in the rented movies list.
    *
-   * @return le film sélectionné dans la liste des films loués.
+   * @return the movie selected in the rented movies list.
    */
   private Movie getSelectedRentedMovie() {
-    // Retourne le film sélectionné dans la liste des films loués
+    // Returns the selected movie from the rented movies list
     String selected = listeFilmsEnLocation.getSelectionModel().getSelectedItem();
     if (selected == null) {
       return null;
@@ -142,12 +142,12 @@ public class UtilisateurControleur {
   }
 
   /**
-   * Retourne l'artiste sélectionné dans la liste des artistes.
+   * Returns the artist selected in the artists list.
    *
-   * @return l'artiste sélectionné dans la liste des artistes.
+   * @return the artist selected in the artists list.
    */
   private Artist getSelectedActor() {
-    // Retourne l'artiste sélectionné dans la liste des artistes
+    // Returns the selected artist from the artists list
     String selected = listeArtistes.getSelectionModel().getSelectedItem();
     if (selected == null) {
       return null;
@@ -157,12 +157,12 @@ public class UtilisateurControleur {
   }
 
   /**
-   * Retourne l'artiste sélectionné dans la liste des artistes.
+   * Returns the artist selected in the artists list.
    *
-   * @return l'artiste sélectionné dans la liste des artistes.
+   * @return the artist selected in the artists list.
    */
   private Artist getSelectedDirector() {
-    // Retourne l'artiste sélectionné dans la liste des artistes
+    // Returns the selected artist from the artists list
     String selected = listeArtistes.getSelectionModel().getSelectedItem();
     if (selected == null) {
       return null;
@@ -172,12 +172,12 @@ public class UtilisateurControleur {
   }
 
   /**
-   * Retourne le genre sélectionné dans la liste des genres.
+   * Returns the genre selected in the genres list.
    *
-   * @return le genre sélectionné dans la liste des genres.
+   * @return the genre selected in the genres list.
    */
   private Genre getSelectedGenre() {
-    // Retourne le genre sélectionné dans la liste des genres
+    // Returns the selected genre from the genres list
     String selected = listeGenresFilm.getSelectionModel().getSelectedItem();
     if (selected == null) {
       return null;
@@ -186,61 +186,61 @@ public class UtilisateurControleur {
   }
 
   /**
-   * Action du bouton "Film->Afficher les acteurs du film".
+   * Action of the "Movie->Show movie actors" button.
    *
-   * @param event l'événement de clic sur le bouton.
+   * @param event the button click event.
    */
   @FXML
   void actionBoutonAfficherActeursFilmSelectionne(ActionEvent event) {
-    // Supprime les éléments de la liste des artistes
+    // Clear the artists list
     this.listeArtistes.getItems().clear();
-    // Récupère le film sélectionné
+    // Get the selected movie
     Movie movie = this.getSelectedMovie();
     if (movie == null) {
       return;
     }
 
-    // Ajoute les acteurs du film sélectionné à la liste des artistes
+    // Add the actors of the selected movie to the artists list
     movie.getActors().forEach(actor -> this.listeArtistes.getItems().add(actor.toString()));
 
-    // Affiche la liste des artistes
-    this.labelListeArtistes.setText("Acteurs du film " + movie.getTitle());
+    // Display the artists list
+    this.labelListeArtistes.setText("Actors of the movie " + movie.getTitle());
   }
 
   /**
-   * Action du bouton "Artiste->Afficher dans la liste->Les acteurs".
+   * Action of the "Artist->Show in list->Actors" button.
    *
    * @param event
    */
   @FXML
   void actionBoutonAfficherArtistesActeurs(ActionEvent event) {
-    // Supprime les éléments de la liste des artistes
+    // Clear the artists list
     this.listeArtistes.getItems().clear();
-    // Récupère les acteurs
+    // Get the actors
     location.allActors().forEach(actor -> this.listeArtistes.getItems().add(actor.toString()));
 
-    // Affiche la liste des artistes
-    this.labelListeArtistes.setText("Tous les acteurs");
+    // Display the artists list
+    this.labelListeArtistes.setText("All actors");
   }
 
   /**
-   * Action du bouton "Artiste->Afficher dans la liste->Les réalisateurs".
+   * Action of the "Artist->Show in list->Directors" button.
    *
    * @param event
    */
   @FXML
   void actionBoutonAfficherArtistesRealisateurs(ActionEvent event) {
-    // Supprime les éléments de la liste des artistes
+    // Clear the artists list
     this.listeArtistes.getItems().clear();
-    // Récupère les réalisateurs
+    // Get the directors
     location.allDirectors().forEach(director -> this.listeArtistes.getItems().add(director.toString()));
 
-    // Affiche la liste des artistes
-    this.labelListeArtistes.setText("Tous les réalisateurs");
+    // Display the artists list
+    this.labelListeArtistes.setText("All directors");
   }
 
   /**
-   * Action du bouton "Utilisateur->Afficher les détails du film sélectionné".
+   * Action of the "User->Show details of selected movie" button.
    *
    * @param event
    */
@@ -263,80 +263,78 @@ public class UtilisateurControleur {
   }
 
   /**
-   * Action du bouton "Artiste->Afficher les films de l'artiste sélectionné en
-   * tant que->Réalisateur".
+   * Action of the "Artist->Show movies of selected artist as->Director" button.
    *
    * @param event
    */
   @FXML
   void actionBoutonAfficherFilmRealisateurSelectionne(ActionEvent event) {
-    // Supprime les éléments de la liste des films
+    // Clear the movies list
     this.listeFilms.getItems().clear();
-    // Récupère le réalisateur sélectionné
+    // Get the selected director
     Artist director = this.getSelectedDirector();
     if (director == null) {
       return;
     }
 
-    // Ajoute les films du réalisateur sélectionné à la liste des films
+    // Add the movies of the selected director to the movies list
     director.getMovies().forEach(movie -> this.listeFilms.getItems().add(movie.getTitle()));
 
-    // Affiche la liste des films
-    this.labelListeFilms.setText("Films du réalisateur " + director.toString());
+    // Display the movies list
+    this.labelListeFilms.setText("Movies of director " + director.toString());
   }
 
   /**
-   * Action du bouton "Artiste->Afficher les films de l'artiste sélectionné en
-   * tant que->Acteur".
+   * Action of the "Artist->Show movies of selected artist as->Actor" button.
    *
    * @param event
    */
   @FXML
   void actionBoutonAfficherFilmsActeurSelectionne(ActionEvent event) {
-    // Supprime les éléments de la liste des films
+    // Clear the movies list
     this.listeFilms.getItems().clear();
-    // Récupère l'acteur sélectionné
+    // Get the selected actor
     Artist actor = this.getSelectedActor();
     if (actor == null) {
       return;
     }
 
-    // Ajoute les films de l'acteur sélectionné à la liste des films
+    // Add the movies of the selected actor to the movies list
     actor.getMovies().forEach(movie -> this.listeFilms.getItems().add(movie.getTitle()));
 
-    // Affiche la liste des films
-    this.labelListeFilms.setText("Films de l'acteur " + actor.toString());
+    // Display the movies list
+    this.labelListeFilms.setText("Movies of actor " + actor.toString());
   }
 
   /**
-   * Action du bouton "Film->Afficher les genres des films".
+   * Action of the "Movie->Show movie genres" button.
    *
    * @param event
    */
   @FXML
   void actionBoutonAfficherFilmsGenre(ActionEvent event) {
-    // Supprime les éléments de la liste des films
+    // Clear the movies list
     this.listeFilms.getItems().clear();
-    // Récupère le genre sélectionné
+    // Get the selected genre
     Genre genre = getSelectedGenre();
 
-    // Ajoute les films du genre sélectionné à la liste des films
+    // Add the movies of the selected genre to the movies list
     location.moviesByGenre(genre).forEach(movie -> this.listeFilms.getItems().add(movie.getTitle()));
 
-    // Affiche la liste des films
-    this.labelListeFilms.setText("Films du genre " + genre);
+    // Display the movies list
+    this.labelListeFilms.setText("Movies of genre " + genre);
   }
 
   /**
-   * Action du bouton "Artiste->Afficher les films du réalisateur".
+   * Action of the "Artist->Show director movies" button.
    *
    * @param event
    */
   @FXML
   void actionBoutonAfficherFilmsRealisateurSelectionne(ActionEvent event) {
-    // Supprime les éléments de la liste des films
+    // Clear the movies list
     this.listeFilms.getItems().clear();
-    // Récupère le film sélectionné
+    // Get the selected movie
     Movie movie = this.getSelectedMovie();
     if (movie == null) {
       return;
@@ -346,15 +344,15 @@ public class UtilisateurControleur {
       return;
     }
 
-    // Ajoute les films du réalisateur sélectionné à la liste des films
+    // Add the movies of the selected director to the movies list
     director.getMovies().forEach(film -> this.listeFilms.getItems().add(film.getTitle()));
 
-    // Affiche la liste des films
-    this.labelListeFilms.setText("Films du réalisateur " + director.toString());
+    // Display the movies list
+    this.labelListeFilms.setText("Movies of director " + director.toString());
   }
 
   /**
-   * Action du bouton "Evaluation->Afficher mon évaluation".
+   * Action of the "Review->Show my review" button.
    *
    * @param event
    */
@@ -383,88 +381,88 @@ public class UtilisateurControleur {
   }
 
   /**
-   * Action du bouton "Artiste->Afficher dans la liste->Tous les artistes".
+   * Action of the "Artist->Show in list->All artists" button.
    *
    * @param event
    */
   @FXML
   void actionBoutonAfficherTousArtistes(ActionEvent event) {
-    // Supprime les éléments de la liste des artistes
+    // Clear the artists list
     this.listeArtistes.getItems().clear();
-    // Récupère tous les artistes
+    // Get all artists
     Set<Artist> artists = location.allActors();
     artists.addAll(location.allDirectors());
 
-    // Ajoute les artistes à la liste des artistes
+    // Add artists to the artists list
     artists.forEach(artist -> this.listeArtistes.getItems().add(artist.toString()));
 
-    // Affiche la liste des artistes
-    this.labelListeArtistes.setText("Tous les artistes");
+    // Display the artists list
+    this.labelListeArtistes.setText("All artists");
   }
 
   /**
-   * Action du bouton "Film->Afficher tous les films".
+   * Action of the "Movie->Show all movies" button.
    *
    * @param event
    */
   @FXML
   void actionBoutonAfficherTousFilms(ActionEvent event) {
-    // Supprime les éléments de la liste des films
+    // Clear the movies list
     this.listeFilms.getItems().clear();
-    // Récupère tous les films
+    // Get all movies
     location.allMovies().forEach(movie -> this.listeFilms.getItems().add(movie.getTitle()));
 
-    // Affiche la liste des films
-    this.labelListeFilms.setText("Tous les films");
+    // Display the movies list
+    this.labelListeFilms.setText("All movies");
   }
 
   /**
-   * Action du bouton "Artiste->Chercher->Un acteur".
+   * Action of the "Artist->Search->An actor" button.
    *
    * @param event
    */
   @FXML
   void actionBoutonChercherActeur(ActionEvent event) {
-    // Supprime les éléments de la liste des artistes
+    // Clear the artists list
     this.listeArtistes.getItems().clear();
-    // Récupère l'acteur
+    // Get the actor
     Artist actor = location.getActor(this.entreeNomArtiste.getText(), this.entreePrenomArtiste.getText());
     if (actor == null) {
       return;
     }
 
-    // Ajoute l'acteur à la liste des artistes
+    // Add the actor to the artists list
     this.listeArtistes.getItems().add(actor.toString());
 
-    // Affiche la liste des artistes
-    this.labelListeArtistes.setText("Acteur " + actor.toString());
+    // Display the artists list
+    this.labelListeArtistes.setText("Actor " + actor.toString());
 
-    // Met à jour les champs de l'artiste
+    // Update artist fields
     this.entreeNationaliteArtiste.setText(actor.getNationality());
   }
 
   /**
-   * Action du bouton "Film->Chercher un film".
+   * Action of the "Movie->Search a movie" button.
    *
    * @param event
    */
   @FXML
   void actionBoutonChercherFilm(ActionEvent event) {
-    // Supprime les éléments de la liste des films
+    // Clear the movies list
     this.listeFilms.getItems().clear();
-    // Récupère le film
+    // Get the movie
     Movie movie = location.getMovie(this.entreeTitreFilm.getText());
     if (movie == null) {
       return;
     }
 
-    // Ajoute le film à la liste des films
+    // Add the movie to the movies list
     this.listeFilms.getItems().add(movie.getTitle());
 
-    // Affiche la liste des films
-    this.labelListeFilms.setText("Film " + movie.getTitle());
+    // Display the movies list
+    this.labelListeFilms.setText("Movie " + movie.getTitle());
 
-    // Met à jour les champs du film
+    // Update movie fields
     this.entreeAnneeFilm.setText(String.valueOf(movie.getYear()));
     this.entreeAgeLimiteFilm.setText(String.valueOf(movie.getMinimumAge()));
     this.entreeNomPrenomRealisateurFilm.setText(movie.getDirector().toString());
@@ -474,32 +472,32 @@ public class UtilisateurControleur {
   }
 
   /**
-   * Action du bouton "Artiste->Chercher->Un réalisateur".
+   * Action of the "Artist->Search->A director" button.
    *
    * @param event
    */
   @FXML
   void actionBoutonChercherRealisateur(ActionEvent event) {
-    // Supprime les éléments de la liste des artistes
+    // Clear the artists list
     this.listeArtistes.getItems().clear();
-    // Récupère l'acteur
+    // Get the director
     Artist director = location.getDirector(this.entreeNomArtiste.getText(), this.entreePrenomArtiste.getText());
     if (director == null) {
       return;
     }
 
-    // Ajoute l'acteur à la liste des artistes
+    // Add the director to the artists list
     this.listeArtistes.getItems().add(director.toString());
 
-    // Affiche la liste des artistes
-    this.labelListeArtistes.setText("Réalisateur " + director.toString());
+    // Display the artists list
+    this.labelListeArtistes.setText("Director " + director.toString());
 
-    // Met à jour les champs de l'artiste
+    // Update artist fields
     this.entreeNationaliteArtiste.setText(director.getNationality());
   }
 
   /**
-   * Action du bouton "Utilisateur->Connexion".
+   * Action of the "User->Login" button.
    *
    * @param event
    */
@@ -509,21 +507,21 @@ public class UtilisateurControleur {
     String password = this.entreeMotDePasseUtilisateur.getText();
 
     if (!this.location.login(username, password)) {
-      // Affiche un message d'erreur
-      new Alert(Alert.AlertType.ERROR, "Nom d'utilisateur ou mot de passe incorrect.").showAndWait();
+      // Display error message
+      new Alert(Alert.AlertType.ERROR, "Incorrect username or password.").showAndWait();
       return;
     }
 
-    // Popule la liste des films loués
+    // Populate the rented movies list
     this.listeFilmsEnLocation.getItems().clear();
     try {
       this.location.rentedMovies().forEach(movie -> this.listeFilmsEnLocation.getItems().add(movie.getTitle()));
     } catch (Exception e) {
-      // Affiche un message d'erreur
-      new Alert(Alert.AlertType.ERROR, "Erreur lors de la récupération des films loués.").showAndWait();
+      // Display error message
+      new Alert(Alert.AlertType.ERROR, "Error while retrieving rented movies.").showAndWait();
     }
 
-    // Met à jour les champs de l'utilisateur
+    // Update user fields
     this.entreeNomUtilisateur.setText(this.location.getCurrentUser().getPersonalInformation().getLastName());
     this.entreePrenomUtilisateur.setText(this.location.getCurrentUser().getPersonalInformation().getFirstName());
     this.entreeAdresseUtilisateur.setText(this.location.getCurrentUser().getPersonalInformation().getAddress());
@@ -531,7 +529,7 @@ public class UtilisateurControleur {
   }
 
   /**
-   * Action du bouton "Evaluation->Créer mon évaluation".
+   * Action of the "Review->Create my review" button.
    *
    * @param event
    */
@@ -567,7 +565,7 @@ public class UtilisateurControleur {
   }
 
   /**
-   * Action du bouton "Utilisateur->Déconnexion".
+   * Action of the "User->Logout" button.
    *
    * @param event
    */
@@ -576,8 +574,8 @@ public class UtilisateurControleur {
     try {
       this.location.logout();
     } catch (NotLoggedInException e) {
-      // Affiche un message d'erreur
-      new Alert(Alert.AlertType.ERROR, "Vous n'êtes pas connecté.").showAndWait();
+      // Display error message
+      new Alert(Alert.AlertType.ERROR, "You are not logged in.").showAndWait();
       return;
     }
 
@@ -591,7 +589,7 @@ public class UtilisateurControleur {
   }
 
   /**
-   * Action du bouton "Utilisateur->Terminer la location du film sélectionné".
+   * Action of the "User->End rental of selected movie" button.
    *
    * @param event
    */
@@ -607,8 +605,8 @@ public class UtilisateurControleur {
     try {
       this.location.endMovieRental(movie);
     } catch (Exception e) {
-      // Affiche un message d'erreur
-      new Alert(Alert.AlertType.ERROR, "Erreur lors de la fermeture de la location.").showAndWait();
+      // Display error message
+      new Alert(Alert.AlertType.ERROR, "Error while closing the rental.").showAndWait();
       return;
     }
 
@@ -617,13 +615,13 @@ public class UtilisateurControleur {
     try {
       this.location.rentedMovies().forEach(m -> this.listeFilmsEnLocation.getItems().add(m.getTitle()));
     } catch (Exception e) {
-      // Affiche un message d'erreur
-      new Alert(Alert.AlertType.ERROR, "Erreur lors de la récupération des films loués.").showAndWait();
+      // Display error message
+      new Alert(Alert.AlertType.ERROR, "Error while retrieving rented movies.").showAndWait();
     }
   }
 
   /**
-   * Action du bouton "Utilisateur->Inscription".
+   * Action of the "User->Register" button.
    *
    * @param event
    */
@@ -639,22 +637,22 @@ public class UtilisateurControleur {
     int result = this.location.register(username, password, new PersonalInformation(lastName, firstName, address, age));
 
     if (result == 0) {
-      // Affiche un message de succès
-      new Alert(Alert.AlertType.INFORMATION, "Utilisateur créé avec succès. Vous pouvez maintenant vous connecter.")
+      // Display success message
+      new Alert(Alert.AlertType.INFORMATION, "User created successfully. You can now log in.")
           .showAndWait();
     } else if (result == 1) {
-      // Affiche un message d'erreur
-      new Alert(Alert.AlertType.ERROR, "Nom d'utilisateur déjà utilisé.").showAndWait();
+      // Display error message
+      new Alert(Alert.AlertType.ERROR, "Username already taken.").showAndWait();
     } else if (result == 2) {
-      // Affiche un message d'erreur
-      new Alert(Alert.AlertType.ERROR, "Veuillez remplir tous les champs.").showAndWait();
+      // Display error message
+      new Alert(Alert.AlertType.ERROR, "Please fill in all fields.").showAndWait();
     } else if (result == 3) {
-      new Alert(Alert.AlertType.ERROR, "Veuillez remplir les champs correctement.").showAndWait();
+      new Alert(Alert.AlertType.ERROR, "Please fill in the fields correctly.").showAndWait();
     }
   }
 
   /**
-   * Action du bouton "Film->Louer le film sélectionné".
+   * Action of the "Movie->Rent selected movie" button.
    *
    * @param event
    */
@@ -670,8 +668,8 @@ public class UtilisateurControleur {
     try {
       this.location.rentMovie(movie);
     } catch (Exception e) {
-      // Affiche un message d'erreur
-      new Alert(Alert.AlertType.ERROR, "Erreur lors de la location du film.").showAndWait();
+      // Display error message
+      new Alert(Alert.AlertType.ERROR, "Error while renting the movie.").showAndWait();
       return;
     }
 
@@ -680,13 +678,13 @@ public class UtilisateurControleur {
     try {
       this.location.rentedMovies().forEach(m -> this.listeFilmsEnLocation.getItems().add(m.getTitle()));
     } catch (Exception e) {
-      // Affiche un message d'erreur
-      new Alert(Alert.AlertType.ERROR, "Erreur lors de la récupération des films loués.").showAndWait();
+      // Display error message
+      new Alert(Alert.AlertType.ERROR, "Error while retrieving rented movies.").showAndWait();
     }
   }
 
   /**
-   * Action du bouton "Modifier mon évaluation".
+   * Action of the "Modify my review" button.
    *
    * @param event
    */
@@ -722,35 +720,35 @@ public class UtilisateurControleur {
   }
 
   /**
-   * Action de la sélection d'un artiste.
+   * Action of selecting an artist.
    *
    * @param event
    */
   @FXML
   void actionSelectionArtiste(MouseEvent event) {
-    // Supprime les éléments de la liste des films
+    // Clear the movies list
     this.listeFilms.getItems().clear();
-    // Récupère l'artiste sélectionné
+    // Get the selected artist
     Artist artist = this.getSelectedActor();
     if (artist == null) {
       return;
     }
 
-    // Ajoute les films de l'artiste sélectionné à la liste des films
+    // Add the movies of the selected artist to the movies list
     artist.getMovies().forEach(movie -> this.listeFilms.getItems().add(movie.getTitle()));
 
-    // Affiche la liste des films
-    this.labelListeFilms.setText("Films de l'artiste " + artist.toString());
+    // Display the movies list
+    this.labelListeFilms.setText("Movies of artist " + artist.toString());
   }
 
   /**
-   * Action de la sélection d'une évaluation.
+   * Action of selecting a review.
    *
    * @param event
    */
   @FXML
   void actionSelectionEvaluation(MouseEvent event) {
-    // Récupère l'évaluation sélectionnée
+    // Get the selected review
     String selected = this.listeEvaluations.getSelectionModel().getSelectedItem();
     if (selected == null) {
       return;
@@ -775,26 +773,26 @@ public class UtilisateurControleur {
   }
 
   /**
-   * Action de la sélection d'un film.
+   * Action of selecting a movie.
    *
    * @param event
    */
   @FXML
   void actionSelectionFilm(MouseEvent event) {
-    // Supprime les éléments de la liste des évaluations
+    // Clear the reviews list
     this.listeEvaluations.getItems().clear();
-    // Récupère le film sélectionné
+    // Get the selected movie
     Movie movie = this.getSelectedMovie();
     if (movie == null) {
       return;
     }
 
-    // Ajoute les évaluations du film sélectionné à la liste des évaluations
+    // Add the reviews of the selected movie to the reviews list
     movie.getReviews().forEach(review -> this.listeEvaluations.getItems().add(review.toString()));
   }
 
   @FXML
   void initialize() {
-    // Mettre ici le code d'initialisation du contenu de la fenêtre
+    // Put here the initialization code for the window content
   }
 }
