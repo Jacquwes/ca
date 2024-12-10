@@ -288,9 +288,30 @@ public class UtilisateurControleur {
     this.labelListeFilms.setText("Films du genre " + genre);
   }
 
+  /**
+   * Action du bouton "Artiste->Afficher les films du réalisateur".
+   *
+   * @param event
+   */
   @FXML
   void actionBoutonAfficherFilmsRealisateurSelectionne(ActionEvent event) {
+    // Supprime les éléments de la liste des films
+    this.listeFilms.getItems().clear();
+    // Récupère le film sélectionné
+    Movie movie = this.getSelectedMovie();
+    if (movie == null) {
+      return;
+    }
+    Artist director = movie.getDirector();
+    if (director == null) {
+      return;
+    }
 
+    // Ajoute les films du réalisateur sélectionné à la liste des films
+    director.getMovies().forEach(film -> this.listeFilms.getItems().add(film.getTitle()));
+
+    // Affiche la liste des films
+    this.labelListeFilms.setText("Films du réalisateur " + director.toString());
   }
 
   @FXML
