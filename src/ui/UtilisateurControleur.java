@@ -10,6 +10,7 @@ import java.util.Set;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
@@ -463,9 +464,36 @@ public class UtilisateurControleur {
     this.entreeNationaliteArtiste.setText(director.getNationality());
   }
 
+  /**
+   * Action du bouton "Utilisateur->Connexion".
+   *
+   * @param event
+   */
   @FXML
   void actionBoutonConnexion(ActionEvent event) {
+    String username = this.entreePseudoUtilisateur.getText();
+    String password = this.entreeMotDePasseUtilisateur.getText();
 
+    if (!this.location.login(username, password)) {
+      // Affiche un message d'erreur
+      new Alert(Alert.AlertType.ERROR, "Nom d'utilisateur ou mot de passe incorrect.").showAndWait();
+      return;
+    }
+
+    // Popule la liste des films loués
+    this.listeFilmsEnLocation.getItems().clear();
+    try {
+      this.location.rentedMovies().forEach(movie -> this.listeFilmsEnLocation.getItems().add(movie.getTitle()));
+    } catch (Exception e) {
+      // Affiche un message d'erreur
+      new Alert(Alert.AlertType.ERROR, "Erreur lors de la récupération des films loués.").showAndWait();
+    }
+
+    // Met à jour les champs de l'utilisateur
+    this.entreeNomUtilisateur.setText(this.location.getCurrentUser().getPersonalInformation().getLastName());
+    this.entreePrenomUtilisateur.setText(this.location.getCurrentUser().getPersonalInformation().getFirstName());
+    this.entreeAdresseUtilisateur.setText(this.location.getCurrentUser().getPersonalInformation().getAddress());
+    this.entreeAgeUtilisateur.setText(String.valueOf(this.location.getCurrentUser().getPersonalInformation().getAge()));
   }
 
   @FXML
