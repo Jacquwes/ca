@@ -119,7 +119,7 @@ public class UtilisateurControleur {
   }
   
   /**
-   * Action du bouton "Afficher les acteurs du film".
+   * Action du bouton "Film->Afficher les acteurs du film".
    *
    * @param event l'événement de clic sur le bouton.
    */
@@ -141,7 +141,7 @@ public class UtilisateurControleur {
   }
   
   /**
-   * Action du bouton "Les acteurs".
+   * Action du bouton "Artiste->Afficher dans la liste->Les acteurs".
    *
    * @param event
    */
@@ -157,7 +157,7 @@ public class UtilisateurControleur {
   }
   
   /**
-   * Action du bouton "Les réalisateurs".
+   * Action du bouton "Artiste->Afficher dans la liste->Les réalisateurs".
    *
    * @param event
    */
