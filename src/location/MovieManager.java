@@ -26,6 +26,10 @@ public class MovieManager {
     return movies;
   }
 
+  public boolean addMovie(Movie movie) {
+    return movies.add(movie);
+  }
+
   /**
    * Gets the list of all the movies matching
    * the specified predicate.
