@@ -120,6 +120,11 @@ public class UtilisateurControleur {
     return location.getMovie(selected);
   }
 
+  /**
+   * Retourne l'artiste sélectionné dans la liste des artistes.
+   *
+   * @return l'artiste sélectionné dans la liste des artistes.
+   */
   private Artist getSelectedActor() {
     // Retourne l'artiste sélectionné dans la liste des artistes
     String selected = listeArtistes.getSelectionModel().getSelectedItem();
@@ -130,6 +135,11 @@ public class UtilisateurControleur {
     return location.getActor(parts[0], parts[1]);
   }
 
+  /**
+   * Retourne l'artiste sélectionné dans la liste des artistes.
+   *
+   * @return l'artiste sélectionné dans la liste des artistes.
+   */
   private Artist getSelectedDirector() {
     // Retourne l'artiste sélectionné dans la liste des artistes
     String selected = listeArtistes.getSelectionModel().getSelectedItem();
@@ -140,6 +150,11 @@ public class UtilisateurControleur {
     return location.getDirector(parts[0], parts[1]);
   }
 
+  /**
+   * Retourne le genre sélectionné dans la liste des genres.
+   *
+   * @return le genre sélectionné dans la liste des genres.
+   */
   private Genre getSelectedGenre() {
     // Retourne le genre sélectionné dans la liste des genres
     String selected = listeGenresFilm.getSelectionModel().getSelectedItem();
@@ -226,7 +241,7 @@ public class UtilisateurControleur {
 
     // Ajoute les films du réalisateur sélectionné à la liste des films
     director.getMovies().forEach(movie -> this.listeFilms.getItems().add(movie.getTitle()));
-    
+
     // Affiche la liste des films
     this.labelListeFilms.setText("Films du réalisateur " + director.toString());
   }
@@ -254,9 +269,19 @@ public class UtilisateurControleur {
     this.labelListeFilms.setText("Films de l'acteur " + actor.toString());
   }
 
+  /**
+   * Action du bouton "Film->Afficher les genres des films".
+   * @param event
+   */
   @FXML
   void actionBoutonAfficherFilmsGenre(ActionEvent event) {
-
+    // Supprime les éléments de la liste des films
+    this.listeFilms.getItems().clear();
+    // Récupère le genre sélectionné
+    Genre genre = getSelectedGenre();
+    
+    // Ajoute les films du genre sélectionné à la liste des films
+    location.moviesByGenre(genre).forEach(movie -> this.listeFilms.getItems().add(movie.getTitle()));
   }
 
   @FXML
