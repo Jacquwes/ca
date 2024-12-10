@@ -181,6 +181,7 @@ public class Movie {
    */
   public Movie addActor(Artist actor) {
     this.actors.add(actor);
+    actor.addMovie(this);
     return this;
   }
 
