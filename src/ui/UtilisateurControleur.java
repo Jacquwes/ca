@@ -271,6 +271,7 @@ public class UtilisateurControleur {
 
   /**
    * Action du bouton "Film->Afficher les genres des films".
+   *
    * @param event
    */
   @FXML
