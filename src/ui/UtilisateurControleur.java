@@ -221,9 +221,27 @@ public class UtilisateurControleur {
     this.labelListeFilms.setText("Films du réalisateur " + director.toString());
   }
 
+  /**
+   * Action du bouton "Artiste->Afficher les films de l'artiste sélectionné en
+   * tant que->Acteur".
+   *
+   * @param event
+   */
   @FXML
   void actionBoutonAfficherFilmsActeurSelectionne(ActionEvent event) {
+    // Supprime les éléments de la liste des films
+    this.listeFilms.getItems().clear();
+    // Récupère l'acteur sélectionné
+    Artist actor = this.getSelectedActor();
+    if (actor == null) {
+      return;
+    }
 
+    // Ajoute les films de l'acteur sélectionné à la liste des films
+    actor.getMovies().forEach(movie -> this.listeFilms.getItems().add(movie.getTitle()));
+
+    // Affiche la liste des films
+    this.labelListeFilms.setText("Films de l'acteur " + actor.toString());
   }
 
   @FXML
