@@ -546,11 +546,35 @@ public class UtilisateurControleur {
     movie.getReviews().forEach(r -> this.listeEvaluations.getItems().add(r.toString()));
   }
 
+  /**
+   * Action du bouton "Utilisateur->Déconnexion".
+   *
+   * @param event
+   */
   @FXML
   void actionBoutonDeconnexion(ActionEvent event) {
+    try {
+      this.location.logout();
+    } catch (NotLoggedInException e) {
+      // Affiche un message d'erreur
+      new Alert(Alert.AlertType.ERROR, "Vous n'êtes pas connecté.").showAndWait();
+      return;
+    }
 
+    // Clear fields
+    this.entreeNomUtilisateur.clear();
+    this.entreePrenomUtilisateur.clear();
+    this.entreeAdresseUtilisateur.clear();
+    this.entreeAgeUtilisateur.clear();
+    this.entreePseudoUtilisateur.clear();
+    this.entreeMotDePasseUtilisateur.clear();
   }
 
+  /**
+   * Action du bouton "Utilisateur->Terminer la location du film sélectionné".
+   *
+   * @param event
+   */
   @FXML
   void actionBoutonFinLocation(ActionEvent event) {
 
