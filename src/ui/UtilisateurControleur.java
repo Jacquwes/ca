@@ -99,6 +99,17 @@ public class UtilisateurControleur {
   
   @FXML
   private StackPane paneAffiche;
+
+  private Location location = new Location();
+
+  private Movie getSelectedMovie() {
+    // Retourne le film sélectionné dans la liste des films
+    String selected = listeFilms.getSelectionModel().getSelectedItem();
+    if (selected == null) {
+      return null;
+    }
+    return location.getMovie(selected);
+  }
   
   @FXML
   void actionBoutonAfficherActeursFilmSelectionne(ActionEvent event) {
