@@ -352,6 +352,21 @@ public class AdministrationControleur {
   
   @FXML
   void actionListeSelectionFilm(MouseEvent event) {
+    String selectedMovie = this.listeFilms.getSelectionModel().getSelectedItem();
+    String title = selectedMovie.split(" \\(")[0];
+    Movie movie = this.locationAdmin.getMovie(title);
+
+    this.entreeTitreFilm.setText(movie.getTitle());
+    this.entreeAnneeFilm.setText(String.valueOf(movie.getYear()));
+    this.listeChoixAgeLimite.setValue(String.valueOf(movie.getMinimumAge()));
+    System.out.println("Minimum age: " + movie.getMinimumAge());
+    this.entreeNomPrenomRealisateur.setText(movie.getDirector().toString());
+    this.checkBoxLocationFilm.setSelected(movie.isAvailable());
+    this.listeGenresFilm.getItems().clear();
+    for (Genre genre : movie.getGenres()) {
+      this.listeGenresFilm.getItems().add(genre.toString());
+    }
+  }
 
   void initializeGenreList(){
     for (Genre genre : Genre.values()) {
