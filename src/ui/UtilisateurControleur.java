@@ -239,9 +239,27 @@ public class UtilisateurControleur {
     this.labelListeArtistes.setText("Tous les réalisateurs");
   }
 
+  /**
+   * Action du bouton "Utilisateur->Afficher les détails du film sélectionné".
+   *
+   * @param event
+   */
   @FXML
   void actionBoutonAfficherFilmLoue(ActionEvent event) {
+    // Get selected movie
+    Movie movie = this.getSelectedRentedMovie();
+    if (movie == null) {
+      return;
+    }
 
+    // Update fields
+    this.entreeTitreFilm.setText(movie.getTitle());
+    this.entreeAnneeFilm.setText(String.valueOf(movie.getYear()));
+    this.entreeAgeLimiteFilm.setText(String.valueOf(movie.getMinimumAge()));
+    this.entreeNomPrenomRealisateurFilm.setText(movie.getDirector().toString());
+    this.entreeGenresFilm
+        .setText(String.join(", ", movie.getGenres().stream().map(Genre::toString).toArray(String[]::new)));
+    this.checkFilmLouable.setSelected(movie.isAvailable());
   }
 
   /**
