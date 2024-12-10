@@ -9,7 +9,7 @@ import java.util.function.Predicate;
  */
 public class ArtistManager {
   /**
-   * Represents all the artists.
+   * Represents all the actors.
    */
   private static Set<Artist> actors = new HashSet<>();
   
