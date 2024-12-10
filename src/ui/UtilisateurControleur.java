@@ -130,7 +130,13 @@ public class UtilisateurControleur {
   
   @FXML
   void actionBoutonAfficherArtistesActeurs(ActionEvent event) {
+// Supprime les éléments de la liste des artistes
+    this.listeArtistes.getItems().clear();
+    // Récupère les acteurs
+    location.allActors().forEach(actor -> this.listeArtistes.getItems().add(actor.toString()));
     
+// Affiche la liste des artistes
+    this.labelListeArtistes.setText("Tous les acteurs");
   }
   
   @FXML
