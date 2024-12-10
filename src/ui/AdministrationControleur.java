@@ -9,6 +9,13 @@ import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.StackPane;
+import location.LocationAdmin;
+import location.Artist;
+import location.Movie;
+import location.Genre;
+import java.util.Set;
+import javafx.stage.FileChooser;
+import java.io.File;
 
 /**
  * Controleur JavaFX de la fenêtre d'administration.
