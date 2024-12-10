@@ -117,6 +117,26 @@ public class UtilisateurControleur {
     }
     return location.getMovie(selected);
   }
+
+  private Artist getSelectedActor() {
+    // Retourne l'artiste sélectionné dans la liste des artistes
+    String selected = listeArtistes.getSelectionModel().getSelectedItem();
+    if (selected == null) {
+      return null;
+    }
+    String[] parts = selected.split(" ");
+    return location.getActor(parts[0], parts[1]);
+  }
+
+  private Artist getSelectedDirector() {
+    // Retourne l'artiste sélectionné dans la liste des artistes
+    String selected = listeArtistes.getSelectionModel().getSelectedItem();
+    if (selected == null) {
+      return null;
+    }
+    String[] parts = selected.split(" ");
+    return location.getDirector(parts[0], parts[1]);
+  }
   
   /**
    * Action du bouton "Film->Afficher les acteurs du film".
