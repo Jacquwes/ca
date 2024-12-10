@@ -86,7 +86,14 @@ public class AdministrationControleur {
   
   @FXML
   void actionBoutonAfficherArtistesRealisateurs(ActionEvent event) {
-    
+    Set<Artist> directors = this.locationAdmin.getAllDirectors();
+    System.out.println("Directors: " + directors);
+    this.listeArtistes.getItems().clear();
+    for (Artist director : directors) {
+      this.listeArtistes.getItems().add(director.toString());
+    }    
+
+    this.labelListeArtistes.setText("Liste des réalisateurs");
   }
   
   @FXML
