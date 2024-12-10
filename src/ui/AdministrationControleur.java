@@ -290,6 +290,12 @@ public class AdministrationControleur {
   
   @FXML
   void actionBoutonParcourirAffiche(ActionEvent event) {
+    FileChooser fileChooser = new FileChooser();
+    fileChooser.setTitle("Choisir une affiche");
+    File file = fileChooser.showOpenDialog(null);
+    if (file != null) {
+      this.entreeAffiche.setText(file.getAbsolutePath());
+    }
     
   }
   
