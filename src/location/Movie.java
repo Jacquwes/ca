@@ -309,4 +309,14 @@ public class Movie {
     }
     return true;
   }
+
+  /**
+   * Returns a string representation of the movie.
+   *
+   * @return a string representation of the movie.
+   */
+  @Override
+  public String toString() {
+    return title + " (" + year + ")";
+  }
 }
