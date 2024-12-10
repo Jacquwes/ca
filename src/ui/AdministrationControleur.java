@@ -180,7 +180,18 @@ public class AdministrationControleur {
   
   @FXML
   void actionBoutonAjouterActeurFilm(ActionEvent event) {
-    
+    String selectedArtist = this.listeArtistes.getSelectionModel().getSelectedItem();
+    String name = selectedArtist.split(" ")[0];
+    String firstName = selectedArtist.split(" ")[1];
+    Artist actor = this.locationAdmin.getArtist(name, firstName);
+    System.out.println("Actor: " + actor);
+
+    String selectedMovie = this.listeFilms.getSelectionModel().getSelectedItem();
+    String title = selectedMovie.split(" \\(")[0];
+    Movie movie = this.locationAdmin.getMovie(title);
+    System.out.println("Movie: " + movie);
+
+    this.locationAdmin.addActors(movie, actor);
   }
   
   @FXML
