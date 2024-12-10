@@ -367,9 +367,20 @@ public class UtilisateurControleur {
     this.labelListeArtistes.setText("Tous les artistes");
   }
 
+  /**
+   * Action du bouton "Film->Afficher tous les films".
+   *
+   * @param event
+   */
   @FXML
   void actionBoutonAfficherTousFilms(ActionEvent event) {
+    // Supprime les éléments de la liste des films
+    this.listeFilms.getItems().clear();
+    // Récupère tous les films
+    location.allMovies().forEach(movie -> this.listeFilms.getItems().add(movie.getTitle()));
 
+    // Affiche la liste des films
+    this.labelListeFilms.setText("Tous les films");
   }
 
   @FXML
