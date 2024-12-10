@@ -274,7 +274,9 @@ public class AdministrationControleur {
   
   @FXML
   void actionBoutonNouveauArtiste(ActionEvent event) {
-    
+    this.entreeNomArtiste.setText("");
+    this.entreePrenomArtiste.setText("");
+    this.entreeNationaliteArtiste.setText("");
   }
   
   @FXML
