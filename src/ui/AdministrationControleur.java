@@ -320,22 +320,22 @@ public class AdministrationControleur {
   
   @FXML
   void actionMenuApropos(ActionEvent event) {
-    
+    System.out.println("actionMenuApropos");
   }
   
   @FXML
   void actionMenuCharger(ActionEvent event) {
-    
+    System.out.println("actionMenuCharger");
   }
   
   @FXML
   void actionMenuQuitter(ActionEvent event) {
-    
+    System.out.println("actionMenuQuitter");
   }
   
   @FXML
   void actionMenuSauvegarder(ActionEvent event) {
-    
+    System.out.println("actionMenuSauvegarder");
   }
   
   @FXML
