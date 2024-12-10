@@ -69,7 +69,7 @@ public class LocationAdmin implements AdministrationInterface {
 
   @Override
   public Set<Artist> getAllActors() {
-    return artistManager.getArtists();
+    return artistManager.getActors();
   }
 
   @Override
