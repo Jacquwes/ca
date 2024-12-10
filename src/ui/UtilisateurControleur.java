@@ -283,6 +283,9 @@ public class UtilisateurControleur {
     
     // Ajoute les films du genre sélectionné à la liste des films
     location.moviesByGenre(genre).forEach(movie -> this.listeFilms.getItems().add(movie.getTitle()));
+
+    // Affiche la liste des films
+    this.labelListeFilms.setText("Films du genre " + genre);
   }
 
   @FXML
