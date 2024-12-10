@@ -383,9 +383,29 @@ public class UtilisateurControleur {
     this.labelListeFilms.setText("Tous les films");
   }
 
+  /**
+   * Action du bouton "Artiste->Chercher->Un acteur"
+   *
+   * @param event
+   */
   @FXML
   void actionBoutonChercherActeur(ActionEvent event) {
+    // Supprime les éléments de la liste des artistes
+    this.listeArtistes.getItems().clear();
+    // Récupère l'acteur
+    Artist actor = location.getActor(this.entreeNomArtiste.getText(), this.entreePrenomArtiste.getText());
+    if (actor == null) {
+      return;
+    }
 
+    // Ajoute l'acteur à la liste des artistes
+    this.listeArtistes.getItems().add(actor.toString());
+
+    // Affiche la liste des artistes
+    this.labelListeArtistes.setText("Acteur " + actor.toString());
+
+    // Met à jour les champs de l'artiste	
+    this.entreeNationaliteArtiste.setText(actor.getNationality());
   }
 
   @FXML
