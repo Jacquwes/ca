@@ -1,5 +1,7 @@
 package ui;
 
+import location.Location;
+import location.Movie;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.CheckBox;
@@ -113,7 +115,7 @@ public class UtilisateurControleur {
   
   @FXML
   void actionBoutonAfficherActeursFilmSelectionne(ActionEvent event) {
-// Supprime les éléments de la liste des artistes
+    // Supprime les éléments de la liste des artistes
     this.listeArtistes.getItems().clear();
     // Récupère le film sélectionné
     Movie movie = this.getSelectedMovie();
@@ -125,23 +127,29 @@ public class UtilisateurControleur {
     movie.getActors().forEach(actor -> this.listeArtistes.getItems().add(actor.toString()));
 
     // Affiche la liste des artistes
-    this.labelListeArtistes.setText("Acteurs du film " + movie.getTitle());    
+    this.labelListeArtistes.setText("Acteurs du film " + movie.getTitle());
   }
   
   @FXML
   void actionBoutonAfficherArtistesActeurs(ActionEvent event) {
-// Supprime les éléments de la liste des artistes
+    // Supprime les éléments de la liste des artistes
     this.listeArtistes.getItems().clear();
     // Récupère les acteurs
     location.allActors().forEach(actor -> this.listeArtistes.getItems().add(actor.toString()));
-    
-// Affiche la liste des artistes
+
+    // Affiche la liste des artistes
     this.labelListeArtistes.setText("Tous les acteurs");
   }
   
   @FXML
   void actionBoutonAfficherArtistesRealisateurs(ActionEvent event) {
-    
+    // Supprime les éléments de la liste des artistes
+    this.listeArtistes.getItems().clear();
+    // Récupère les réalisateurs
+    location.allDirectors().forEach(director -> this.listeArtistes.getItems().add(director.toString()));
+
+    // Affiche la liste des artistes
+    this.labelListeArtistes.setText("Tous les réalisateurs");
   }
   
   @FXML
@@ -253,5 +261,4 @@ public class UtilisateurControleur {
   void initialize() {
     // Mettre ici le code d'initialisation du contenu de la fenêtre
   }
-  
 }
