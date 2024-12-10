@@ -211,7 +211,14 @@ public class AdministrationControleur {
   
   @FXML
   void actionBoutonChercherArtiste(ActionEvent event) {
-    
+    String name = this.entreeNomArtiste.getText();
+    String firstName = this.entreePrenomArtiste.getText();
+    Artist artist = this.locationAdmin.getArtist(name, firstName);
+    if (artist != null) {
+      this.entreeNationaliteArtiste.setText(artist.getNationality());
+    }
+    this.listeArtistes.getItems().clear();
+    this.listeArtistes.getItems().add(artist.toString());
   }
   
   @FXML
