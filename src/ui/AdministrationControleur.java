@@ -249,6 +249,14 @@ public class AdministrationControleur {
   
   @FXML
   void actionBoutonEnregistrerArtiste(ActionEvent event) {
+    if (!this.entreeNomArtiste.getText().isEmpty() && 
+        !this.entreePrenomArtiste.getText().isEmpty() && 
+        !this.entreeNationaliteArtiste.getText().isEmpty()) 
+    {
+      Artist artist = this.locationAdmin.createArtist(this.entreeNomArtiste.getText(), this.entreePrenomArtiste.getText(), this.entreeNationaliteArtiste.getText());
+      this.listeArtistes.getItems().add(artist.toString());
+      // TODO: Ajouter l'artiste à la liste des artistes
+    }
     
   }
   
