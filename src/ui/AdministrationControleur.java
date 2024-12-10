@@ -223,7 +223,22 @@ public class AdministrationControleur {
   
   @FXML
   void actionBoutonChercherFilm(ActionEvent event) {
-    
+    String title = this.entreeTitreFilm.getText();
+    Movie movie = this.locationAdmin.getMovie(title);
+    if (movie != null) {
+      this.entreeAnneeFilm.setText(String.valueOf(movie.getYear()));
+      this.listeChoixAgeLimite.setValue(String.valueOf(movie.getMinimumAge()));
+      this.entreeNomPrenomRealisateur.setText(movie.getDirector().toString());
+      this.checkBoxLocationFilm.setSelected(movie.isAvailable());
+      this.listeGenresFilm.getItems().clear();
+      for (Genre genre : movie.getGenres()) {
+        this.listeGenresFilm.getItems().add(genre.toString());
+      }
+    }
+    this.listeFilms.getItems().clear();
+    this.listeFilms.getItems().add(movie.toString());
+
+    this.labelListeFilms.setText("Résultat de la recherche");
   }
   
   @FXML
