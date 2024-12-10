@@ -352,6 +352,13 @@ public class AdministrationControleur {
   
   @FXML
   void actionListeSelectionFilm(MouseEvent event) {
+
+  void initializeGenreList(){
+    for (Genre genre : Genre.values()) {
+      this.listeTousGenres.getItems().add(genre.toString());
+    }
+  }
+  
   /**
    * Initialise les données de l'application.
    *
