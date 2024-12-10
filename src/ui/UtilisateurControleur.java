@@ -126,6 +126,20 @@ public class UtilisateurControleur {
   }
 
   /**
+   * Retourne le film sélectionné dans la liste des films loués.
+   *
+   * @return le film sélectionné dans la liste des films loués.
+   */
+  private Movie getSelectedRentedMovie() {
+    // Retourne le film sélectionné dans la liste des films loués
+    String selected = listeFilmsEnLocation.getSelectionModel().getSelectedItem();
+    if (selected == null) {
+      return null;
+    }
+    return location.getMovie(selected);
+  }
+
+  /**
    * Retourne l'artiste sélectionné dans la liste des artistes.
    *
    * @return l'artiste sélectionné dans la liste des artistes.
