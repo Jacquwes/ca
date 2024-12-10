@@ -74,7 +74,14 @@ public class AdministrationControleur {
   
   @FXML
   void actionBoutonAfficherArtistesActeurs(ActionEvent event) {
-    
+    Set<Artist> actors = this.locationAdmin.getAllActors();
+    System.out.println("Actors: " + actors);
+    this.listeArtistes.getItems().clear();
+    for (Artist actor : actors) {
+      this.listeArtistes.getItems().add(actor.toString());
+    }
+
+    this.labelListeArtistes.setText("Liste des acteurs");
   }
   
   @FXML
