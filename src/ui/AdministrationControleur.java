@@ -153,7 +153,17 @@ public class AdministrationControleur {
   
   @FXML
   void actionBoutonAfficherTousActeursFilm(ActionEvent event) {
-    
+    String selectedMovie = this.listeFilms.getSelectionModel().getSelectedItem();
+    String title = selectedMovie.split(" \\(")[0];
+    Movie movie = this.locationAdmin.getMovie(title);
+    System.out.println("Movie: " + movie);
+
+    this.listeArtistes.getItems().clear();
+    for (Artist actor : movie.getActors()) {
+      this.listeArtistes.getItems().add(actor.toString());
+    }
+
+    this.labelListeArtistes.setText("Liste des acteurs du film " + movie);
   }
   
   @FXML
