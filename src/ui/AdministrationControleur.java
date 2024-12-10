@@ -257,7 +257,7 @@ public class AdministrationControleur {
       this.listeArtistes.getItems().add(artist.toString());
       // TODO: Ajouter l'artiste à la liste des artistes
     }
-    
+
   }
   
   @FXML
@@ -306,7 +306,7 @@ public class AdministrationControleur {
     String firstName = selectedArtist.split(" ")[1];
     Artist artist = this.locationAdmin.getArtist(name, firstName);
     this.locationAdmin.deleteArtist(artist);
-    
+
     actionBoutonAfficherTousArtistes(event);
   }
   
@@ -344,7 +344,7 @@ public class AdministrationControleur {
     String name = selectedArtist.split(" ")[0];
     String firstName = selectedArtist.split(" ")[1];
     Artist artist = this.locationAdmin.getArtist(name, firstName);
-    
+
     this.entreeNomArtiste.setText(artist.getLastName());
     this.entreePrenomArtiste.setText(artist.getFirstName());
     this.entreeNationaliteArtiste.setText(artist.getNationality());
@@ -398,7 +398,7 @@ public class AdministrationControleur {
   
     initializeGenreList();
   }
-  
+
   @FXML
   void initialize() {
     // Mettre ici le code d'initialisation du contenu de la fenêtre
