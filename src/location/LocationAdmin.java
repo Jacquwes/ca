@@ -77,6 +77,15 @@ public class LocationAdmin implements AdministrationInterface {
     return artistManager.getDirectors();
   }
 
+  /**
+   * Returns the set of all artists.
+   * 
+   * @return the set of all artists
+   */
+  public Set<Artist> getAllArtists() {
+    return artistManager.getArtists();
+  }
+
   @Override
   public Set<Movie> getMoviesByDirector(Artist director) {
     return movieManager.getMovies(movie -> movie.getDirector().equals(director));
