@@ -104,6 +104,11 @@ public class UtilisateurControleur {
 
   private Location location = new Location();
 
+  /**
+   * Retourne le film sélectionné dans la liste des films.
+   *
+   * @return le film sélectionné dans la liste des films.
+   */
   private Movie getSelectedMovie() {
     // Retourne le film sélectionné dans la liste des films
     String selected = listeFilms.getSelectionModel().getSelectedItem();
@@ -113,6 +118,11 @@ public class UtilisateurControleur {
     return location.getMovie(selected);
   }
   
+  /**
+   * Action du bouton "Afficher les acteurs du film".
+   *
+   * @param event l'événement de clic sur le bouton.
+   */
   @FXML
   void actionBoutonAfficherActeursFilmSelectionne(ActionEvent event) {
     // Supprime les éléments de la liste des artistes
@@ -130,6 +140,11 @@ public class UtilisateurControleur {
     this.labelListeArtistes.setText("Acteurs du film " + movie.getTitle());
   }
   
+  /**
+   * Action du bouton "Les acteurs".
+   *
+   * @param event
+   */
   @FXML
   void actionBoutonAfficherArtistesActeurs(ActionEvent event) {
     // Supprime les éléments de la liste des artistes
@@ -141,6 +156,11 @@ public class UtilisateurControleur {
     this.labelListeArtistes.setText("Tous les acteurs");
   }
   
+  /**
+   * Action du bouton "Les réalisateurs".
+   *
+   * @param event
+   */
   @FXML
   void actionBoutonAfficherArtistesRealisateurs(ActionEvent event) {
     // Supprime les éléments de la liste des artistes
