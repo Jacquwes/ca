@@ -262,7 +262,14 @@ public class AdministrationControleur {
   
   @FXML
   void actionBoutonEnregistrerFilm(ActionEvent event) {
-    
+    if (!this.entreeTitreFilm.getText().isEmpty() && 
+        !this.entreeAnneeFilm.getText().isEmpty() && 
+        !this.entreeNomPrenomRealisateur.getText().isEmpty()) 
+    {
+      Artist director = this.locationAdmin.getArtist(this.entreeNomPrenomRealisateur.getText().split(" ")[0], this.entreeNomPrenomRealisateur.getText().split(" ")[1]);
+      Movie movie = this.locationAdmin.createMovie(this.entreeTitreFilm.getText(), null, Integer.parseInt(this.entreeAnneeFilm.getText()), Integer.parseInt(this.listeChoixAgeLimite.getValue()));
+      this.locationAdmin.addDirector(movie, director);
+    }
   }
   
   @FXML
