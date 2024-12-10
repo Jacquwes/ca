@@ -37,6 +37,12 @@ public class LocationAdmin implements AdministrationInterface {
     return true;
   }
 
+  public boolean addDirector(Movie movie, Artist director) {
+    this.artistManager.addDirector(director);
+    movie.setDirector(director);
+    return true;
+  }
+
   @Override
   public boolean addGenres(Movie movie, Genre... genres) {
     for (Genre genre : genres) {
