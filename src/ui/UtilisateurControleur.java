@@ -1,6 +1,7 @@
 package ui;
 
 import location.Artist;
+import location.Genre;
 import location.Location;
 import location.Movie;
 import javafx.event.ActionEvent;
@@ -137,6 +138,15 @@ public class UtilisateurControleur {
     }
     String[] parts = selected.split(" ");
     return location.getDirector(parts[0], parts[1]);
+  }
+
+  private Genre getSelectedGenre() {
+    // Retourne le genre sélectionné dans la liste des genres
+    String selected = listeGenresFilm.getSelectionModel().getSelectedItem();
+    if (selected == null) {
+      return null;
+    }
+    return Genre.valueOf(selected);
   }
 
   /**
