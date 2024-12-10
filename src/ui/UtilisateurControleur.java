@@ -745,12 +745,25 @@ public class UtilisateurControleur {
 
   @FXML
   void actionSelectionEvaluation(MouseEvent event) {
-
   }
 
+  /**
+   * Action de la sélection d'un film.
+   *
+   * @param event
+   */
   @FXML
   void actionSelectionFilm(MouseEvent event) {
+    // Supprime les éléments de la liste des évaluations
+    this.listeEvaluations.getItems().clear();
+    // Récupère le film sélectionné
+    Movie movie = this.getSelectedMovie();
+    if (movie == null) {
+      return;
+    }
 
+    // Ajoute les évaluations du film sélectionné à la liste des évaluations
+    movie.getReviews().forEach(review -> this.listeEvaluations.getItems().add(review.toString()));
   }
 
   @FXML
