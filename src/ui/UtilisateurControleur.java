@@ -4,6 +4,7 @@ import location.Artist;
 import location.Genre;
 import location.Location;
 import location.Movie;
+import location.Review;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.CheckBox;
@@ -280,7 +281,7 @@ public class UtilisateurControleur {
     this.listeFilms.getItems().clear();
     // Récupère le genre sélectionné
     Genre genre = getSelectedGenre();
-    
+
     // Ajoute les films du genre sélectionné à la liste des films
     location.moviesByGenre(genre).forEach(movie -> this.listeFilms.getItems().add(movie.getTitle()));
 
@@ -314,9 +315,33 @@ public class UtilisateurControleur {
     this.labelListeFilms.setText("Films du réalisateur " + director.toString());
   }
 
+  /**
+   * Action du bouton "Evaluation->Afficher mon évaluation".
+   *
+   * @param event
+   */
   @FXML
   void actionBoutonAfficherMonEvaluation(ActionEvent event) {
+    // Clear fields
+    this.listeNoteEvaluation.setValue(null);
+    this.texteCommentaire.clear();
+    this.entreeAuteurEvaluation.clear();
 
+    // Get selected movie
+    Movie movie = this.getSelectedMovie();
+    if (movie == null) {
+      return;
+    }
+
+    // Get and display review of the user
+    movie.getReviews().stream()
+        .filter(review -> review.getUser().toString().equals(this.entreeAuteurEvaluation.getText()))
+        .findFirst()
+        .ifPresent(review -> {
+          this.listeNoteEvaluation.setValue((int)review.getRating());
+          this.texteCommentaire.setText(review.getComment());
+          this.entreeAuteurEvaluation.setText(review.getUser().toString());
+        });
   }
 
   @FXML
