@@ -685,9 +685,40 @@ public class UtilisateurControleur {
     }
   }
 
+  /**
+   * Action du bouton "Modifier mon évaluation".
+   *
+   * @param event
+   */
   @FXML
   void actionBoutonModifierMonEvaluation(ActionEvent event) {
+    // Get selected movie
+    Movie movie = this.getSelectedMovie();
+    if (movie == null) {
+      return;
+    }
 
+    // Get and update review of the user
+    movie.getReviews().stream()
+        .filter(review -> review.getUser().toString().equals(this.entreeAuteurEvaluation.getText()))
+        .findFirst()
+        .ifPresent(review -> {
+          review.setRating(this.listeNoteEvaluation.getValue());
+          review.setComment(this.texteCommentaire.getText());
+        });
+
+    // Clear fields
+    this.listeNoteEvaluation.setValue(null);
+    this.texteCommentaire.clear();
+    this.entreeAuteurEvaluation.clear();
+
+    // Update average rating
+    this.entreeEvaluationMoyenne
+        .setText(String.valueOf(movie.getReviews().stream().mapToDouble(Review::getRating).average().orElse(0)));
+
+    // Update list of reviews
+    this.listeEvaluations.getItems().clear();
+    movie.getReviews().forEach(r -> this.listeEvaluations.getItems().add(r.toString()));
   }
 
   @FXML
