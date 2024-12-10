@@ -743,8 +743,35 @@ public class UtilisateurControleur {
     this.labelListeFilms.setText("Films de l'artiste " + artist.toString());
   }
 
+  /**
+   * Action de la sélection d'une évaluation.
+   *
+   * @param event
+   */
   @FXML
   void actionSelectionEvaluation(MouseEvent event) {
+    // Récupère l'évaluation sélectionnée
+    String selected = this.listeEvaluations.getSelectionModel().getSelectedItem();
+    if (selected == null) {
+      return;
+    }
+    String[] parts = selected.split(" ");
+    this.entreeAuteurEvaluation.setText(parts[0] + " " + parts[1]);
+
+    // Get selected movie
+    Movie movie = this.getSelectedMovie();
+    if (movie == null) {
+      return;
+    }
+
+    // Get and display review of the user
+    movie.getReviews().stream()
+        .filter(review -> review.getUser().toString().equals(this.entreeAuteurEvaluation.getText()))
+        .findFirst()
+        .ifPresent(review -> {
+          this.listeNoteEvaluation.setValue((int) review.getRating());
+          this.texteCommentaire.setText(review.getComment());
+        });
   }
 
   /**
