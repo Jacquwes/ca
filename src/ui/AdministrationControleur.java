@@ -17,6 +17,8 @@ import javafx.scene.layout.StackPane;
  *
  */
 public class AdministrationControleur {
+
+  private LocationAdmin locationAdmin = new LocationAdmin();
   
   @FXML
   private CheckBox checkBoxLocationFilm;
@@ -185,11 +187,34 @@ public class AdministrationControleur {
   
   @FXML
   void actionListeSelectionFilm(MouseEvent event) {
-    
+  /**
+   * Initialise les données de l'application.
+   *
+   */
+  void initializeLocationAdmin(){
+    // Initialise des acteurs/directeurs/films etc
+    Artist reeves = this.locationAdmin.createArtist("Reeves", "Keanu", "USA");
+    Artist fishburne = this.locationAdmin.createArtist("Fishburne", "Laurence", "USA");
+    Artist director = this.locationAdmin.createArtist("Wachowski", "Lana", "USA");
+    Artist director2 = this.locationAdmin.createArtist("Wachowski", "Lilly", "USA");
+    Movie matrix = this.locationAdmin.createMovie("The Matrix", null, 1999, 16);
+    Movie matrix2 = this.locationAdmin.createMovie("The Matrix Reloaded", null, 2003, 16);
+    this.locationAdmin.addActors(matrix, reeves);
+    this.locationAdmin.addActors(matrix, fishburne);
+    this.locationAdmin.addActors(matrix2, reeves);
+    this.locationAdmin.addActors(matrix2, fishburne);
+    this.locationAdmin.addDirector(matrix, director);
+    this.locationAdmin.addDirector(matrix2, director2);
+    // Ajout de genre 
+    matrix.addGenre(Genre.ScienceFiction);
+    matrix2.addGenre(Genre.Action);
+  
+    initializeGenreList();
   }
   
   @FXML
   void initialize() {
     // Mettre ici le code d'initialisation du contenu de la fenêtre
+    initializeLocationAdmin();
   }
 }
