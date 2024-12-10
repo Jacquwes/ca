@@ -341,7 +341,7 @@ public class UtilisateurControleur {
         .filter(review -> review.getUser().toString().equals(this.entreeAuteurEvaluation.getText()))
         .findFirst()
         .ifPresent(review -> {
-          this.listeNoteEvaluation.setValue((int)review.getRating());
+          this.listeNoteEvaluation.setValue((int) review.getRating());
           this.texteCommentaire.setText(review.getComment());
           this.entreeAuteurEvaluation.setText(review.getUser().toString());
         });
@@ -384,7 +384,7 @@ public class UtilisateurControleur {
   }
 
   /**
-   * Action du bouton "Artiste->Chercher->Un acteur"
+   * Action du bouton "Artiste->Chercher->Un acteur".
    *
    * @param event
    */
@@ -404,13 +404,38 @@ public class UtilisateurControleur {
     // Affiche la liste des artistes
     this.labelListeArtistes.setText("Acteur " + actor.toString());
 
-    // Met à jour les champs de l'artiste	
+    // Met à jour les champs de l'artiste
     this.entreeNationaliteArtiste.setText(actor.getNationality());
   }
 
+  /**
+   * Action du bouton "Film->Chercher un film".
+   *
+   * @param event
+   */
   @FXML
   void actionBoutonChercherFilm(ActionEvent event) {
+    // Supprime les éléments de la liste des films
+    this.listeFilms.getItems().clear();
+    // Récupère le film
+    Movie movie = location.getMovie(this.entreeTitreFilm.getText());
+    if (movie == null) {
+      return;
+    }
 
+    // Ajoute le film à la liste des films
+    this.listeFilms.getItems().add(movie.getTitle());
+
+    // Affiche la liste des films
+    this.labelListeFilms.setText("Film " + movie.getTitle());
+
+    // Met à jour les champs du film
+    this.entreeAnneeFilm.setText(String.valueOf(movie.getYear()));
+    this.entreeAgeLimiteFilm.setText(String.valueOf(movie.getMinimumAge()));
+    this.entreeNomPrenomRealisateurFilm.setText(movie.getDirector().toString());
+    this.entreeGenresFilm
+        .setText(String.join(", ", movie.getGenres().stream().map(Genre::toString).toArray(String[]::new)));
+    this.checkFilmLouable.setSelected(movie.isAvailable());
   }
 
   @FXML
