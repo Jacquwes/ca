@@ -243,7 +243,8 @@ public class AdministrationControleur {
   
   @FXML
   void actionBoutonChoisirArtisteSelectionneRealisateur(ActionEvent event) {
-    
+    String selectedArtist = this.listeArtistes.getSelectionModel().getSelectedItem();
+    this.entreeNomPrenomRealisateur.setText(selectedArtist);
   }
   
   @FXML
