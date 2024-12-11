@@ -21,14 +21,25 @@ public class LocationAdmin implements AdministrationInterface {
 
   @Override
   public Movie createMovie(String title, Artist director, int year, int ageLimit) {
-    return new Movie(title, year, director, new HashSet<>());
+    Movie movie = new Movie(title, year, director, new HashSet<>());
+    movie.setMinimumAge(ageLimit);
+    this.movieManager.addMovie(movie);
+    return movie;
   }
 
   @Override
   public boolean addActors(Movie movie, Artist... actors) {
+    
     for (Artist actor : actors) {
+      this.artistManager.addActor(actor);
       movie.addActor(actor);
     }
+    return true;
+  }
+
+  public boolean addDirector(Movie movie, Artist director) {
+    this.artistManager.addDirector(director);
+    movie.setDirector(director);
     return true;
   }
 
@@ -58,12 +69,21 @@ public class LocationAdmin implements AdministrationInterface {
 
   @Override
   public Set<Artist> getAllActors() {
-    return artistManager.getArtists();
+    return artistManager.getActors();
   }
 
   @Override
   public Set<Artist> getAllDirectors() {
     return artistManager.getDirectors();
+  }
+
+  /**
+   * Returns the set of all artists.
+   * 
+   * @return the set of all artists
+   */
+  public Set<Artist> getAllArtists() {
+    return artistManager.getArtists();
   }
 
   @Override
