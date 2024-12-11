@@ -29,7 +29,6 @@ public class LocationAdmin implements AdministrationInterface {
 
   @Override
   public boolean addActors(Movie movie, Artist... actors) {
-    
     for (Artist actor : actors) {
       this.artistManager.addActor(actor);
       movie.addActor(actor);
@@ -41,6 +40,11 @@ public class LocationAdmin implements AdministrationInterface {
     this.artistManager.addDirector(director);
     movie.setDirector(director);
     return true;
+  }
+
+  public boolean addArtist(Artist artist) {
+    return this.artistManager.addArtist(artist);
+    
   }
 
   @Override
