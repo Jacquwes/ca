@@ -8,6 +8,12 @@ import java.util.function.Predicate;
  * Manages all the artists.
  */
 public class ArtistManager {
+
+  /**
+   * Represents all the artists.
+   */
+  private static Set<Artist> artists = new HashSet<>();
+
   /**
    * Represents all the actors.
    */
@@ -28,10 +34,7 @@ public class ArtistManager {
    * @return the artists.
    */
   public Set<Artist> getArtists() {
-    Set<Artist> result = new HashSet<Artist>();
-    result.addAll(ArtistManager.actors);
-    result.addAll(ArtistManager.directors);
-    return result;
+    return ArtistManager.artists;
   }
 
   /**
@@ -61,14 +64,25 @@ public class ArtistManager {
   }
 
   public boolean deleteArtist(Artist artist) {
-    return ArtistManager.actors.remove(artist) || ArtistManager.directors.remove(artist);
+    return ArtistManager.actors.remove(artist) || ArtistManager.directors.remove(artist) || ArtistManager.artists.remove(artist);
   }
 
   public void addActor(Artist artist) {
+    if (!ArtistManager.artists.contains(artist)) {
+      ArtistManager.artists.add(artist);
+    }
     ArtistManager.actors.add(artist);
   }
 
   public void addDirector(Artist artist) {
+    if (!ArtistManager.artists.contains(artist)) {
+      ArtistManager.artists.add(artist);
+    }
     ArtistManager.directors.add(artist);
   }
+
+  public boolean addArtist(Artist artist) {
+    return ArtistManager.artists.add(artist);
+  }
+
 }

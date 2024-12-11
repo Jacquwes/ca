@@ -4,9 +4,24 @@ import java.io.IOException;
 import java.util.HashSet;
 import java.util.Set;
 
+/**
+ * Represents the administration of the location.
+ */
 public class LocationAdmin implements AdministrationInterface {
+
+  /**
+   * Represents the artist manager.
+   */
   private ArtistManager artistManager = new ArtistManager();
+
+  /**
+   * Represents the movie manager.
+   */
   private MovieManager movieManager = new MovieManager();
+
+  /**
+   * Represents the reservation manager.
+   */
   private ReservationManager reservationManager = new ReservationManager();
 
   @Override
@@ -29,7 +44,6 @@ public class LocationAdmin implements AdministrationInterface {
 
   @Override
   public boolean addActors(Movie movie, Artist... actors) {
-    
     for (Artist actor : actors) {
       this.artistManager.addActor(actor);
       movie.addActor(actor);
@@ -37,10 +51,30 @@ public class LocationAdmin implements AdministrationInterface {
     return true;
   }
 
+  /**
+   * @brief Adds a director to a movie.
+   * 
+   * @param movie the movie 
+   * @param director the director
+   * 
+   * @return true if the director was added to the movie, false otherwise
+   */
   public boolean addDirector(Movie movie, Artist director) {
     this.artistManager.addDirector(director);
     movie.setDirector(director);
     return true;
+  }
+
+  /**
+   * @brief Adds an artist to the artist manager.
+   * 
+   * @param artist the artist to add
+   * 
+   * @return true if the artist was added, false otherwise
+   */
+  public boolean addArtist(Artist artist) {
+    return this.artistManager.addArtist(artist);
+    
   }
 
   @Override
