@@ -16,6 +16,8 @@ import location.Genre;
 import java.util.Set;
 import javafx.stage.FileChooser;
 import java.io.File;
+import javafx.scene.Scene;
+import javafx.stage.Stage;
 
 /**
  * Controleur JavaFX de la fenêtre d'administration.
@@ -320,7 +322,22 @@ public class AdministrationControleur {
   
   @FXML
   void actionMenuApropos(ActionEvent event) {
-    System.out.println("actionMenuApropos");
+    StackPane secondaryLayout = new StackPane();
+    Label label = new Label("Application créée par\nFlorent Delalande et Paul Hariel");
+    label.setStyle("-fx-font-size: 16px;");
+    secondaryLayout.getChildren().add(label);
+
+    Scene secondScene = new Scene(secondaryLayout, 300, 150);
+
+    Stage newWindow = new Stage();
+    newWindow.setTitle("À propos");
+    newWindow.setScene(secondScene);
+
+    newWindow.setX(200);
+    newWindow.setY(100);
+
+    newWindow.show();
+    
   }
   
   @FXML
