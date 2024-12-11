@@ -347,7 +347,7 @@ public class AdministrationControleur {
   
   @FXML
   void actionMenuQuitter(ActionEvent event) {
-    System.out.println("actionMenuQuitter");
+    System.exit(0);
   }
   
   @FXML
