@@ -74,6 +74,12 @@ public class AdministrationControleur {
   @FXML
   private ListView<String> listeTousGenres;
   
+
+  /**
+   * @brief Called when the user clicks on the button "Les acteurs".
+   * 
+   * @param event the event triggered by the user
+   */
   @FXML
   void actionBoutonAfficherArtistesActeurs(ActionEvent event) {
     Set<Artist> actors = this.locationAdmin.getAllActors();
@@ -86,6 +92,11 @@ public class AdministrationControleur {
     this.labelListeArtistes.setText("Liste des acteurs");
   }
   
+  /**
+   * @brief Called when the user clicks on the button "Les réalisateurs".
+   * 
+   * @param event
+   */
   @FXML
   void actionBoutonAfficherArtistesRealisateurs(ActionEvent event) {
     Set<Artist> directors = this.locationAdmin.getAllDirectors();
@@ -98,6 +109,12 @@ public class AdministrationControleur {
     this.labelListeArtistes.setText("Liste des réalisateurs");
   }
   
+  /**
+   * @brief Called when the user clicks on the button to display movies for a selected actor.
+   * Retrieves and displays the movies in which the selected actor has performed.
+   * 
+   * @param event the event triggered by the user action
+   */
   @FXML
   void actionBoutonAfficherFilmsActeurSelectionne(ActionEvent event) {
     String selectedActor = this.listeArtistes.getSelectionModel().getSelectedItem();
@@ -116,7 +133,13 @@ public class AdministrationControleur {
 
     this.labelListeFilms.setText("Liste des films de l'acteur " + actor);
   }
-  
+
+  /**
+   * @brief Called when the user clicks on the button to display movies by a selected director.
+   * Retrieves and displays all movies directed by the selected artist.
+   * 
+   * @param event the event triggered by the user action
+   */
   @FXML
   void actionBoutonAfficherFilmsDuRealisateur(ActionEvent event) {
     String selectedDirector = this.listeArtistes.getSelectionModel().getSelectedItem();
@@ -134,6 +157,13 @@ public class AdministrationControleur {
     }
   }
   
+  /**
+   * @brief Called when the user clicks on the button to display movies for a specific director.
+   * Retrieves and shows the list of movies directed by the selected artist,
+   * and updates the films list label with the director's name.
+   * 
+   * @param event the event triggered by the user action
+   */
   @FXML
   void actionBoutonAfficherFilmsRealisateurSelectionne(ActionEvent event) {
     String selectedDirector = this.listeArtistes.getSelectionModel().getSelectedItem();
@@ -153,6 +183,13 @@ public class AdministrationControleur {
     this.labelListeFilms.setText("Liste des films du réalisateur " + director);
   }
   
+  /**
+   * @brief Called when the user clicks on the button to display all actors of a selected film.
+   * Retrieves the selected movie and populates the artists list with its actors.
+   * Updates the artists list label to show the movie's name.
+   * 
+   * @param event the event triggered by the user action
+   */
   @FXML
   void actionBoutonAfficherTousActeursFilm(ActionEvent event) {
     String selectedMovie = this.listeFilms.getSelectionModel().getSelectedItem();
@@ -168,6 +205,13 @@ public class AdministrationControleur {
     this.labelListeArtistes.setText("Liste des acteurs du film " + movie);
   }
   
+  /**
+   * @brief Called when the user clicks on the button to display all artists.
+   * Retrieves all artists from the LocationAdmin and populates the artists list.
+   * Updates the artists list label to indicate it shows all artists.
+   * 
+   * @param event the event triggered by the user action
+   */
   @FXML
   void actionBoutonAfficherTousArtistes(ActionEvent event) {
     Set<Artist> artists = this.locationAdmin.getAllArtists();
@@ -180,6 +224,12 @@ public class AdministrationControleur {
     this.labelListeArtistes.setText("Liste de tous les artistes");  
   }
   
+  /**
+   * @brief Called when the user clicks on the button to add an actor to a film.
+   * Retrieves the selected artist and movie, then adds the actor to the movie's cast.
+   * 
+   * @param event the event triggered by the user action
+   */
   @FXML
   void actionBoutonAjouterActeurFilm(ActionEvent event) {
     String selectedArtist = this.listeArtistes.getSelectionModel().getSelectedItem();
@@ -196,6 +246,13 @@ public class AdministrationControleur {
     this.locationAdmin.addActors(movie, actor);
   }
   
+  /**
+   * @brief Called when the user clicks on the button to add a genre to a film.
+   * Retrieves the selected genre and movie, then adds the genre to the movie.
+   * Updates the film's genre list to display the newly added genre.
+   * 
+   * @param event the event triggered by the user action
+   */
   @FXML
   void actionBoutonAjouterGenreFilm(ActionEvent event) {
     String selectedGenre = this.listeTousGenres.getSelectionModel().getSelectedItem();
@@ -211,6 +268,13 @@ public class AdministrationControleur {
     this.listeGenresFilm.getItems().add(genre.toString());
   }
   
+  /**
+   * @brief Called when the user clicks on the button to search for an artist.
+   * Retrieves an artist by their last name and first name, and displays their nationality.
+   * Populates the artists list with the found artist.
+   * 
+   * @param event the event triggered by the user action
+   */
   @FXML
   void actionBoutonChercherArtiste(ActionEvent event) {
     String name = this.entreeNomArtiste.getText();
@@ -223,6 +287,13 @@ public class AdministrationControleur {
     this.listeArtistes.getItems().add(artist.toString());
   }
   
+  /**
+   * @brief Called when the user clicks on the button to search for a film.
+   * Retrieves a movie by its title and populates the interface fields with the movie's details.
+   * Displays the movie in the films list with a "search result" label.
+   * 
+   * @param event the event triggered by the user action
+   */
   @FXML
   void actionBoutonChercherFilm(ActionEvent event) {
     String title = this.entreeTitreFilm.getText();
@@ -243,12 +314,25 @@ public class AdministrationControleur {
     this.labelListeFilms.setText("Résultat de la recherche");
   }
   
+  /**
+   * @brief Called when the user clicks on the button to select the currently selected artist as the director.
+   * Populates the director text field with the selected artist's full name.
+   * 
+   * @param event the event triggered by the user action
+   */
   @FXML
   void actionBoutonChoisirArtisteSelectionneRealisateur(ActionEvent event) {
     String selectedArtist = this.listeArtistes.getSelectionModel().getSelectedItem();
     this.entreeNomPrenomRealisateur.setText(selectedArtist);
   }
   
+  /**
+   * @brief Called when the user clicks on the button to save a new artist.
+   * Creates a new artist using the entered last name, first name, and nationality.
+   * Adds the new artist to the artists list if all required fields are filled.
+   * 
+   * @param event the event triggered by the user action
+   */
   @FXML
   void actionBoutonEnregistrerArtiste(ActionEvent event) {
     if (!this.entreeNomArtiste.getText().isEmpty() && 
@@ -262,6 +346,13 @@ public class AdministrationControleur {
 
   }
   
+  /**
+   * @brief Called when the user clicks on the button to save a new movie.
+   * Creates a new movie using the entered title, year, and age limit.
+   * Assigns the selected director to the movie if all required fields are filled.
+   * 
+   * @param event the event triggered by the user action
+   */
   @FXML
   void actionBoutonEnregistrerFilm(ActionEvent event) {
     if (!this.entreeTitreFilm.getText().isEmpty() && 
@@ -274,6 +365,12 @@ public class AdministrationControleur {
     }
   }
   
+  /**
+   * @brief Called when the user clicks on the button to create a new artist entry.
+   * Clears all text fields related to artist information.
+   * 
+   * @param event the event triggered by the user action
+   */
   @FXML
   void actionBoutonNouveauArtiste(ActionEvent event) {
     this.entreeNomArtiste.setText("");
@@ -281,6 +378,12 @@ public class AdministrationControleur {
     this.entreeNationaliteArtiste.setText("");
   }
   
+  /**
+   * @brief Called when the user clicks on the button to create a new movie entry.
+   * Resets all fields and lists related to movie information.
+   * 
+   * @param event the event triggered by the user action
+   */
   @FXML
   void actionBoutonNouveauFilm(ActionEvent event) {
     this.entreeTitreFilm.setText("");
@@ -290,6 +393,13 @@ public class AdministrationControleur {
     this.listeGenresFilm.getItems().clear();
   }
   
+  /**
+   * @brief Called when the user clicks on the button to browse and select a movie poster.
+   * Opens a file chooser dialog to select an image file for the movie poster.
+   * Sets the selected file's absolute path in the poster input field.
+   * 
+   * @param event the event triggered by the user action
+   */
   @FXML
   void actionBoutonParcourirAffiche(ActionEvent event) {
     FileChooser fileChooser = new FileChooser();
@@ -301,6 +411,13 @@ public class AdministrationControleur {
     
   }
   
+  /**
+   * @brief Called when the user clicks on the button to delete the selected artist.
+   * Retrieves the selected artist, deletes them from the location administration,
+   * and refreshes the list of all artists.
+   * 
+   * @param event the event triggered by the user action
+   */
   @FXML
   void actionBoutonSupprimerArtiste(ActionEvent event) {
     String selectedArtist = this.listeArtistes.getSelectionModel().getSelectedItem();
@@ -312,6 +429,12 @@ public class AdministrationControleur {
     actionBoutonAfficherTousArtistes(event);
   }
   
+  /**
+   * @brief Called when the user clicks on the button to delete the selected movie.
+   * Retrieves the selected movie and deletes it from the location administration.
+   * 
+   * @param event the event triggered by the user action
+   */
   @FXML
   void actionBoutonSupprimerFilm(ActionEvent event) {
     String selectedMovie = this.listeFilms.getSelectionModel().getSelectedItem();
@@ -320,6 +443,12 @@ public class AdministrationControleur {
     this.locationAdmin.deleteMovie(movie);
   }
   
+  /**
+   * @brief Called when the user selects the "About" menu item.
+   * Creates and displays a new window with information about the application's creators.
+   * 
+   * @param event the event triggered by the user action
+   */
   @FXML
   void actionMenuApropos(ActionEvent event) {
     StackPane secondaryLayout = new StackPane();
@@ -345,6 +474,12 @@ public class AdministrationControleur {
     System.out.println("actionMenuCharger");
   }
   
+  /**
+   * @brief Called when the user selects the "Quit" menu item.
+   * Terminates the application immediately.
+   * 
+   * @param event the event triggered by the user action
+   */
   @FXML
   void actionMenuQuitter(ActionEvent event) {
     System.exit(0);
@@ -355,6 +490,12 @@ public class AdministrationControleur {
     System.out.println("actionMenuSauvegarder");
   }
   
+  /**
+   * @brief Called when the user selects an artist from the artists list.
+   * Populates the artist information fields with the details of the selected artist.
+   * 
+   * @param event the mouse event triggered by selecting an artist
+   */
   @FXML
   void actionListeSelectionArtiste(MouseEvent event) {
     String selectedArtist = this.listeArtistes.getSelectionModel().getSelectedItem();
@@ -367,6 +508,12 @@ public class AdministrationControleur {
     this.entreeNationaliteArtiste.setText(artist.getNationality());
   }
   
+  /**
+   * @brief Called when the user selects a movie from the movies list.
+   * Populates the movie information fields with the details of the selected movie.
+   * 
+   * @param event the mouse event triggered by selecting a movie
+   */
   @FXML
   void actionListeSelectionFilm(MouseEvent event) {
     String selectedMovie = this.listeFilms.getSelectionModel().getSelectedItem();
@@ -385,6 +532,10 @@ public class AdministrationControleur {
     }
   }
 
+  /**
+   * @brief Initializes the list of all possible movie genres.
+   * Populates the genre selection list with all available genres from the Genre enum.
+   */
   void initializeGenreList(){
     for (Genre genre : Genre.values()) {
       this.listeTousGenres.getItems().add(genre.toString());
@@ -392,11 +543,11 @@ public class AdministrationControleur {
   }
   
   /**
-   * Initialise les données de l'application.
-   *
+   * @brief Initializes the LocationAdmin with some default artists, movies, and their relationships.
+   * Creates sample data including actors, directors, and movies with genres.
+   * Also calls initializeGenreList() to set up the genre selection list.
    */
   void initializeLocationAdmin(){
-    // Initialise des acteurs/directeurs/films etc
     Artist reeves = this.locationAdmin.createArtist("Reeves", "Keanu", "USA");
     Artist fishburne = this.locationAdmin.createArtist("Fishburne", "Laurence", "USA");
     Artist director = this.locationAdmin.createArtist("Wachowski", "Lana", "USA");
@@ -416,9 +567,13 @@ public class AdministrationControleur {
     initializeGenreList();
   }
 
+  /**
+   * @brief JavaFX initialization method called after all FXML elements are loaded.
+   * Triggers the initialization of the LocationAdmin with default data.
+   */
   @FXML
   void initialize() {
-    // Mettre ici le code d'initialisation du contenu de la fenêtre
     initializeLocationAdmin();
   }
 }
+
