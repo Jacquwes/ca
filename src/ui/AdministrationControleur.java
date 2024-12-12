@@ -465,7 +465,9 @@ public class AdministrationControleur {
     String name = selectedArtist.split(" ")[0];
     String firstName = selectedArtist.split(" ")[1];
     Artist artist = this.locationAdmin.getArtist(name, firstName);
-    this.locationAdmin.deleteArtist(artist);
+    if (!this.locationAdmin.deleteArtist(artist)) {
+      System.out.println("Artist not found");
+    }
 
     actionBoutonAfficherTousArtistes(event);
   }
