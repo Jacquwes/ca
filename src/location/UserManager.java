@@ -21,7 +21,7 @@ public class UserManager implements Serializable {
   /**
    * Retrieves the currently logged in user.
    *
-   * @return the currently logged in user
+   * @return the currently logged in user.
    */
   public User getCurrentUser() {
     return currentUser;
@@ -38,13 +38,14 @@ public class UserManager implements Serializable {
    * User registration. The chosen username must not already exist among the
    * registered users.
    *
-   * @param username the (unique) username of the user
-   * @param password the user's password (must not be empty or <code>null</code>)
-   * @param info     personal information about the user
+   * @param username the (unique) username of the user.
+   * @param password the user's password (must not be empty or <code>null</code>).
+   * @param info     personal information about the user.
+   * 
    * @return a code specifying the result of the registration: 0 if the
    *         registration was successful, 1 if the username was already used, 2 if
    *         the username or password was empty, 3 if the personal information was
-   *         not properly specified
+   *         not properly specified.
    */
   public int register(String username, String password, PersonalInformation info) {
     if (info == null) {
@@ -66,6 +67,15 @@ public class UserManager implements Serializable {
     return 0;
   }
 
+  /**
+   * Logs in a user.
+   *
+   * @param username the username of the user.
+   * @param password the password of the user.
+   * 
+   * @return <code>true</code> if the login was successful, <code>false</code>
+   *         otherwise.
+   */
   public boolean login(String username, String password) {
     for (User user : users) {
       if (user.getLogin().equals(username) && user.getPassword().equals(password)) {
@@ -76,6 +86,11 @@ public class UserManager implements Serializable {
     return false;
   }
 
+  /**
+   * Logs out the currently logged in user.
+   *
+   * @throws NotLoggedInException if no user is currently logged in.
+   */
   public void logout() throws NotLoggedInException {
     if (currentUser == null) {
       throw new NotLoggedInException();
