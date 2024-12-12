@@ -1,5 +1,6 @@
 package location;
 
+import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -10,7 +11,7 @@ import java.util.Set;
  * @author Paul Hariel
  *
  */
-public class User {
+public class User implements Serializable {
 
   /**
    * The login of the user.

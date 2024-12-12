@@ -1,9 +1,10 @@
 package location;
 
+import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
 
-public class ReservationManager {
+public class ReservationManager implements Serializable {
   private Set<Reservation> reservations = new HashSet<Reservation>();
 
   public void reset() {

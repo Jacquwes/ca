@@ -1,12 +1,13 @@
 package location;
 
+import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
 
 /**
  * Represents a movie.
  */
-public class Movie {
+public class Movie implements Serializable {
   /**
    * The title of the movie.
    */

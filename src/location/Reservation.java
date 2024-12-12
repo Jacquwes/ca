@@ -1,11 +1,12 @@
 package location;
 
+import java.io.Serializable;
 import java.util.Date;
 
 /**
  * Represents a reservation made by a user for a movie.
  */
-public class Reservation {
+public class Reservation implements Serializable {
 
   /**
    * The user who made the reservation.

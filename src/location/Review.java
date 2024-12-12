@@ -1,9 +1,11 @@
 package location;
 
+import java.io.Serializable;
+
 /**
  * Represents a review made by a user for a movie.
  */
-public class Review {
+public class Review implements Serializable {
   /**
    * The rating of the review.
    */

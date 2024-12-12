@@ -2,11 +2,12 @@ package location;
 
 import java.util.HashSet;
 import java.util.Set;
+import java.io.Serializable;
 
 /**
  * Manages all the users.
  */
-public class UserManager {
+public class UserManager implements Serializable {
   /**
    * The set of registered users.
    */

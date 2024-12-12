@@ -1,5 +1,6 @@
 package location;
 
+import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
 import java.util.function.Predicate;
@@ -7,7 +8,7 @@ import java.util.function.Predicate;
 /**
  * Manages all the artists.
  */
-public class ArtistManager {
+public class ArtistManager implements Serializable {
 
   /**
    * Represents all the artists.
