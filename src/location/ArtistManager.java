@@ -39,8 +39,9 @@ public class ArtistManager {
 
   /**
    * Retrieves the artists matching the specified predicate.
-   * 
-   * @param p the predicate to match
+   *
+   * @param p the predicate to match.
+   *
    * @return the artists matching the specified predicate.
    */
   public Set<Artist> getArtists(Predicate<Artist> p) {
@@ -57,8 +58,8 @@ public class ArtistManager {
 
   /**
    * @brief Retrieves the actors.
-   * 
-   * @return the actors
+   *
+   * @return the actors.
    */
   public Set<Artist> getActors() {
     return ArtistManager.actors;
@@ -66,7 +67,7 @@ public class ArtistManager {
 
   /**
    * @brief Retrieves the directors.
-   * 
+   *
    * @return the directors
    */
   public Set<Artist> getDirectors() {
@@ -75,10 +76,10 @@ public class ArtistManager {
 
   /**
    * @brief Deletes an artist.
-   * 
-   * @param artist the artist to delete
-   * 
-   * @return true if the artist was deleted, false otherwise
+   *
+   * @param artist the artist to delete.
+   *
+   * @return true if the artist was deleted, false otherwise.
    */
   public boolean deleteArtist(Artist artist) {
     return ArtistManager.actors.remove(artist) || ArtistManager.directors.remove(artist) || ArtistManager.artists.remove(artist);
@@ -86,8 +87,8 @@ public class ArtistManager {
 
   /**
    * @brief Adds an actor.
-   * 
-   * @param artist the actor to add
+   *
+   * @param artist the actor to add.
    */
   public void addActor(Artist artist) {
     if (!ArtistManager.artists.contains(artist)) {
@@ -98,8 +99,8 @@ public class ArtistManager {
 
   /**
    * @brief Adds a director.
-   * 
-   * @param artist the director to add
+   *
+   * @param artist the director to add.
    */
   public void addDirector(Artist artist) {
     if (!ArtistManager.artists.contains(artist)) {
@@ -110,10 +111,10 @@ public class ArtistManager {
 
   /**
    * @brief Adds an artist.
-   * 
-   * @param artist the artist to add
-   * 
-   * @return true if the artist was added, false otherwise
+   *
+   * @param artist the artist to add.
+   *
+   * @return true if the artist was added, false otherwise.
    */
   public boolean addArtist(Artist artist) {
     return ArtistManager.artists.add(artist);
@@ -136,6 +137,25 @@ public class ArtistManager {
     sb.deleteCharAt(sb.length() - 1);
     sb.append("]");
     return sb.toString();
+  }
+
+  /**
+   * @brief Deserializes the artists.
+   *
+   * @param artists the artists to deserialize.
+   */
+  public void parse(String artists) {
+    String[] artistStrings = artists.split("},");
+    for (String artistString : artistStrings) {
+      Artist artist = Artist.parse(artistString);
+      this.addArtist(artist);
+      if (artistString.contains("\"isActor\":\"true\"")) {
+        this.addActor(artist);
+      }
+      if (artistString.contains("\"isDirector\":\"true\"")) {
+        this.addDirector(artist);
+      }
+    }
   }
 
 }
