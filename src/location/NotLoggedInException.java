@@ -14,6 +14,4 @@ public class NotLoggedInException extends Exception {
    */
   private static final long serialVersionUID = -2876441299971092712L;
   
-  // TO BE COMPLETED IF NEEDED
-  
 }
