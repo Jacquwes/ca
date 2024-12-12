@@ -10,6 +10,11 @@ import java.util.function.Predicate;
  */
 public class ReviewManager implements Serializable {
   /**
+   * The serial version UID.
+   */
+  static final long serialVersionUID = 5L;
+
+  /**
    * Represents all the reviews.
    */
   private Set<Review> reviews;
@@ -63,8 +68,8 @@ public class ReviewManager implements Serializable {
    * @param review the review to add.
    */
   public void add(Review review) throws IllegalArgumentException {
-    if (!getReviews(r -> r.getUser() == review.getUser() &&
-        r.getMovie() == review.getMovie()).isEmpty()) {
+    if (!getReviews(r -> r.getUser() == review.getUser()
+        && r.getMovie() == review.getMovie()).isEmpty()) {
       throw new IllegalArgumentException("User already reviewed this movie");
     }
 

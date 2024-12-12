@@ -9,6 +9,10 @@ import java.util.function.Predicate;
  * Manages all the artists.
  */
 public class ArtistManager implements Serializable {
+  /**
+   * The serial version UID.
+   */
+  static final long serialVersionUID = 2L;
 
   /**
    * Represents all the artists.

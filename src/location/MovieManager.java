@@ -10,6 +10,11 @@ import java.util.function.Predicate;
  */
 public class MovieManager implements Serializable {
   /**
+   * The serial version UID.
+   */
+  static final long serialVersionUID = 3L;
+  
+  /**
    * List of all the movies.
    */
   private Set<Movie> movies = new HashSet<Movie>();
