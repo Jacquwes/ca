@@ -39,7 +39,7 @@ public final class PersonalInformation implements java.io.Serializable {
   /**
    * Returns the last name of the person.
    *
-   * @return the last name of the person
+   * @return the last name of the person.
    */
   public String getLastName() {
     return lastName;
@@ -48,7 +48,7 @@ public final class PersonalInformation implements java.io.Serializable {
   /**
    * Returns the first name of the person.
    *
-   * @return the first name of the person
+   * @return the first name of the person.
    */
   public String getFirstName() {
     return firstName;
@@ -57,7 +57,7 @@ public final class PersonalInformation implements java.io.Serializable {
   /**
    * Returns the age of the person.
    *
-   * @return the age of the person
+   * @return the age of the person.
    */
   public int getAge() {
     return age;
@@ -66,7 +66,7 @@ public final class PersonalInformation implements java.io.Serializable {
   /**
    * Sets the age of the person.
    *
-   * @param age the new age (must be greater than 0)
+   * @param age the new age (must be greater than 0).
    */
   public void setAge(int age) {
     if (age > 0) {
@@ -77,7 +77,7 @@ public final class PersonalInformation implements java.io.Serializable {
   /**
    * Returns the address of the person.
    *
-   * @return the address of the person
+   * @return the address of the person.
    */
   public String getAddress() {
     return address;
@@ -86,7 +86,7 @@ public final class PersonalInformation implements java.io.Serializable {
   /**
    * Sets the address of the person.
    *
-   * @param address the new address (must be different from null)
+   * @param address the new address (must be different from null).
    */
   public void setAddress(String address) {
     if (address != null) {
@@ -97,8 +97,8 @@ public final class PersonalInformation implements java.io.Serializable {
   /**
    * Creates a person with their mandatory information.
    *
-   * @param lastName  the last name of the person
-   * @param firstName the first name of the person
+   * @param lastName  the last name of the person.
+   * @param firstName the first name of the person.
    */
   public PersonalInformation(String lastName, String firstName) {
     this(lastName, firstName, "", 0);
@@ -107,10 +107,10 @@ public final class PersonalInformation implements java.io.Serializable {
   /**
    * Creates a person with all their information.
    *
-   * @param lastName  the last name of the person
-   * @param firstName the first name of the person
-   * @param address   the address of the person
-   * @param age       the age of the person
+   * @param lastName  the last name of the person.
+   * @param firstName the first name of the person.
+   * @param address   the address of the person.
+   * @param age       the age of the person.
    */
   public PersonalInformation(String lastName, String firstName, String address,
       int age) {
