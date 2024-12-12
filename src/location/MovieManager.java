@@ -8,7 +8,7 @@ public class MovieManager {
   /**
    * List of all the movies.
    */
-  private static Set<Movie> movies = new HashSet<Movie>();
+  private Set<Movie> movies = new HashSet<Movie>();
 
   /**
    * Resets the list of all the movies.

@@ -4,7 +4,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 public class ReservationManager {
-  private static Set<Reservation> reservations = new HashSet<Reservation>();
+  private Set<Reservation> reservations = new HashSet<Reservation>();
 
   public void reset() {
     reservations = new HashSet<Reservation>();

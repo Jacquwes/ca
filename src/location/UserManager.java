@@ -10,7 +10,7 @@ public class UserManager {
   /**
    * The set of registered users.
    */
-  private static Set<User> users;
+  private Set<User> users;
 
   /**
    * The currently logged in user.

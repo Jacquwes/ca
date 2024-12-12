@@ -11,7 +11,7 @@ public class ReviewManager {
   /**
    * Represents all the reviews.
   */
-  private static Set<Review> reviews;
+  private Set<Review> reviews;
 
   /**
    * Constructs a new ReviewManager.

@@ -12,20 +12,20 @@ public class ArtistManager {
   /**
    * Represents all the artists.
    */
-  private static Set<Artist> artists = new HashSet<>();
+  private Set<Artist> artists = new HashSet<>();
 
   /**
    * Represents all the actors.
    */
-  private static Set<Artist> actors = new HashSet<>();
+  private Set<Artist> actors = new HashSet<>();
   
   /**
    * Represents all the directors.
    */
-  private static Set<Artist> directors = new HashSet<>();
+  private Set<Artist> directors = new HashSet<>();
 
   /**
-   * Constructs a new ArtistManager.
+   * Constructs a new artist manager.
    */
   public ArtistManager() {
   }
@@ -34,7 +34,7 @@ public class ArtistManager {
    * @return the artists.
    */
   public Set<Artist> getArtists() {
-    return ArtistManager.artists;
+    return this.artists;
   }
 
   /**
@@ -62,7 +62,7 @@ public class ArtistManager {
    * @return the actors.
    */
   public Set<Artist> getActors() {
-    return ArtistManager.actors;
+    return this.actors;
   }
 
   /**
@@ -71,7 +71,7 @@ public class ArtistManager {
    * @return the directors
    */
   public Set<Artist> getDirectors() {
-    return ArtistManager.directors;
+    return this.directors;
   }
 
   /**
@@ -82,7 +82,7 @@ public class ArtistManager {
    * @return true if the artist was deleted, false otherwise.
    */
   public boolean deleteArtist(Artist artist) {
-    return ArtistManager.actors.remove(artist) || ArtistManager.directors.remove(artist) || ArtistManager.artists.remove(artist);
+    return this.actors.remove(artist) || this.directors.remove(artist) || this.artists.remove(artist);
   }
 
   /**
@@ -91,10 +91,10 @@ public class ArtistManager {
    * @param artist the actor to add.
    */
   public void addActor(Artist artist) {
-    if (!ArtistManager.artists.contains(artist)) {
-      ArtistManager.artists.add(artist);
+    if (!this.artists.contains(artist)) {
+      this.artists.add(artist);
     }
-    ArtistManager.actors.add(artist);
+    this.actors.add(artist);
   }
 
   /**
@@ -103,10 +103,10 @@ public class ArtistManager {
    * @param artist the director to add.
    */
   public void addDirector(Artist artist) {
-    if (!ArtistManager.artists.contains(artist)) {
-      ArtistManager.artists.add(artist);
+    if (!this.artists.contains(artist)) {
+      this.artists.add(artist);
     }
-    ArtistManager.directors.add(artist);
+    this.directors.add(artist);
   }
 
   /**
@@ -117,7 +117,7 @@ public class ArtistManager {
    * @return true if the artist was added, false otherwise.
    */
   public boolean addArtist(Artist artist) {
-    return ArtistManager.artists.add(artist);
+    return this.artists.add(artist);
   }
 
   /**
