@@ -33,12 +33,16 @@ public class Location implements UserInterface {
   /**
    * Constructs a new Location.
    */
-  public Location() {
-    this.artistManager = new ArtistManager();
-    this.movieManager = new MovieManager();
-    this.reservationManager = new ReservationManager();
-    this.reviewManager = new ReviewManager();
-    this.userManager = new UserManager();
+  public Location(ArtistManager artistManager,
+      MovieManager movieManager,
+      ReservationManager reservationManager,
+      ReviewManager reviewManager,
+      UserManager userManager) {
+    this.artistManager = artistManager;
+    this.movieManager = movieManager;
+    this.reservationManager = reservationManager;
+    this.reviewManager = reviewManager;
+    this.userManager = userManager;
   }
 
   @Override

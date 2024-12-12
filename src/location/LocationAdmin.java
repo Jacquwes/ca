@@ -12,17 +12,40 @@ public class LocationAdmin implements AdministrationInterface {
   /**
    * Represents the artist manager.
    */
-  private ArtistManager artistManager = new ArtistManager();
+  private ArtistManager artistManager;
 
   /**
    * Represents the movie manager.
    */
-  private MovieManager movieManager = new MovieManager();
+  private MovieManager movieManager;
 
   /**
    * Represents the reservation manager.
    */
-  private ReservationManager reservationManager = new ReservationManager();
+  private ReservationManager reservationManager;
+
+  /**
+   * Represents the review manager.
+   */
+  private ReviewManager reviewManager;
+
+  /**
+   * Represents the user manager.
+   */
+  private UserManager userManager;
+
+  public LocationAdmin(
+      ArtistManager artistManager,
+      MovieManager movieManager,
+      ReservationManager reservationManager,
+      ReviewManager reviewManager,
+      UserManager userManager) {
+    this.artistManager = artistManager;
+    this.movieManager = movieManager;
+    this.reservationManager = reservationManager;
+    this.reviewManager = reviewManager;
+    this.userManager = userManager;
+  }
 
   @Override
   public Artist createArtist(String lastName, String firstName, String nationality) {
@@ -54,7 +77,7 @@ public class LocationAdmin implements AdministrationInterface {
   /**
    * @brief Adds a director to a movie.
    * 
-   * @param movie the movie 
+   * @param movie    the movie
    * @param director the director
    * 
    * @return true if the director was added to the movie, false otherwise
@@ -74,7 +97,7 @@ public class LocationAdmin implements AdministrationInterface {
    */
   public boolean addArtist(Artist artist) {
     return this.artistManager.addArtist(artist);
-    
+
   }
 
   @Override
