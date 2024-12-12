@@ -8,6 +8,10 @@ import java.util.Set;
  * Manages all the reservations.
  */
 public class ReservationManager implements Serializable {
+  /**
+   * The serial version UID.
+   */
+  static final long serialVersionUID = 4L;
 
   /**
    * The set of reservations.
@@ -35,7 +39,7 @@ public class ReservationManager implements Serializable {
    *
    * @param reservation the reservation to remove.
    */
-  public  void removeReservation(Reservation reservation) {
+  public void removeReservation(Reservation reservation) {
     reservations.remove(reservation);
   }
 

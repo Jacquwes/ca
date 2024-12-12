@@ -9,6 +9,11 @@ import java.util.Set;
  */
 public class UserManager implements Serializable {
   /**
+   * The serial version UID.
+   */
+  static final long serialVersionUID = 1L;
+  
+  /**
    * The set of registered users.
    */
   private Set<User> users;

@@ -165,8 +165,8 @@ public class LocationAdmin implements AdministrationInterface, Serializable {
 
   @Override
   public Artist getArtist(String lastName, String firstName) {
-    return artistManager.getArtists(a -> a.getLastName().equals(lastName) &&
-        a.getFirstName().equals(firstName))
+    return artistManager.getArtists(a -> a.getLastName().equals(lastName)
+        && a.getFirstName().equals(firstName))
         .stream()
         .findFirst().orElse(null);
   }
