@@ -31,7 +31,9 @@ public class ArtistManager implements Serializable {
   public ArtistManager() {
   }
 
-  /** 
+  /**
+   * Retrieves the artists.
+   *
    * @return the artists.
    */
   public Set<Artist> getArtists() {
@@ -58,7 +60,7 @@ public class ArtistManager implements Serializable {
   }
 
   /**
-   * @brief Retrieves the actors.
+   * Retrieves the actors.
    *
    * @return the actors.
    */
@@ -67,7 +69,7 @@ public class ArtistManager implements Serializable {
   }
 
   /**
-   * @brief Retrieves the directors.
+   * Retrieves the directors.
    *
    * @return the directors
    */
@@ -76,7 +78,7 @@ public class ArtistManager implements Serializable {
   }
 
   /**
-   * @brief Deletes an artist.
+   * Deletes an artist.
    *
    * @param artist the artist to delete.
    *
@@ -91,7 +93,7 @@ public class ArtistManager implements Serializable {
   }
 
   /**
-   * @brief Adds an actor.
+   * Adds an actor.
    *
    * @param artist the actor to add.
    */
@@ -103,7 +105,7 @@ public class ArtistManager implements Serializable {
   }
 
   /**
-   * @brief Adds a director.
+   * Adds a director.
    *
    * @param artist the director to add.
    */
@@ -115,7 +117,7 @@ public class ArtistManager implements Serializable {
   }
 
   /**
-   * @brief Adds an artist.
+   * Adds an artist.
    *
    * @param artist the artist to add.
    *
@@ -126,7 +128,7 @@ public class ArtistManager implements Serializable {
   }
 
   /**
-   * @brief Serializes the artists.
+   * Serializes the artists.
    *
    * @return the serialized artists.
    */
@@ -145,7 +147,7 @@ public class ArtistManager implements Serializable {
   }
 
   /**
-   * @brief Deserializes the artists.
+   * Deserializes the artists.
    *
    * @param artists the artists to deserialize.
    */

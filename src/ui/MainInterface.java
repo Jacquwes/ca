@@ -100,6 +100,11 @@ public final class MainInterface extends Application {
     // Rajouter ici du code si besoin ou avant le lancement des fenêtres
   }
 
+  /**
+   * Méthode principale de l'application.
+   *
+   * @param args les arguments passés en ligne de commande
+   */
   public static void main(String[] args) {
     launch(args);
   }

@@ -115,7 +115,7 @@ public class UtilisateurControleur {
 
   public UtilisateurControleur(Location location) {
     this.location = location;
-  };
+  }
 
   /**
    * Returns the movie selected in the movie list.

@@ -22,15 +22,6 @@ public class ReservationManager implements Serializable {
   }
 
   /**
-   * Retrieves all the reservations.
-   *
-   * @return all the reservations.
-   */
-  public Set<Reservation> getReservations() {
-    return reservations;
-  }
-
-  /**
    * Adds a reservation to the set of reservations.
    *
    * @param reservation the reservation to add.
@@ -49,10 +40,10 @@ public class ReservationManager implements Serializable {
   }
 
   /**
-   * Retrieves all the reservations that satisfy the predicate.
+   * Retrieves all the reservations of the user.
    *
-   * @param p the predicate to satisfy.
-   * @return all the reservations that satisfy the predicate.
+   * @param user the user to retrieve the reservations of.
+   * @return all the reservations of the user.
    */
   public Set<Reservation> getReservations(User user) {
     Set<Reservation> result = new HashSet<Reservation>();
@@ -67,10 +58,19 @@ public class ReservationManager implements Serializable {
   }
 
   /**
-   * Retrieves all the reservations that satisfy the predicate.
+   * Retrieves all the reservations.
    *
-   * @param p the predicate to satisfy.
-   * @return all the reservations that satisfy the predicate.
+   * @return all the reservations.
+   */
+  public Set<Reservation> getReservations() {
+    return reservations;
+  }
+
+  /**
+   * Retrieves all the reservations of the movie.
+   *
+   * @param movie the movie to retrieve the reservations of.
+   * @return all the reservations of the movie.
    */
   public Set<Reservation> getReservations(Movie movie) {
     Set<Reservation> result = new HashSet<Reservation>();

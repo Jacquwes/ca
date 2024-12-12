@@ -3,7 +3,6 @@ package location;
 import java.util.Date;
 import java.util.Set;
 import java.util.stream.Collectors;
-
 import tests.ArtistTest;
 
 /**
@@ -37,6 +36,12 @@ public class Location implements UserInterface {
 
   /**
    * Constructs a new Location.
+   *
+   * @param artistManager      the artist manager
+   * @param movieManager       the movie manager
+   * @param reservationManager the reservation manager
+   * @param reviewManager      the review manager
+   * @param userManager        the user manager
    */
   public Location(ArtistManager artistManager,
       MovieManager movieManager,
@@ -107,13 +112,15 @@ public class Location implements UserInterface {
   }
 
   @Override
-  public void addReview(Movie movie, Review review) throws NotLoggedInException, RentingException {
+  public void addReview(Movie movie, Review review)
+      throws NotLoggedInException, RentingException {
     reviewManager.add(review);
     movie.addReview(review);
   }
 
   @Override
-  public void modifyReview(Movie movie, Review review) throws NotLoggedInException, RentingException {
+  public void modifyReview(Movie movie, Review review)
+      throws NotLoggedInException, RentingException {
     movie.getReviews().remove(review);
     reviewManager.add(review);
   }
@@ -181,8 +188,9 @@ public class Location implements UserInterface {
 
   @Override
   public Set<Movie> moviesByActor(String lastName, String firstName) {
-    return movieManager.getMovies(m -> m.getActors().stream().anyMatch(a -> a.getLastName().equals(lastName)
-        && a.getFirstName().equals(firstName)));
+    return movieManager.getMovies(m -> m.getActors().stream()
+        .anyMatch(a -> a.getLastName().equals(lastName)
+            && a.getFirstName().equals(firstName)));
   }
 
   @Override
@@ -192,7 +200,8 @@ public class Location implements UserInterface {
 
   @Override
   public Set<Movie> moviesByGenre(String genre) {
-    return movieManager.getMovies(m -> m.getGenres().stream().anyMatch(g -> g.toString().equals(genre)));
+    return movieManager.getMovies(m -> m.getGenres().stream()
+        .anyMatch(g -> g.toString().equals(genre)));
   }
 
   @Override

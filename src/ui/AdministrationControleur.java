@@ -84,8 +84,8 @@ public class AdministrationControleur {
   private ListView<String> listeTousGenres;
 
   /**
-   * @brief Called when the user clicks on the button "Les acteurs".
-   * 
+   * Called when the user clicks on the button "Les acteurs".
+   *
    * @param event the event triggered by the user
    */
   @FXML
@@ -101,8 +101,8 @@ public class AdministrationControleur {
   }
 
   /**
-   * @brief Called when the user clicks on the button "Les réalisateurs".
-   * 
+   * Called when the user clicks on the button "Les réalisateurs".
+   *
    * @param event
    */
   @FXML
@@ -118,11 +118,11 @@ public class AdministrationControleur {
   }
 
   /**
-   * @brief Called when the user clicks on the button to display movies for a
+   * Called when the user clicks on the button to display movies for a
    *        selected actor.
    *        Retrieves and displays the movies in which the selected actor has
    *        performed.
-   * 
+   *
    * @param event the event triggered by the user action
    */
   @FXML
@@ -145,10 +145,10 @@ public class AdministrationControleur {
   }
 
   /**
-   * @brief Called when the user clicks on the button to display movies by a
+   * Called when the user clicks on the button to display movies by a
    *        selected director.
    *        Retrieves and displays all movies directed by the selected artist.
-   * 
+   *
    * @param event the event triggered by the user action
    */
   @FXML
@@ -169,12 +169,12 @@ public class AdministrationControleur {
   }
 
   /**
-   * @brief Called when the user clicks on the button to display movies for a
+   * Called when the user clicks on the button to display movies for a
    *        specific director.
    *        Retrieves and shows the list of movies directed by the selected
    *        artist,
    *        and updates the films list label with the director's name.
-   * 
+   *
    * @param event the event triggered by the user action
    */
   @FXML
@@ -197,12 +197,12 @@ public class AdministrationControleur {
   }
 
   /**
-   * @brief Called when the user clicks on the button to display all actors of a
+   * Called when the user clicks on the button to display all actors of a
    *        selected film.
    *        Retrieves the selected movie and populates the artists list with its
    *        actors.
    *        Updates the artists list label to show the movie's name.
-   * 
+   *
    * @param event the event triggered by the user action
    */
   @FXML
@@ -221,11 +221,11 @@ public class AdministrationControleur {
   }
 
   /**
-   * @brief Called when the user clicks on the button to display all artists.
+   * Called when the user clicks on the button to display all artists.
    *        Retrieves all artists from the LocationAdmin and populates the artists
    *        list.
    *        Updates the artists list label to indicate it shows all artists.
-   * 
+   *
    * @param event the event triggered by the user action
    */
   @FXML
@@ -241,10 +241,10 @@ public class AdministrationControleur {
   }
 
   /**
-   * @brief Called when the user clicks on the button to add an actor to a film.
+   * Called when the user clicks on the button to add an actor to a film.
    *        Retrieves the selected artist and movie, then adds the actor to the
    *        movie's cast.
-   * 
+   *
    * @param event the event triggered by the user action
    */
   @FXML
@@ -264,11 +264,11 @@ public class AdministrationControleur {
   }
 
   /**
-   * @brief Called when the user clicks on the button to add a genre to a film.
+   * Called when the user clicks on the button to add a genre to a film.
    *        Retrieves the selected genre and movie, then adds the genre to the
    *        movie.
    *        Updates the film's genre list to display the newly added genre.
-   * 
+   *
    * @param event the event triggered by the user action
    */
   @FXML
@@ -287,11 +287,11 @@ public class AdministrationControleur {
   }
 
   /**
-   * @brief Called when the user clicks on the button to search for an artist.
+   * Called when the user clicks on the button to search for an artist.
    *        Retrieves an artist by their last name and first name, and displays
    *        their nationality.
    *        Populates the artists list with the found artist.
-   * 
+   *
    * @param event the event triggered by the user action
    */
   @FXML
@@ -307,11 +307,11 @@ public class AdministrationControleur {
   }
 
   /**
-   * @brief Called when the user clicks on the button to search for a film.
+   * Called when the user clicks on the button to search for a film.
    *        Retrieves a movie by its title and populates the interface fields with
    *        the movie's details.
    *        Displays the movie in the films list with a "search result" label.
-   * 
+   *
    * @param event the event triggered by the user action
    */
   @FXML
@@ -335,11 +335,11 @@ public class AdministrationControleur {
   }
 
   /**
-   * @brief Called when the user clicks on the button to select the currently
+   * Called when the user clicks on the button to select the currently
    *        selected artist as the director.
    *        Populates the director text field with the selected artist's full
    *        name.
-   * 
+   *
    * @param event the event triggered by the user action
    */
   @FXML
@@ -349,12 +349,12 @@ public class AdministrationControleur {
   }
 
   /**
-   * @brief Called when the user clicks on the button to save a new artist.
+   * Called when the user clicks on the button to save a new artist.
    *        Creates a new artist using the entered last name, first name, and
    *        nationality.
    *        Adds the new artist to the artists list if all required fields are
    *        filled.
-   * 
+   *
    * @param event the event triggered by the user action
    */
   @FXML
@@ -371,11 +371,11 @@ public class AdministrationControleur {
   }
 
   /**
-   * @brief Called when the user clicks on the button to save a new movie.
+   * Called when the user clicks on the button to save a new movie.
    *        Creates a new movie using the entered title, year, and age limit.
    *        Assigns the selected director to the movie if all required fields are
    *        filled.
-   * 
+   *
    * @param event the event triggered by the user action
    */
   @FXML
@@ -402,10 +402,10 @@ public class AdministrationControleur {
   }
 
   /**
-   * @brief Called when the user clicks on the button to create a new artist
+   * Called when the user clicks on the button to create a new artist
    *        entry.
    *        Clears all text fields related to artist information.
-   * 
+   *
    * @param event the event triggered by the user action
    */
   @FXML
@@ -416,9 +416,9 @@ public class AdministrationControleur {
   }
 
   /**
-   * @brief Called when the user clicks on the button to create a new movie entry.
+   * Called when the user clicks on the button to create a new movie entry.
    *        Resets all fields and lists related to movie information.
-   * 
+   *
    * @param event the event triggered by the user action
    */
   @FXML
@@ -431,12 +431,12 @@ public class AdministrationControleur {
   }
 
   /**
-   * @brief Called when the user clicks on the button to browse and select a movie
+   * Called when the user clicks on the button to browse and select a movie
    *        poster.
    *        Opens a file chooser dialog to select an image file for the movie
    *        poster.
    *        Sets the selected file's absolute path in the poster input field.
-   * 
+   *
    * @param event the event triggered by the user action
    */
   @FXML
@@ -451,12 +451,12 @@ public class AdministrationControleur {
   }
 
   /**
-   * @brief Called when the user clicks on the button to delete the selected
+   * Called when the user clicks on the button to delete the selected
    *        artist.
    *        Retrieves the selected artist, deletes them from the location
    *        administration,
    *        and refreshes the list of all artists.
-   * 
+   *
    * @param event the event triggered by the user action
    */
   @FXML
@@ -473,11 +473,11 @@ public class AdministrationControleur {
   }
 
   /**
-   * @brief Called when the user clicks on the button to delete the selected
+   * Called when the user clicks on the button to delete the selected
    *        movie.
    *        Retrieves the selected movie and deletes it from the location
    *        administration.
-   * 
+   *
    * @param event the event triggered by the user action
    */
   @FXML
@@ -489,10 +489,10 @@ public class AdministrationControleur {
   }
 
   /**
-   * @brief Called when the user selects the "About" menu item.
+   * Called when the user selects the "About" menu item.
    *        Creates and displays a new window with information about the
    *        application's creators.
-   * 
+   *
    * @param event the event triggered by the user action
    */
   @FXML
@@ -535,9 +535,9 @@ public class AdministrationControleur {
   }
 
   /**
-   * @brief Called when the user selects the "Quit" menu item.
+   * Called when the user selects the "Quit" menu item.
    *        Terminates the application immediately.
-   * 
+   *
    * @param event the event triggered by the user action
    */
   @FXML
@@ -559,10 +559,10 @@ public class AdministrationControleur {
   }
 
   /**
-   * @brief Called when the user selects an artist from the artists list.
+   * Called when the user selects an artist from the artists list.
    *        Populates the artist information fields with the details of the
    *        selected artist.
-   * 
+   *
    * @param event the mouse event triggered by selecting an artist
    */
   @FXML
@@ -578,10 +578,10 @@ public class AdministrationControleur {
   }
 
   /**
-   * @brief Called when the user selects a movie from the movies list.
+   * Called when the user selects a movie from the movies list.
    *        Populates the movie information fields with the details of the
    *        selected movie.
-   * 
+   *
    * @param event the mouse event triggered by selecting a movie
    */
   @FXML
@@ -603,7 +603,7 @@ public class AdministrationControleur {
   }
 
   /**
-   * @brief Initializes the list of all possible movie genres.
+   * Initializes the list of all possible movie genres.
    *        Populates the genre selection list with all available genres from the
    *        Genre enum.
    */
@@ -614,7 +614,7 @@ public class AdministrationControleur {
   }
 
   /**
-   * @brief Initializes the LocationAdmin with some default artists, movies, and
+   * Initializes the LocationAdmin with some default artists, movies, and
    *        their relationships.
    *        Creates sample data including actors, directors, and movies with
    *        genres.
@@ -641,7 +641,7 @@ public class AdministrationControleur {
   }
 
   /**
-   * @brief JavaFX initialization method called after all FXML elements are
+   * JavaFX initialization method called after all FXML elements are
    *        loaded.
    *        Triggers the initialization of the LocationAdmin with default data.
    */

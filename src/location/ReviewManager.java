@@ -11,7 +11,7 @@ import java.util.function.Predicate;
 public class ReviewManager implements Serializable {
   /**
    * Represents all the reviews.
-  */
+   */
   private Set<Review> reviews;
 
   /**
@@ -40,7 +40,10 @@ public class ReviewManager implements Serializable {
   /**
    * Adds a review to the set of reviews.
    *
-   * @param review the review to add.
+   * @param user    the user that made the review.
+   * @param movie   the movie that was reviewed.
+   * @param rating  the rating of the review.
+   * @param comment the comment of the review.
    */
   public void add(User user, Movie movie, double rating, String comment)
       throws IllegalArgumentException {
@@ -60,7 +63,8 @@ public class ReviewManager implements Serializable {
    * @param review the review to add.
    */
   public void add(Review review) throws IllegalArgumentException {
-    if (!getReviews(r -> r.getUser() == review.getUser() && r.getMovie() == review.getMovie()).isEmpty()) {
+    if (!getReviews(r -> r.getUser() == review.getUser() &&
+        r.getMovie() == review.getMovie()).isEmpty()) {
       throw new IllegalArgumentException("User already reviewed this movie");
     }
 

@@ -5,6 +5,9 @@ import java.util.HashSet;
 import java.util.Set;
 import java.util.function.Predicate;
 
+/**
+ * Manages all the movies.
+ */
 public class MovieManager implements Serializable {
   /**
    * List of all the movies.
@@ -27,10 +30,6 @@ public class MovieManager implements Serializable {
     return movies;
   }
 
-  public boolean addMovie(Movie movie) {
-    return movies.add(movie);
-  }
-
   /**
    * Gets the list of all the movies matching
    * the specified predicate.
@@ -48,6 +47,16 @@ public class MovieManager implements Serializable {
     }
 
     return result;
+  }
+
+  /**
+   * Adds a movie to the list of all the movies.
+   *
+   * @param movie the movie to add. 
+   * @return true if the movie was added, false otherwise.
+   */
+  public boolean addMovie(Movie movie) {
+    return movies.add(movie);
   }
 
   /**

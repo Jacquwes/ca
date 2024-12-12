@@ -35,6 +35,15 @@ public class LocationAdmin implements AdministrationInterface, Serializable {
    */
   private UserManager userManager;
 
+  /**
+   * Constructs a new LocationAdmin.
+   *
+   * @param artistManager      the artist manager
+   * @param movieManager       the movie manager
+   * @param reservationManager the reservation manager
+   * @param reviewManager      the review manager
+   * @param userManager        the user manager
+   */
   public LocationAdmin(
       ArtistManager artistManager,
       MovieManager movieManager,
@@ -76,11 +85,11 @@ public class LocationAdmin implements AdministrationInterface, Serializable {
   }
 
   /**
-   * @brief Adds a director to a movie.
-   * 
+   * Adds a director to a movie.
+   *
    * @param movie    the movie
    * @param director the director
-   * 
+   *
    * @return true if the director was added to the movie, false otherwise
    */
   public boolean addDirector(Movie movie, Artist director) {
@@ -90,10 +99,10 @@ public class LocationAdmin implements AdministrationInterface, Serializable {
   }
 
   /**
-   * @brief Adds an artist to the artist manager.
-   * 
+   * Adds an artist to the artist manager.
+   *
    * @param artist the artist to add
-   * 
+   *
    * @return true if the artist was added, false otherwise
    */
   public boolean addArtist(Artist artist) {
@@ -137,7 +146,7 @@ public class LocationAdmin implements AdministrationInterface, Serializable {
 
   /**
    * Returns the set of all artists.
-   * 
+   *
    * @return the set of all artists
    */
   public Set<Artist> getAllArtists() {
@@ -156,14 +165,16 @@ public class LocationAdmin implements AdministrationInterface, Serializable {
 
   @Override
   public Artist getArtist(String lastName, String firstName) {
-    return artistManager.getArtists(a -> a.getLastName().equals(lastName) && a.getFirstName().equals(firstName))
+    return artistManager.getArtists(a -> a.getLastName().equals(lastName) &&
+        a.getFirstName().equals(firstName))
         .stream()
         .findFirst().orElse(null);
   }
 
   @Override
   public Movie getMovie(String title) {
-    return movieManager.getMovies(movie -> movie.getTitle().equals(title)).stream().findFirst().orElse(null);
+    return movieManager.getMovies(movie -> movie.getTitle().equals(title)).stream()
+        .findFirst().orElse(null);
   }
 
   @Override

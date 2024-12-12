@@ -34,6 +34,7 @@ public class Review implements Serializable {
   
   /**
    * Constructs a new Review with the specified rating, comment, user, and movie.
+   *
    * @param user the user who made the review.
    * @param movie the movie that is reviewed.
    * @param rating the rating of the review.
