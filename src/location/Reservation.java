@@ -32,10 +32,10 @@ public class Reservation implements Serializable {
    * Constructs a new Reservation with the specified user, movie, date, and
    * duration.
    *
-   * @param user     the user who made the reservation
-   * @param movie    the movie that is reserved
-   * @param date     the date of the reservation
-   * @param duration the duration of the reservation in days
+   * @param user     the user who made the reservation.
+   * @param movie    the movie that is reserved.
+   * @param date     the date of the reservation.
+   * @param duration the duration of the reservation in days.
    */
   public Reservation(User user, Movie movie, Date date, Integer duration) {
     this.user = user;
@@ -48,7 +48,7 @@ public class Reservation implements Serializable {
   /**
    * Returns the user who made the reservation.
    *
-   * @return the user who made the reservation
+   * @return the user who made the reservation.
    */
   public User getUser() {
     return this.user;
@@ -57,7 +57,7 @@ public class Reservation implements Serializable {
   /**
    * Returns the movie that is reserved.
    *
-   * @return the movie that is reserved
+   * @return the movie that is reserved.
    */
   public Movie getMovie() {
     return this.movie;
@@ -66,7 +66,7 @@ public class Reservation implements Serializable {
   /**
    * Returns the date of the reservation.
    *
-   * @return the date of the reservation
+   * @return the date of the reservation.
    */
   public Date getDate() {
     return this.date;
@@ -75,7 +75,7 @@ public class Reservation implements Serializable {
   /**
    * Returns the duration of the reservation in days.
    *
-   * @return the duration of the reservation in days
+   * @return the duration of the reservation in days.
    */
   public Integer getDuration() {
     return this.duration;
@@ -84,7 +84,7 @@ public class Reservation implements Serializable {
   /**
    * Sets the user who made the reservation.
    *
-   * @param user the user who made the reservation
+   * @param user the user who made the reservation.
    */
   public void setUser(User user) {
     this.user = user;
@@ -93,7 +93,7 @@ public class Reservation implements Serializable {
   /**
    * Sets the movie that is reserved.
    *
-   * @param movie the movie that is reserved
+   * @param movie the movie that is reserved.
    */
   public void setMovie(Movie movie) {
     this.movie = movie;
@@ -102,7 +102,7 @@ public class Reservation implements Serializable {
   /**
    * Sets the date of the reservation.
    *
-   * @param date the date of the reservation
+   * @param date the date of the reservation.
    */
   public void setDate(Date date) {
     this.date = date;
@@ -111,7 +111,7 @@ public class Reservation implements Serializable {
   /**
    * Sets the duration of the reservation in days.
    *
-   * @param duration the duration of the reservation in days
+   * @param duration the duration of the reservation in days.
    */
   public void setDuration(Integer duration) {
     this.duration = duration;
@@ -121,8 +121,8 @@ public class Reservation implements Serializable {
    * Indicates whether some other object is "equal to" this one.
    *
    * @param obj the reference object with which to compare.
-   * @return {@code true} if this object is the same as the obj argument;
-   *         {@code false} otherwise.
+   * @return true if this object is the same as the obj argument;
+   *         false otherwise.
    */
   @Override
   public boolean equals(Object obj) {
