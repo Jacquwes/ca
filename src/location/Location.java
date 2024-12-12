@@ -4,6 +4,8 @@ import java.util.Date;
 import java.util.Set;
 import java.util.stream.Collectors;
 
+import tests.ArtistTest;
+
 public class Location implements UserInterface {
   /**
    * The manager of all the artists.
@@ -127,6 +129,15 @@ public class Location implements UserInterface {
   @Override
   public Set<Artist> allDirectors() {
     return artistManager.getDirectors();
+  }
+
+  /**
+   * Retrieves all the artists.
+   *
+   * @return all the artists.
+   */
+  public Set<Artist> allArtists() {
+    return artistManager.getArtists();
   }
 
   @Override

@@ -393,12 +393,9 @@ public class UtilisateurControleur {
   void actionBoutonAfficherTousArtistes(ActionEvent event) {
     // Clear the artists list
     this.listeArtistes.getItems().clear();
-    // Get all artists
-    Set<Artist> artists = location.allActors();
-    artists.addAll(location.allDirectors());
 
     // Add artists to the artists list
-    artists.forEach(artist -> this.listeArtistes.getItems().add(artist.toString()));
+    this.location.allArtists().forEach(artist -> this.listeArtistes.getItems().add(artist.toString()));
 
     // Display the artists list
     this.labelListeArtistes.setText("All artists");
