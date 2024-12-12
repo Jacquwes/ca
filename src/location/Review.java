@@ -34,10 +34,10 @@ public class Review implements Serializable {
   
   /**
    * Constructs a new Review with the specified rating, comment, user, and movie.
-   * @param user the user who made the review
-   * @param movie the movie that is reviewed
-   * @param rating the rating of the review
-   * @param comment the comment of the review
+   * @param user the user who made the review.
+   * @param movie the movie that is reviewed.
+   * @param rating the rating of the review.
+   * @param comment the comment of the review.
    */
   public Review(User user, Movie movie, double rating, String comment) {
     this.rating = rating;
@@ -121,8 +121,8 @@ public class Review implements Serializable {
   /**
    * Compares this review to the specified object.
    *
-   * @param obj the object to compare
-   * @return true if the object is equal to this review, false otherwise
+   * @param obj the object to compare.
+   * @return true if the object is equal to this review, false otherwise.
    */
   @Override
   public boolean equals(Object obj) {
