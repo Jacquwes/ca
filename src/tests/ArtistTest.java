@@ -4,10 +4,10 @@ import location.Artist;
 import location.Movie;
 import org.junit.Before;
 import org.junit.Test;
-import static org.junit.Assert.*;
-
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 import java.util.HashSet;
-import java.util.Set;
 
 /**
  * Test class for the Artist class.

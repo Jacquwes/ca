@@ -1,10 +1,22 @@
 package tests;
 
-import location.*;
+import location.Artist;
+import location.ArtistManager;
+import location.Genre;
+import location.Location;
+import location.Movie;
+import location.PersonalInformation;
+import location.Review;
+import location.User;
+import location.UserManager;
+import location.MovieManager;
+import location.ReservationManager;
+import location.ReviewManager;
 import org.junit.Before;
 import org.junit.Test;
-import static org.junit.Assert.*;
-
+import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import java.util.HashSet;
 import java.util.Set;
 

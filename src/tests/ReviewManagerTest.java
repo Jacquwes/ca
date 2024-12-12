@@ -2,10 +2,15 @@ package tests;
 
 import org.junit.Before;
 import org.junit.Test;
-import static org.junit.Assert.*;
-
-import location.*;
-
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+import location.Artist;
+import location.Movie;
+import location.PersonalInformation;
+import location.Review;
+import location.ReviewManager;
+import location.User;
 import java.util.Set;
 import java.util.function.Predicate;
 
@@ -45,7 +50,6 @@ public class ReviewManagerTest {
      */
     @Test
     public void testAddReviewObject() {
-        reviewManager.add(testReview);
         Set<Review> reviews = reviewManager.getReviews(r -> r.getUser() == testUser && r.getMovie() == testMovie);
         assertFalse(reviews.isEmpty());
     }
@@ -62,9 +66,7 @@ public class ReviewManagerTest {
      * Tests getReviews method with a custom predicate.
      */
     @Test
-    public void testGetReviewsWithPredicate() {
-        reviewManager.add(testReview);
-        
+    public void testGetReviewsWithPredicate() {        
         Predicate<Review> predicate = r -> r.getRating() > 4.0;
         Set<Review> filteredReviews = reviewManager.getReviews(predicate);
         

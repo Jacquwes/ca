@@ -2,10 +2,15 @@ package tests;
 
 import org.junit.Before;
 import org.junit.Test;
-import static org.junit.Assert.*;
-
-import location.*;
-
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import location.Artist;
+import location.Movie;
+import location.PersonalInformation;
+import location.Reservation;
+import location.ReservationManager;
+import location.User;
 import java.util.Set;
 
 /**

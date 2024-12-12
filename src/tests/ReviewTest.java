@@ -2,9 +2,15 @@ package tests;
 
 import org.junit.Before;
 import org.junit.Test;
-import static org.junit.Assert.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
+import static org.junit.jupiter.api.Assertions.assertNull;
 
-import location.*;
+import location.Artist;
+import location.Movie;
+import location.PersonalInformation;
+import location.Review;
+import location.User;
 
 /**
  * Test class for Review to validate all methods and behaviors.

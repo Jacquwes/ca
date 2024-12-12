@@ -2,10 +2,12 @@ package tests;
 
 import org.junit.Before;
 import org.junit.Test;
-import static org.junit.Assert.*;
-
-import location.*;
-
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+import location.Artist;
+import location.Movie;
+import location.MovieManager;
 import java.util.Set;
 import java.util.function.Predicate;
 
