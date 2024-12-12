@@ -168,14 +168,4 @@ public class Artist {
     }
     return true;
   }
-
-  /**
-   * Returns a string representation of the artist.
-   * 
-   * @return a string representation of the artist.
-   */
-  @Override
-  public String toString() {
-    return lastName + " " + firstName;
-  }
 }
