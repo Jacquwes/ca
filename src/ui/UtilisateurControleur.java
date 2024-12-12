@@ -111,7 +111,11 @@ public class UtilisateurControleur {
   @FXML
   private StackPane paneAffiche;
 
-  private Location location = new Location();
+  private Location location;
+
+  public UtilisateurControleur(Location location) {
+    this.location = location;
+  };
 
   /**
    * Returns the movie selected in the movie list.
