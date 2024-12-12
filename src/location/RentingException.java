@@ -17,7 +17,7 @@ public class RentingException extends RuntimeException {
   /**
    * Constructs a new RentingException with the specified message.
    *
-   * @param message the message of the exception
+   * @param message the message of the exception.
    */
   public RentingException(String message) {
     super(message);
