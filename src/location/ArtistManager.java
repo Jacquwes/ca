@@ -119,4 +119,23 @@ public class ArtistManager {
     return ArtistManager.artists.add(artist);
   }
 
+  /**
+   * @brief Serializes the artists.
+   *
+   * @return the serialized artists.
+   */
+  public String serialize() {
+    StringBuilder sb = new StringBuilder();
+    sb.append("[");
+    for (Artist artist : this.getArtists()) {
+      sb.append(artist.serialize());
+      sb.deleteCharAt(sb.length() - 1);
+      sb.append(",\"isActor\":\"" + this.getActors().contains(artist) + "\",");
+      sb.append("\"isDirector\":\"" + this.getDirectors().contains(artist) + "\"},");
+    }
+    sb.deleteCharAt(sb.length() - 1);
+    sb.append("]");
+    return sb.toString();
+  }
+
 }
