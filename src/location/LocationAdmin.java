@@ -1,13 +1,14 @@
 package location;
 
 import java.io.IOException;
+import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
 
 /**
  * Represents the administration of the location.
  */
-public class LocationAdmin implements AdministrationInterface {
+public class LocationAdmin implements AdministrationInterface, Serializable {
 
   /**
    * Represents the artist manager.
