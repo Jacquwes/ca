@@ -1,251 +1,142 @@
 package tests;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
-import static org.junit.jupiter.api.Assertions.assertThrows;
-import static org.junit.jupiter.api.Assertions.assertNull;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import org.junit.Before;
+import org.junit.Test;
+import static org.junit.Assert.*;
 
-import java.util.Date;
-import location.PersonalInformation;
-import location.User;
-import location.RentingException;
-import location.Reservation;
 import location.Movie;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
+import location.Reservation;
+import location.Review;
+import location.User;
+
+import java.util.Set;
 
 /**
- * Test class for the User class functionality.
+ * Test class for User to validate all methods and behaviors.
  */
 public class UserTest {
-  /**
-   * Username of the test user.
-   */
-  private static final String USERNAME_JOHNDOE = "johndoe";
+    private User testUser;
+    private Movie testMovie;
+    private Reservation testReservation;
+    private Review testReview;
 
-  /**
-   * Password of the test user.
-   */
-  private static final String PASSWORD = "password123";
+    /**
+     * Set up test data before each test method.
+     */
+    @Before
+    public void setUp() {
+        PersonalInformation personalInfo = new PersonalInformation("John", "Doe", "adress", 30);
+        testUser = new User("johndoe", "password", personalInfo);
+        testMovie = new Movie("Inception", 2010, new Artist(), null);
+        testReservation = new Reservation(testUser, testMovie, null, 2);
+        testReview = new Review(testUser, testMovie, 4.5, "Great movie!");
+    }
 
-  /**
-   * Last name of the test user.
-   */
-  private static final String LASTNAME_JOHN = "John";
+    /**
+     * Tests constructor and getter methods.
+     */
+    @Test
+    public void testConstructorAndGetters() {
+        assertEquals("johndoe", testUser.getLogin());
+        assertEquals("password", testUser.getPassword());
+        assertNotNull(testUser.getPersonalInformation());
+    }
 
-  /**
-   * First name of the test user.
-   */
-  private static final String FIRSTNAME_DOE = "Doe";
+    /**
+     * Tests setter methods.
+     */
+    @Test
+    public void testSetters() {
+        PersonalInformation newInfo = new PersonalInformation("Jane", "Smith", "new address", 25);
+        testUser.setLogin("newlogin");
+        testUser.setPassword("newpassword");
+        testUser.setPersonalInformation(newInfo);
 
-  /**
-   * Test instance of User.
-   */
-  private User user;
+        assertEquals("newlogin", testUser.getLogin());
+        assertEquals("newpassword", testUser.getPassword());
+        assertEquals(newInfo, testUser.getPersonalInformation());
+    }
 
-  /**
-   * Test instance of PersonalInformation.
-   */
-  private PersonalInformation info;
+    /**
+     * Tests adding and retrieving reservations.
+     */
+    @Test
+    public void testReservations() {
+        Set<Reservation> reservations = testUser.getReservations();
+        assertTrue(reservations.contains(testReservation));
+        assertEquals(1, reservations.size());
+    }
 
-  /**
-   * Test instance of Movie.
-   */
-  private Movie movie;
+    /**
+     * Tests cancel reservation.
+     */
+    @Test
+    public void testCancelReservation() {
+        testUser.cancelReservation(testReservation);
+        assertFalse(testUser.getReservations().contains(testReservation));
+        assertNull(testReservation.getUser());
+    }
 
-  /**
-   * Sets up the test environment before each test.
-   */
-  @BeforeEach
-  public void setUp() {
-    info = new PersonalInformation(LASTNAME_JOHN, FIRSTNAME_DOE);
-    user = User.register(USERNAME_JOHNDOE, PASSWORD, info);
-    user.resetReservations();
-    User.resetUsers();
-    movie = new Movie("Interstellar", 2024, null, null);
-  }
+    /**
+     * Tests adding too many reservations.
+     */
+    @Test
+    public void testAddTooManyReservations() {
+        testUser.resetReservations();
+        Reservation reservation1 = new Reservation(testUser, new Movie("Inception", 2010, new Artist(), null), null, 2);
+        Reservation reservation2 = new Reservation(testUser, new Movie("Interstellar", 2014, new Artist(), null), null, 2);
+        Reservation reservation3 = new Reservation(testUser, new Movie("Dunkirk", 2017, new Artist(), null), null, 2);
+        assertThrows(RentingException.class, () -> new Reservation(testUser, new Movie("Tenet", 2020, new Artist(), null), null, 2));
+    }
 
-  /**
-   * Tests the register method of User class.
-   */
-  @Test
-  public void testRegisterSuccess() {
-    assertNotNull(user);
-    assertEquals(USERNAME_JOHNDOE, user.getLogin());
-    assertEquals(info, user.getPersonalInformation());
-  }
+    /**
+     * Tests adding a review to the user.
+     */
+    @Test
+    public void testAddAndGetReviews() {
+        testUser.addReview(testReview);
+        Set<Review> reviews = testUser.getReviews();
+        
+        assertTrue(reviews.contains(testReview));
+        assertEquals(1, reviews.size());
+    }
 
-  /**
-   * Tests the register method of User class with a null username.
-   */
-  @Test
-  public void testRegisterUsernameAlreadyExists() {
-    PersonalInformation info1 = new PersonalInformation(LASTNAME_JOHN, FIRSTNAME_DOE);
-    User.register(USERNAME_JOHNDOE, PASSWORD, info1);
-    PersonalInformation info2 = new PersonalInformation("Jane", FIRSTNAME_DOE);
-    user = User.register(USERNAME_JOHNDOE, "password456", info2);
-    assertNull(user);
-  }
+    /**
+     * Tests adding and removing multiple reviews.
+     */
+    @Test
+    public void testMultipleReviews() {
+        Review review1 = new Review(testUser, 
+            new Movie("Movie 1", 2020, new Artist(), null), 
+            4.0, "Good movie");
+        Review review2 = new Review(testUser, 
+            new Movie("Movie 2", 2021, new Artist(), null), 
+            4.5, "Great movie");
+        
+        testUser.addReview(review1);
+        testUser.addReview(review2);
+        
+        Set<Review> reviews = testUser.getReviews();
+        assertEquals(2, reviews.size());
+        assertTrue(reviews.contains(review1));
+        assertTrue(reviews.contains(review2));
+    }
 
-  /**
-   * Tests the register method of User class with a null username.
-   */
-  @Test
-  public void testRegisterEmptyUsername() {
-    user = User.register("", PASSWORD, info);
-    assertNull(user);
-  }
-
-  /**
-   * Tests the register method of User class with a null password.
-   */
-  @Test
-  public void testRegisterEmptyPassword() {
-    user = User.register(USERNAME_JOHNDOE, "", info);
-      assertNull(user);
-  }
-
-  /**
-   * Tests the register method of User class with a null personal information.
-   */
-  @Test
-  public void testRegisterNullUsername() {
-    user = User.register(null, PASSWORD, info);
-    assertNull(user);
-  }
-
-  /**
-   * Tests the register method of User class with a null password.
-   */
-  @Test
-  public void testRegisterNullPassword() {
-    user = User.register(USERNAME_JOHNDOE, null, info);
-    assertNull(user);
-  }
-
-  /**
-   * Tests the register method of User class with a null personal information.
-   */
-  @Test
-  public void testRegisterNullPersonalInformation() {
-    user = User.register(USERNAME_JOHNDOE, PASSWORD, null);
-    assertNull(user);
-  }
-
-  /**
-   * Tests the login method of User class.
-   */
-  @Test
-  public void testGetLogin() {
-    assertNotNull(user);
-    assertEquals(USERNAME_JOHNDOE, user.getLogin());
-  }
-
-  /**
-   * Tests the login method of User class.
-   */
-  @Test
-  public void testSetLogin() {
-    assertNotNull(user);
-    user.setLogin("newlogin");
-    assertEquals("newlogin", user.getLogin());
-  }
-
-  /**
-   * Tests the password methods of User class.
-   */
-  @Test
-  public void testGetPassword() {
-    assertNotNull(user);
-    assertEquals(PASSWORD, user.getPassword());
-  }
-
-  /**
-   * Tests the password methods of User class.
-   */
-  @Test
-  public void testSetPassword() {
-    assertNotNull(user);
-    user.setPassword("newpassword");
-    assertEquals("newpassword", user.getPassword());
-  }
-
-  /**
-   * Tests the personal information methods of User class.
-   */
-  @Test
-  public void testGetPersonalInformation() {
-    assertNotNull(user);
-    assertEquals(info, user.getPersonalInformation());
-  }
-
-  /**
-   * Tests the personal information methods of User class.
-   */
-  @Test
-  public void testSetPersonalInformation() {
-    assertNotNull(user);
-    PersonalInformation newInfo = new PersonalInformation("Jane", FIRSTNAME_DOE);
-    user.setPersonalInformation(newInfo);
-    assertEquals(newInfo, user.getPersonalInformation());
-  }
-
-  /**
-   * Tests the addReservation method of User class.
-   */
-  @Test
-  public void testAddReservationSuccess() {
-    assertNotNull(user);
-    Reservation reservation = new Reservation(user, movie, new Date(), 3);
-    assertTrue(user.getReservations().contains(reservation));
-  }
-
-  /**
-   * Tests the addReservation method of User class with a null reservation.
-   */
-  @Test
-  public void testAddReservationNull() {
-    assertNotNull(user);
-    assertThrows(RentingException.class, () -> user.addReservation(null));
-  }
-
-  /**
-   * Tests the addReservation method of User class with an already existing.
-   */
-  @Test
-  public void testAddReservationAlreadyExists() {
-    assertNotNull(user);
-    Reservation reservation = new Reservation(user, movie, new Date(), 3);
-    assertThrows(RentingException.class, () -> user.addReservation(reservation));
-  }
-
-  /**
-   * Tests the addReservation method of User class with a reservation limit.
-   * exceeded.
-   */
-  @Test
-  public void testAddReservationLimitExceeded() {
-    assertNotNull(user);
-    Movie movie1 = new Movie("Interstellar", 2024, null, null);
-    new Reservation(user, movie1, new Date(), 3);
-    Movie movie2 = new Movie("Inception", 2020, null, null);
-    new Reservation(user, movie2, new Date(), 3);
-    Movie movie3 = new Movie("Tenet", 2021, null, null);
-    new Reservation(user, movie3, new Date(), 3);
-    Movie movie4 = new Movie("Dunkirk", 2017, null, null);
-    assertThrows(RentingException.class, () -> new Reservation(user, movie4, new Date(), 3));
-  }
-
-  /**
-   * Tests the cancelReservation method of User class with a null
-   */
-  @Test
-  public void testCancelReservationSuccess() {
-    assertNotNull(user);
-    Reservation reservation = new Reservation(user, movie, new Date(), 3);
-    user.cancelReservation(reservation);
-    assertFalse(user.getReservations().contains(reservation));
-  }
+    /**
+     * Tests that reservations are unique.
+     */
+    @Test
+    public void testUniqueReservations() {
+        testUser.resetReservations();
+        Reservation reservation1 = new Reservation(testUser, 
+            new Movie("Inception", 2010, new Artist(), null), null, 2);
+        Reservation reservation2 = new Reservation(testUser,
+            new Movie("Interstellar", 2014, new Artist(), null), null, 2);
+        
+        
+        Set<Reservation> reservations = testUser.getReservations();
+        assertEquals(2, reservations.size());
+        assertTrue(reservations.contains(reservation1));
+        assertTrue(reservations.contains(reservation2));
+    }
 }

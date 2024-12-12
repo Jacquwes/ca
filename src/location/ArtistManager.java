@@ -86,9 +86,9 @@ public class ArtistManager implements Serializable {
    */
   public boolean deleteArtist(Artist artist) {
     boolean result = false;
-    result = result || this.artists.remove(artist);
-    result = result || this.actors.remove(artist);
-    result = result || this.directors.remove(artist);
+    result = this.artists.remove(artist) || result;
+    result = this.actors.remove(artist) || result;
+    result = this.directors.remove(artist) || result;
     return result;
   }
 

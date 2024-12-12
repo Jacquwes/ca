@@ -202,7 +202,7 @@ public class Artist implements Serializable {
     // Récupère la donnée qui suit "nationality":
     index = json.indexOf("\"nationality\":\"") + "\"nationality\":\"".length();
     index2 = json.indexOf("\"", index);
-    artist.firstName = json.substring(index, index2);
+    artist.nationality = json.substring(index, index2);
     return artist;
   }
 }
