@@ -42,9 +42,9 @@ public class User implements Serializable {
   /**
    * Constructs a new User with the specified login and personal information.
    *
-   * @param login               the login identifier for the user
-   * @param password            the password of the user
-   * @param personalInformation the personal information of the user
+   * @param login               the login identifier for the user.
+   * @param password            the password of the user.
+   * @param personalInformation the personal information of the user.
    */
   public User(String login, String password, PersonalInformation personalInformation) {
     this.login = login;
@@ -92,7 +92,7 @@ public class User implements Serializable {
   /**
    * Sets the password for the user.
    *
-   * @param password the new password to be set
+   * @param password the new password to be set.
    */
   public void setPassword(String password) {
     this.password = password;
@@ -119,7 +119,7 @@ public class User implements Serializable {
   /**
    * Adds a review to the user.
    *
-   * @param review the review to be added
+   * @param review the review to be added.
    */
   public void addReview(Review review) {
     reviews.add(review);
@@ -128,7 +128,7 @@ public class User implements Serializable {
   /**
    * Retrieves the reviews of the user.
    *
-   * @return the reviews of the user
+   * @return the reviews of the user.
    */
   public Set<Review> getReviews() {
     return reviews;
@@ -137,10 +137,10 @@ public class User implements Serializable {
   /**
    * Adds a reservation to the user's list of reservations.
    *
-   * @param reservation the reservation to be added
-   * @throws RentingException if the reservation is null
-   * @throws RentingException if the reservation already exists in the list
-   * @throws RentingException if the user already has 3 reservations
+   * @param reservation the reservation to be added.
+   * @throws RentingException if the reservation is null.
+   * @throws RentingException if the reservation already exists in the list.
+   * @throws RentingException if the user already has 3 reservations.
    */
   public void addReservation(Reservation reservation) {
     if (reservation == null) {
@@ -160,10 +160,9 @@ public class User implements Serializable {
 
   /**
    * Cancels the given reservation by removing it from the user's list of
-   * reservations
-   * and dissociating the user from the reservation.
+   * reservations and dissociating the user from the reservation.
    *
-   * @param reservation the reservation to be canceled
+   * @param reservation the reservation to be canceled.
    */
   public void cancelReservation(Reservation reservation) {
     reservations.remove(reservation);
@@ -182,8 +181,8 @@ public class User implements Serializable {
    * Indicates whether some other object is "equal to" this one.
    *
    * @param obj the reference object with which to compare.
-   * @return {@code true} if this object is the same as the obj argument;
-   *         {@code false} otherwise.
+   * @return true if this object is the same as the obj argument;
+   *         false otherwise.
    */
   @Override
   public boolean equals(Object obj) {
