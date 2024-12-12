@@ -1,10 +1,11 @@
 package location;
 
+import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
 import java.util.function.Predicate;
 
-public class MovieManager {
+public class MovieManager implements Serializable {
   /**
    * List of all the movies.
    */
@@ -34,7 +35,7 @@ public class MovieManager {
    * Gets the list of all the movies matching
    * the specified predicate.
    *
-   * @param predicate the predicate to match
+   * @param predicate the predicate to match.
    * @return the list of all the movies.
    */
   public Set<Movie> getMovies(Predicate<Movie> predicate) {
@@ -49,6 +50,12 @@ public class MovieManager {
     return result;
   }
 
+  /**
+   * Deletes the specified movie.
+   *
+   * @param movie the movie to delete.
+   * @return true if the movie was deleted, false otherwise.
+   */
   public boolean deleteMovie(Movie movie) {
     return movies.remove(movie);
   }

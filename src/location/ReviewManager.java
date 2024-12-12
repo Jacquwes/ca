@@ -1,5 +1,6 @@
 package location;
 
+import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
 import java.util.function.Predicate;
@@ -7,7 +8,7 @@ import java.util.function.Predicate;
 /**
  * Manages all the reviews.
  */
-public class ReviewManager {
+public class ReviewManager implements Serializable {
   /**
    * Represents all the reviews.
   */
@@ -23,8 +24,8 @@ public class ReviewManager {
   /**
    * Retrieves all the reviews that satisfy the predicate.
    *
-   * @param p the predicate to satisfy
-   * @return all the reviews that satisfy the predicate
+   * @param p the predicate to satisfy.
+   * @return all the reviews that satisfy the predicate.
    */
   public Set<Review> getReviews(Predicate<Review> p) {
     Set<Review> result = new HashSet<>();
@@ -39,7 +40,7 @@ public class ReviewManager {
   /**
    * Adds a review to the set of reviews.
    *
-   * @param review the review to add
+   * @param review the review to add.
    */
   public void add(User user, Movie movie, double rating, String comment)
       throws IllegalArgumentException {
@@ -53,7 +54,16 @@ public class ReviewManager {
     movie.addReview(review);
   }
 
-  public void add(Review review) {
+  /**
+   * Adds a review to the set of reviews.
+   *
+   * @param review the review to add.
+   */
+  public void add(Review review) throws IllegalArgumentException {
+    if (!getReviews(r -> r.getUser() == review.getUser() && r.getMovie() == review.getMovie()).isEmpty()) {
+      throw new IllegalArgumentException("User already reviewed this movie");
+    }
+
     reviews.add(review);
   }
 }

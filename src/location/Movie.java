@@ -1,12 +1,13 @@
 package location;
 
+import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
 
 /**
  * Represents a movie.
  */
-public class Movie {
+public class Movie implements Serializable {
   /**
    * The title of the movie.
    */
@@ -61,10 +62,10 @@ public class Movie {
   /**
    * Constructs a new Movie with the specified title, year, director and actors.
    *
-   * @param title    the title of the movie
-   * @param year     the year of the movie
-   * @param director the director of the movie
-   * @param actors   the actors of the movie
+   * @param title    the title of the movie.
+   * @param year     the year of the movie.
+   * @param director the director of the movie.
+   * @param actors   the actors of the movie.
    */
   public Movie(String title, int year, Artist director, Set<Artist> actors) {
     this.title = title;
@@ -85,8 +86,8 @@ public class Movie {
   /**
    * Sets the title of the movie.
    *
-   * @param title the title of the movie
-   * @return the movie
+   * @param title the title of the movie.
+   * @return the movie.
    */
   public Movie setTitle(String title) {
     this.title = title;
@@ -105,8 +106,8 @@ public class Movie {
   /**
    * Set the release date of the movie.
    *
-   * @param newYear The release date of the movie
-   * @return the movie
+   * @param newYear The release date of the movie.
+   * @return the movie.
    */
   public Movie setYear(int newYear) {
     this.year = newYear;
@@ -126,7 +127,7 @@ public class Movie {
    * Set the director of the movie.
    *
    * @param dir The director of the movie.
-   * @return the movie
+   * @return the movie.
    */
   public Movie setDirector(Artist dir) {
     this.director = dir;
@@ -145,8 +146,8 @@ public class Movie {
   /**
    * Set the availability of the movie.
    *
-   * @param availability The availability of the movie
-   * @return the movie
+   * @param availability The availability of the movie.
+   * @return the movie.
    */
   public Movie setAvailability(boolean availability) {
     this.available = availability;
@@ -165,8 +166,8 @@ public class Movie {
   /**
    * Sets the actors of the movie.
    *
-   * @param actors the actors of the movie
-   * @return the movie
+   * @param actors the actors of the movie.
+   * @return the movie.
    */
   public Movie setActors(Set<Artist> actors) {
     this.actors = actors;
@@ -176,8 +177,8 @@ public class Movie {
   /**
    * Adds an actor to the movie.
    *
-   * @param actor the actor to add
-   * @return the movie
+   * @param actor the actor to add.
+   * @return the movie.
    */
   public Movie addActor(Artist actor) {
     this.actors.add(actor);
@@ -197,8 +198,8 @@ public class Movie {
   /**
    * Sets the minimum age required to watch the movie.
    *
-   * @param minimumAge the minimum age required to watch the movie
-   * @return the movie
+   * @param minimumAge the minimum age required to watch the movie.
+   * @return the movie.
    */
   public Movie setMinimumAge(int minimumAge) {
     this.minimumAge = minimumAge;
@@ -248,7 +249,7 @@ public class Movie {
   /**
    * Adds a genre to the movie.
    *
-   * @param genre
+   * @param genre the genre to add.
    */
   public void addGenre(Genre genre) {
     genres.add(genre);
@@ -276,8 +277,8 @@ public class Movie {
    * Indicates whether some other object is "equal to" this one.
    *
    * @param obj the reference object with which to compare.
-   * @return {@code true} if this object is the same as the obj argument;
-   *         {@code false} otherwise.
+   * @return true if this object is the same as the obj argument;
+   *         false otherwise.
    */
   @Override
   public boolean equals(Object obj) {

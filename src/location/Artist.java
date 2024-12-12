@@ -1,12 +1,13 @@
 package location;
 
+import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
 
 /**
  * Represents an artist who has worked on a movie.
  */
-public class Artist {  
+public class Artist implements Serializable {
   /**
    * The movies of the artist.
    */

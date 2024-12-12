@@ -1,5 +1,6 @@
 package location;
 
+import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
 import java.util.function.Predicate;
@@ -7,7 +8,7 @@ import java.util.function.Predicate;
 /**
  * Manages all the artists.
  */
-public class ArtistManager {
+public class ArtistManager implements Serializable {
 
   /**
    * Represents all the artists.
@@ -82,7 +83,11 @@ public class ArtistManager {
    * @return true if the artist was deleted, false otherwise.
    */
   public boolean deleteArtist(Artist artist) {
-    return this.actors.remove(artist) || this.directors.remove(artist) || this.artists.remove(artist);
+    boolean result = false;
+    result = result || this.artists.remove(artist);
+    result = result || this.actors.remove(artist);
+    result = result || this.directors.remove(artist);
+    return result;
   }
 
   /**
