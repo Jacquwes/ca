@@ -1,131 +1,89 @@
 package tests;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
+import org.junit.Before;
+import org.junit.Test;
+import static org.junit.Assert.*;
+
+import location.User;
+import location.Movie;
+import location.Artist;
+import location.Reservation;
+import location.PersonalInformation;
 
 import java.util.Date;
-import location.Movie;
-import location.PersonalInformation;
-import location.Reservation;
-import location.User;
-import org.junit.jupiter.api.Test;
 
 /**
- * Test class for the Reservation class functionality.
+ * Test class for Reservation entity.
  */
 public class ReservationTest {
-  /**
-   * Test instance of User.
-   */
-  private static final User USER = new User("johndoe",
-      "password123",
-      new PersonalInformation("John", "Doe"));
+    private User user;
+    private Movie movie;
+    private Date reservationDate;
+    private Reservation reservation;
 
-  /**
-   * Test instance of Movie.
-   */
-  private static final Movie MOVIE = new Movie("Inception", 2024, null, null);
+    /**
+     * Set up test fixtures before each test method.
+     */
+    @Before
+    public void setUp() {
+        PersonalInformation info = new PersonalInformation("John", "Doe", "adress", 30);
+        user = new User("john.doe", "password", info);
+        
+        Artist director = new Artist("Spielberg", "Steven", "American");
+        movie = new Movie("Saving Private Ryan", 1998, director, null);
+        
+        reservationDate = new Date();
+        
+        reservation = new Reservation(user, movie, reservationDate, 7);
+    }
 
-  /**
-   * Test instance of Reservation.
-   */
-  private static final Date DATE = new Date();
+    /**
+     * Test reservation constructor and getters.
+     */
+    @Test
+    public void testReservationConstructorAndGetters() {
+        assertEquals(user, reservation.getUser());
+        assertEquals(movie, reservation.getMovie());
+        assertEquals(reservationDate, reservation.getDate());
+        assertEquals(Integer.valueOf(7), reservation.getDuration());
+    }
 
-  /**
-   * Test instance of Reservation.
-   */
-  private static final Integer DURATION = 7;
+    /**
+     * Test setter methods.
+     */
+    @Test
+    public void testSetters() {
+        PersonalInformation newInfo = new PersonalInformation("Jane", "Smith", "adress", 30);
+        User newUser = new User("jane.smith", "password", newInfo);
+        reservation.setUser(newUser);
+        assertEquals(newUser, reservation.getUser());
 
-  /**
-   * Tests the parameterized constructor of Reservation class.
-   */
-  @Test
-  public void testReservationConstructor() {
-    Reservation reservation = new Reservation(USER, MOVIE, DATE, DURATION);
-    assertNotNull(reservation);
-    assertEquals(USER, reservation.getUser());
-    assertEquals(MOVIE, reservation.getMovie());
-    assertEquals(DATE, reservation.getDate());
-    assertEquals(DURATION, reservation.getDuration());
-  }
+        Movie newMovie = new Movie("Jurassic Park", 1993, null, null);
+        reservation.setMovie(newMovie);
+        assertEquals(newMovie, reservation.getMovie());
 
-  /**
-   * Tests the setter methods of Reservation class.
-   */
-  @Test
-  public void testGetUser() {
-    Reservation reservation = new Reservation(USER, MOVIE, DATE, DURATION);
-    assertEquals(USER, reservation.getUser());
-  }
+        Date newDate = new Date(System.currentTimeMillis() + 86400000);
+        reservation.setDate(newDate);
+        assertEquals(newDate, reservation.getDate());
 
-  /**
-   * Tests the setter methods of Reservation class.
-   */
-  @Test
-  public void testSetUser() {
-    Reservation reservation = new Reservation(USER, MOVIE, DATE, DURATION);
-    User newUser = new User("janedoe", "password456", new PersonalInformation("Jane", "Doe"));
-    reservation.setUser(newUser);
-    assertEquals(newUser, reservation.getUser());
-  }
+        reservation.setDuration(14);
+        assertEquals(Integer.valueOf(14), reservation.getDuration());
+    }
 
-  /**
-   * Tests the setter methods of Reservation class.
-   */
-  @Test
-  public void testGetMovie() {
-    Reservation reservation = new Reservation(USER, MOVIE, DATE, DURATION);
-    assertEquals(MOVIE, reservation.getMovie());
-  }
+    /**
+     * Test equals method.
+     */
+    @Test
+    public void testEquals() {
+        Reservation sameReservation = new Reservation(user, movie, reservationDate, 7);
+        Reservation differentReservation = new Reservation(
+            new User("jane.smith@example.com", "Jane", new PersonalInformation("Jane", "Smith", "adress", 30)),
+            new Movie("Jurassic Park", 1993, null, null), 
+            new Date(), 
+            14
+        );
 
-  /**
-   * Tests the setter methods of Reservation class.
-   */
-  @Test
-  public void testSetMovie() {
-    Reservation reservation = new Reservation(USER, MOVIE, DATE, DURATION);
-    Movie newMovie = new Movie("Interstellar", 2024, null, null);
-    reservation.setMovie(newMovie);
-    assertEquals(newMovie, reservation.getMovie());
-  }
-
-  /**
-   * Tests the setter methods of Reservation class.
-   */
-  @Test
-  public void testGetDate() {
-    Reservation reservation = new Reservation(USER, MOVIE, DATE, DURATION);
-    assertEquals(DATE, reservation.getDate());
-  }
-
-  /**
-   * Tests the setter methods of Reservation class.
-   */
-  @Test
-  public void testSetDate() {
-    Reservation reservation = new Reservation(USER, MOVIE, DATE, DURATION);
-    Date newDate = new Date(DATE.getTime() + 86400000L); // +1 day
-    reservation.setDate(newDate);
-    assertEquals(newDate, reservation.getDate());
-  }
-
-  /**
-   * Tests the setter methods of Reservation class.
-   */
-  @Test
-  public void testGetDuration() {
-    Reservation reservation = new Reservation(USER, MOVIE, DATE, DURATION);
-    assertEquals(DURATION, reservation.getDuration());
-  }
-
-  /**
-   * Tests the setter methods of Reservation class.
-   */
-  @Test
-  public void testSetDuration() {
-    Reservation reservation = new Reservation(USER, MOVIE, DATE, DURATION);
-    Integer newDuration = 14;
-    reservation.setDuration(newDuration);
-    assertEquals(newDuration, reservation.getDuration());
-  }
+        assertEquals(reservation, sameReservation);
+        assertNotEquals(reservation, differentReservation);
+    }
 }
