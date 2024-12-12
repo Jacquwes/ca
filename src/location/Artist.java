@@ -168,4 +168,13 @@ public class Artist {
     }
     return true;
   }
+
+  public String serialize(){
+    // renvoie une chaine au format JSON
+    return "{"
+      + "\"lastName\":\"" + lastName + "\","
+      + "\"firstName\":\"" + firstName + "\","
+      + "\"nationality\":\"" + nationality + "\""
+      + "}";
+  }
 }
