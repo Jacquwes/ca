@@ -6,6 +6,9 @@ import java.util.stream.Collectors;
 
 import tests.ArtistTest;
 
+/**
+ * Represents a location where users can rent movies and leave reviews.
+ */
 public class Location implements UserInterface {
   /**
    * The manager of all the artists.
