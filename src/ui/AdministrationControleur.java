@@ -16,6 +16,11 @@ import location.Genre;
 import java.util.Set;
 import javafx.stage.FileChooser;
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.ObjectOutputStream;
+import java.io.ObjectInputStream;
+
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
@@ -479,7 +484,21 @@ public class AdministrationControleur {
   
   @FXML
   void actionMenuCharger(ActionEvent event) {
-    System.out.println("actionMenuCharger");
+    try{
+      FileChooser fileChooser = new FileChooser();
+      fileChooser.setTitle("Choisir un fichier de sauvegarde");
+      File file = fileChooser.showOpenDialog(null);
+      if (file != null) {
+        String path = file.getAbsolutePath();
+        FileInputStream fis = new FileInputStream(path);
+        ObjectInputStream ois = new ObjectInputStream(fis);
+        this.locationAdmin = (LocationAdmin) ois.readObject();
+        ois.close();
+        fis.close();
+      }
+    } catch (Exception e){
+      e.printStackTrace();
+    }
   }
   
   /**
@@ -495,7 +514,15 @@ public class AdministrationControleur {
   
   @FXML
   void actionMenuSauvegarder(ActionEvent event) {
-    System.out.println("actionMenuSauvegarder");
+    try{
+      FileOutputStream fos = new FileOutputStream("locationAdmin.ser");
+      ObjectOutputStream oos = new ObjectOutputStream(fos);
+      oos.writeObject(this.locationAdmin);
+      oos.close();
+      fos.close();
+    } catch (Exception e){
+      e.printStackTrace();
+    }    
   }
   
   /**
