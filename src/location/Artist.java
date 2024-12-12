@@ -181,4 +181,27 @@ public class Artist {
       + "\"nationality\":\"" + nationality + "\""
       + "}";
   }
+
+  /**
+   * @brief Deserialize the artist from a JSON string.
+   * 
+   * @param json the JSON string.
+   * @return the artist.
+   */
+  public static Artist parse(String json){
+    Artist artist = new Artist();
+    // Récupère la donnée qui suit "lastName":
+    int index = json.indexOf("\"lastName\":\"") + "\"lastName\":\"".length();
+    int index2 = json.indexOf("\"", index);
+    artist.lastName = json.substring(index, index2);
+    // Récupère la donnée qui suit "firstName":
+    index = json.indexOf("\"firstName\":\"") + "\"firstName\":\"".length();
+    index2 = json.indexOf("\"", index);
+    artist.firstName = json.substring(index, index2);
+    // Récupère la donnée qui suit "nationality":
+    index = json.indexOf("\"nationality\":\"") + "\"nationality\":\"".length();
+    index2 = json.indexOf("\"", index);
+    artist.firstName = json.substring(index, index2);
+    return artist;
+  }
 }
