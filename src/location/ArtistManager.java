@@ -55,18 +55,40 @@ public class ArtistManager {
     return result;
   }
 
+  /**
+   * @brief Retrieves the actors.
+   * 
+   * @return the actors
+   */
   public Set<Artist> getActors() {
     return ArtistManager.actors;
   }
 
+  /**
+   * @brief Retrieves the directors.
+   * 
+   * @return the directors
+   */
   public Set<Artist> getDirectors() {
     return ArtistManager.directors;
   }
 
+  /**
+   * @brief Deletes an artist.
+   * 
+   * @param artist the artist to delete
+   * 
+   * @return true if the artist was deleted, false otherwise
+   */
   public boolean deleteArtist(Artist artist) {
     return ArtistManager.actors.remove(artist) || ArtistManager.directors.remove(artist) || ArtistManager.artists.remove(artist);
   }
 
+  /**
+   * @brief Adds an actor.
+   * 
+   * @param artist the actor to add
+   */
   public void addActor(Artist artist) {
     if (!ArtistManager.artists.contains(artist)) {
       ArtistManager.artists.add(artist);
@@ -74,6 +96,11 @@ public class ArtistManager {
     ArtistManager.actors.add(artist);
   }
 
+  /**
+   * @brief Adds a director.
+   * 
+   * @param artist the director to add
+   */
   public void addDirector(Artist artist) {
     if (!ArtistManager.artists.contains(artist)) {
       ArtistManager.artists.add(artist);
@@ -81,6 +108,13 @@ public class ArtistManager {
     ArtistManager.directors.add(artist);
   }
 
+  /**
+   * @brief Adds an artist.
+   * 
+   * @param artist the artist to add
+   * 
+   * @return true if the artist was added, false otherwise
+   */
   public boolean addArtist(Artist artist) {
     return ArtistManager.artists.add(artist);
   }
