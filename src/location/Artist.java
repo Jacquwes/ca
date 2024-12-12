@@ -169,8 +169,12 @@ public class Artist {
     return true;
   }
 
+  /**
+   * @brief Serialize the artist to a JSON string.
+   * 
+   * @return the JSON string.
+   */
   public String serialize(){
-    // renvoie une chaine au format JSON
     return "{"
       + "\"lastName\":\"" + lastName + "\","
       + "\"firstName\":\"" + firstName + "\","
