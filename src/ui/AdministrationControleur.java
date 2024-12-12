@@ -30,7 +30,7 @@ import javafx.stage.Stage;
  * @author Eric Cariou
  *
  */
-public class AdministrationControleur {
+public class AdministrationControleur implements io.InterSauvegarde {
 
   public AdministrationControleur(LocationAdmin locationAdmin) {
     this.locationAdmin = locationAdmin;
@@ -82,6 +82,30 @@ public class AdministrationControleur {
 
   @FXML
   private ListView<String> listeTousGenres;
+
+  public void sauvegarderDonnees(String nomFichier) {
+    try{
+      FileOutputStream fos = new FileOutputStream(nomFichier);
+      ObjectOutputStream oos = new ObjectOutputStream(fos);
+      oos.writeObject(this.locationAdmin);
+      oos.close();
+      fos.close();
+    } catch (Exception e){
+      e.printStackTrace();
+    }
+  }
+
+  public void chargerDonnees(String nomFichier) {
+    try{
+      FileInputStream fis = new FileInputStream(nomFichier);
+      ObjectInputStream ois = new ObjectInputStream(fis);
+      this.locationAdmin = (LocationAdmin) ois.readObject();
+      ois.close();
+      fis.close();
+    } catch (Exception e){
+      e.printStackTrace();
+    }
+  }
 
   /**
    * Called when the user clicks on the button "Les acteurs".
@@ -517,20 +541,16 @@ public class AdministrationControleur {
 
   @FXML
   void actionMenuCharger(ActionEvent event) {
-    try{
-      FileChooser fileChooser = new FileChooser();
-      fileChooser.setTitle("Choisir un fichier de sauvegarde");
-      File file = fileChooser.showOpenDialog(null);
-      if (file != null) {
-        String path = file.getAbsolutePath();
-        FileInputStream fis = new FileInputStream(path);
-        ObjectInputStream ois = new ObjectInputStream(fis);
-        this.locationAdmin = (LocationAdmin) ois.readObject();
-        ois.close();
-        fis.close();
-      }
-    } catch (Exception e){
-      e.printStackTrace();
+    
+    FileChooser fileChooser = new FileChooser();
+    fileChooser.setTitle("Choisir un fichier de sauvegarde");
+    File file = fileChooser.showOpenDialog(null);
+    if (file != null) {
+      String path = file.getAbsolutePath();
+      chargerDonnees(path);
+    }
+    else{
+      System.out.println("Erreur lors de l'ouverture du fichier");
     }
   }
 
@@ -547,15 +567,7 @@ public class AdministrationControleur {
 
   @FXML
   void actionMenuSauvegarder(ActionEvent event) {
-    try{
-      FileOutputStream fos = new FileOutputStream("locationAdmin.ser");
-      ObjectOutputStream oos = new ObjectOutputStream(fos);
-      oos.writeObject(this.locationAdmin);
-      oos.close();
-      fos.close();
-    } catch (Exception e){
-      e.printStackTrace();
-    }    
+    sauvegarderDonnees("sauvegarde.ser");  
   }
 
   /**
