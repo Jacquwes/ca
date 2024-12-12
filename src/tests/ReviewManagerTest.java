@@ -1,18 +1,19 @@
 package tests;
 
 import org.junit.Before;
-import org.junit.Test;
-import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertThrows;
-import static org.junit.jupiter.api.Assertions.assertTrue;
 import location.Artist;
 import location.Movie;
 import location.PersonalInformation;
 import location.Review;
 import location.ReviewManager;
 import location.User;
-import java.util.Set;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+import org.junit.Test;
 import java.util.function.Predicate;
+import java.util.Set;
+
 
 /**
  * Test class for ReviewManager to validate all methods and behaviors.

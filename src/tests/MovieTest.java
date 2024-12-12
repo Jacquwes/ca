@@ -7,13 +7,12 @@ import location.Movie;
 import location.PersonalInformation;
 import location.Review;
 import org.junit.Before;
-import org.junit.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.junit.jupiter.api.Assertions.assertFalse;
+import org.junit.Test;
 import java.util.HashSet;
-import java.util.Set;
 
 /**
  * Test class for the Movie class.

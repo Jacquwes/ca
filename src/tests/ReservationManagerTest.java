@@ -1,16 +1,16 @@
 package tests;
 
-import org.junit.Before;
-import org.junit.Test;
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
-import static org.junit.jupiter.api.Assertions.assertFalse;
 import location.Artist;
 import location.Movie;
 import location.PersonalInformation;
 import location.Reservation;
 import location.ReservationManager;
 import location.User;
+import org.junit.Before;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import org.junit.Test;
 import java.util.Set;
 
 /**

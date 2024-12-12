@@ -1,10 +1,5 @@
 package tests;
 
-import org.junit.Before;
-import org.junit.Test;
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertTrue;
 import location.Artist;
 import location.ArtistManager;
 import location.Genre;
@@ -14,6 +9,11 @@ import location.ReservationManager;
 import location.ReviewManager;
 import location.UserManager;
 import location.MovieManager;
+import org.junit.Before;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+import org.junit.Test;
 import java.io.IOException;
 import java.util.Set;
 

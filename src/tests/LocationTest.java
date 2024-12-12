@@ -13,10 +13,10 @@ import location.MovieManager;
 import location.ReservationManager;
 import location.ReviewManager;
 import org.junit.Before;
-import org.junit.Test;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import org.junit.Test;
 import java.util.HashSet;
 import java.util.Set;
 
